@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Ext 4.0 使用笔记">
+<meta name="keywords" content="Blog,Web Plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ext 4.0 使用笔记">
+<meta property="og:url" content="http://blog.dew.com/Blog/Ext 4.0使用笔记/index.html">
+<meta property="og:site_name" content="Dew">
+<meta property="og:description" content="Ext 4.0 使用笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-28T02:53:01.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ext 4.0 使用笔记">
+<meta name="twitter:description" content="Ext 4.0 使用笔记">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dew.com/Blog/Ext 4.0使用笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Ext 4.0 使用笔记 | Dew</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dew</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">焦虑的肉松面包</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-file"></i> <br>Blog</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springboot/" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>SpringBoot</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>SpringCloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Ext 4.0使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wloop">
+      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="image" content="/images/dew-logo.svg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dew">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ext 4.0 使用笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019/02/27 15:20:13" itemprop="dateCreated datePublished" datetime="2019-02-27T15:20:13+08:00">2019/02/27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019/02/28 10:53:01" itemprop="dateModified" datetime="2019-02-28T10:53:01+08:00">2019/02/28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        Ext 4.0 使用笔记
+<a id="more"></a>
+<h1 id="Ext-4-0-使用笔记"><a href="#Ext-4-0-使用笔记" class="headerlink" title="Ext 4.0 使用笔记"></a>Ext 4.0 使用笔记</h1><h2 id="获取Grid-当前选中行数据"><a href="#获取Grid-当前选中行数据" class="headerlink" title="获取Grid 当前选中行数据"></a>获取Grid 当前选中行数据</h2><blockquote>
+<p>获取行数据         </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> record = Ext.getCmp(<span class="string">'now_alarm'</span>).getSelectionModel().getSelection();</span><br><span class="line"><span class="comment">//获取选中单行的某列值 </span></span><br><span class="line"><span class="keyword">var</span> deviceName = record[<span class="number">0</span>].data.DEVICE_NAME;</span><br></pre></td></tr></table></figure>
+<h2 id="列宽自动适应"><a href="#列宽自动适应" class="headerlink" title="列宽自动适应"></a>列宽自动适应</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forceFit:<span class="literal">true</span>,<span class="comment">//注意不要用autoFill:true;那样设置当GridPanel的大小变化(比如resize了它)时不会自动调整column的宽度</span></span><br><span class="line">scrollOffset:<span class="number">0</span><span class="comment">//不加这个的话,会在grid的最右边有个空白,留作滚动条的位置</span></span><br></pre></td></tr></table></figure>
+<h2 id="load-store"><a href="#load-store" class="headerlink" title="load store"></a>load store</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//查询参数</span></span><br><span class="line">  <span class="keyword">var</span> getParams = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			sheetIds : Ext.getCmp(<span class="string">'sheetId'</span>).getValue(),</span><br><span class="line">			station : Ext.getCmp(<span class="string">'station'</span>).getValue(),</span><br><span class="line">			maintain : Ext.getCmp(<span class="string">'maintainer'</span>).getValue(),</span><br><span class="line">			startTime : Ext.util.Format.date(Ext.getCmp(<span class="string">'startTime'</span>).getValue(),<span class="string">'Y-m-d'</span>),</span><br><span class="line">			<span class="comment">//status : state,// Ext.getCmp('status').getValue(),</span></span><br><span class="line">			endTime : Ext.util.Format.date(Ext.getCmp(<span class="string">'endTime'</span>).getValue(),<span class="string">'Y-m-d'</span>),</span><br><span class="line">			worksheettype : Ext.getCmp(<span class="string">'worksheetType'</span>).getValue()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">// 条件查询</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">reportLoad</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> params = getParams();</span><br><span class="line"><span class="comment">//		console.log(params);</span></span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">var</span> key <span class="keyword">in</span> params) &#123;</span><br><span class="line">			<span class="keyword">if</span> (params[key] == <span class="literal">null</span> || params[key] == <span class="string">""</span>) &#123;</span><br><span class="line">				<span class="keyword">delete</span> params[key];</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		reportStore.setProxy(&#123;</span><br><span class="line">			type : <span class="string">'ajax'</span>,</span><br><span class="line">			url: <span class="string">'../centerSheet/getWorkSheet'</span>,</span><br><span class="line">			extraParams : params,</span><br><span class="line">			reader:&#123;</span><br><span class="line">				type:<span class="string">'json'</span>,</span><br><span class="line">				root:<span class="string">'records'</span>,</span><br><span class="line">				totalProperty:<span class="string">'totalCount'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">switch</span> (state) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">			Ext.getCmp(<span class="string">'no_confirm'</span>).getStore().load();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			Ext.getCmp(<span class="string">'no_repair'</span>).getStore().load();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			Ext.getCmp(<span class="string">'no_statements'</span>).getStore().load();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			Ext.getCmp(<span class="string">'statements'</span>).getStore().load();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建window"><a href="#创建window" class="headerlink" title="创建window"></a>创建window</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Ext.create(<span class="string">'Ext.window.Window'</span>, &#123;</span><br><span class="line">	title : <span class="string">'问题单信息录入'</span>,</span><br><span class="line">	labelWidth : <span class="number">75</span>, <span class="comment">// label settings here cascade unless overridden</span></span><br><span class="line">	url : <span class="string">'save-form.php'</span>,</span><br><span class="line">	frame : <span class="literal">true</span>,</span><br><span class="line">	bodyStyle : <span class="string">'padding:5px 5px 0'</span>,</span><br><span class="line">	width : <span class="built_in">document</span>.body.clientWidth * <span class="number">0.58</span>,</span><br><span class="line">	renderTo : Ext.getBody(),</span><br><span class="line">	layout : <span class="string">'column'</span>, <span class="comment">// arrange fieldsets side by side</span></span><br><span class="line">	xtype : <span class="string">'form'</span>,</span><br><span class="line">	defaults : &#123;</span><br><span class="line">		bodyPadding : <span class="number">4</span></span><br><span class="line">	&#125;,</span><br><span class="line">	items : [ &#123;</span><br><span class="line">		xtype : <span class="string">'fieldset'</span>,</span><br><span class="line">		columnWidth : <span class="number">1</span>,</span><br><span class="line">		title : <span class="string">'告警基本信息'</span>,</span><br><span class="line">		collapsible : <span class="literal">true</span>,</span><br><span class="line">		defaultType : <span class="string">'textfield'</span>,</span><br><span class="line">		defaults : &#123;</span><br><span class="line">			anchor : <span class="string">'100%'</span></span><br><span class="line">		&#125;,</span><br><span class="line">		layout : <span class="string">'anchor'</span>,</span><br><span class="line">		items : [ &#123;</span><br><span class="line">			fieldLabel : <span class="string">'Field 1'</span>,</span><br><span class="line">			name : <span class="string">'field1'</span></span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			fieldLabel : <span class="string">'Field 2'</span>,</span><br><span class="line">			name : <span class="string">'field2'</span></span><br><span class="line">		&#125; ]</span><br><span class="line">	&#125; ]</span><br><span class="line">&#125;).show();</span><br></pre></td></tr></table></figure>
+<h2 id="获取选中行displayField的值"><a href="#获取选中行displayField的值" class="headerlink" title="获取选中行displayField的值"></a>获取选中行<code>displayField</code>的值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ext.getCmp(<span class="string">'distributeUserName'</span>).getRawValue(),</span><br></pre></td></tr></table></figure>
+<h2 id="获取点击行数据"><a href="#获取点击行数据" class="headerlink" title="获取点击行数据"></a>获取点击行数据</h2><p><code>Ext.getCmp(&#39;now_alarm&#39;).getStore().getAt(index).data</code>    </p>
+<h2 id="Store-load"><a href="#Store-load" class="headerlink" title="Store load"></a>Store load</h2><blockquote>
+<p>第一种        </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">historyStore.setProxy(&#123;</span><br><span class="line">	type : <span class="string">'ajax'</span>,</span><br><span class="line">	url : newUrl,</span><br><span class="line">	reader:&#123;</span><br><span class="line">		type:<span class="string">"json"</span>,</span><br><span class="line">		root:<span class="string">'root'</span>,</span><br><span class="line">		totalProperty:<span class="string">'totalCount'</span></span><br><span class="line">	&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">Ext.getCmp(<span class="string">'history_alarm'</span>).getStore().load();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第二种        </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// now_alarm : GridPanel</span></span><br><span class="line"><span class="keyword">var</span> gridStore =  Ext.getCmp(<span class="string">'now_alarm'</span>).getStore();</span><br><span class="line">gridStore.reload(gridStore.lastOptions);</span><br></pre></td></tr></table></figure>
+<h2 id="store加载传参"><a href="#store加载传参" class="headerlink" title="store加载传参"></a><code>store</code>加载传参</h2><blockquote>
+<p><code>proxy</code> 设置 <code>extraParams</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">xtype : <span class="string">'combo'</span>,</span><br><span class="line">fieldLabel : <span class="string">'维保人员'</span>,</span><br><span class="line">id : <span class="string">'sendOperUser'</span>,</span><br><span class="line">name : <span class="string">'sendOperUser'</span>,</span><br><span class="line">style:&#123;</span><br><span class="line">	margin : <span class="string">'10px 10px 10px 50px'</span></span><br><span class="line">&#125;,</span><br><span class="line">resizable : <span class="literal">false</span>,</span><br><span class="line">store : Ext.create(<span class="string">'Ext.data.Store'</span>,&#123;</span><br><span class="line">   	autoLoad : <span class="literal">true</span>,</span><br><span class="line">   	fields : [ &#123;</span><br><span class="line">		name : <span class="string">'id'</span>,</span><br><span class="line">		mapping :<span class="string">'ID'</span>,</span><br><span class="line">	&#125;, &#123;</span><br><span class="line">		name : <span class="string">'name'</span>,</span><br><span class="line">		mapping :<span class="string">'NAME'</span>,</span><br><span class="line">	&#125;],</span><br><span class="line">   	proxy : &#123;</span><br><span class="line">   		type : <span class="string">"ajax"</span>,</span><br><span class="line">   		url : <span class="string">'../alarm/getMaintainer'</span>,</span><br><span class="line">   		extraParams : &#123;</span><br><span class="line">   			error_sheet : errorSheetId,</span><br><span class="line">   			company : company</span><br><span class="line">		&#125;,</span><br><span class="line">   		reader : &#123;</span><br><span class="line">   			type : <span class="string">"json"</span></span><br><span class="line">   		&#125;</span><br><span class="line">   	&#125;,</span><br><span class="line">   	listeners: &#123;</span><br><span class="line">		load: <span class="function"><span class="keyword">function</span>(<span class="params">store, records, successful, eOpts</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">for</span>(k <span class="keyword">in</span> records)&#123;</span><br><span class="line">				<span class="keyword">if</span> (records[k].data) &#123;</span><br><span class="line">					<span class="comment">// console.log(records[k].data);</span></span><br><span class="line">					<span class="keyword">if</span> (distribute_account == records[k].data.name) &#123;</span><br><span class="line">						Ext.getCmp(<span class="string">'sendOperUser'</span>).setValue(records[k].data.id);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;),</span><br><span class="line">   valueField : <span class="string">'id'</span>,</span><br><span class="line">displayField : <span class="string">'name'</span>,</span><br><span class="line">mode : <span class="string">'local'</span>,</span><br><span class="line">triggerAction : <span class="string">'all'</span>,</span><br><span class="line">allowBlank : <span class="literal">false</span>,</span><br><span class="line">blankText : <span class="string">'必选项'</span>,</span><br><span class="line">maxHeight : <span class="number">150</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>拼接URL    </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy : &#123;</span><br><span class="line">	type : <span class="string">"ajax"</span>,</span><br><span class="line">	url : <span class="string">'../alarm/getMaintainer?error_sheet='</span>+errorSheetId+<span class="string">'&amp;company='</span>+company,</span><br><span class="line">	reader : &#123;</span><br><span class="line">		type : <span class="string">"json"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="监听-tabpanel-事件"><a href="#监听-tabpanel-事件" class="headerlink" title="监听 tabpanel 事件"></a>监听 <code>tabpanel</code> 事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">listeners:&#123;</span><br><span class="line">  	tabchange :<span class="function"><span class="keyword">function</span>(<span class="params">tabPanel,tab</span>)</span>&#123;</span><br><span class="line">  		</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="解析store返回自定义参数值"><a href="#解析store返回自定义参数值" class="headerlink" title="解析store返回自定义参数值"></a>解析<code>store</code>返回自定义参数值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询条件 封装</span></span><br><span class="line"><span class="keyword">var</span> getParams = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			sheetIds : Ext.getCmp(<span class="string">'sheetId'</span>).getValue(),</span><br><span class="line">			station : Ext.getCmp(<span class="string">'station'</span>).getValue(),</span><br><span class="line">			maintain : Ext.getCmp(<span class="string">'maintainer'</span>).getValue(),</span><br><span class="line">			startTime : Ext.util.Format.date(Ext.getCmp(<span class="string">'startTime'</span>).getValue(),<span class="string">'Y-m-d'</span>),</span><br><span class="line">			status : state,<span class="comment">// Ext.getCmp('status').getValue(),</span></span><br><span class="line">			endTime : Ext.util.Format.date(Ext.getCmp(<span class="string">'endTime'</span>).getValue(),<span class="string">'Y-m-d'</span>),</span><br><span class="line">			worksheettype : Ext.getCmp(<span class="string">'worksheetType'</span>).getValue()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">// 条件查询</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">reportLoad</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 移除为空的查询条件</span></span><br><span class="line">		<span class="keyword">var</span> params = getParams();</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">var</span> key <span class="keyword">in</span> params) &#123;</span><br><span class="line">			<span class="keyword">if</span> (params[key] == <span class="literal">null</span> || params[key] == <span class="string">""</span>) &#123;</span><br><span class="line">				<span class="keyword">delete</span> params[key];</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 添加自定义返回参数`no_coinfirm`</span></span><br><span class="line">		reportStore.setProxy(&#123;</span><br><span class="line">			type : <span class="string">'ajax'</span>,</span><br><span class="line">			url: <span class="string">'../centerSheet/getWorkSheet'</span>,</span><br><span class="line">			extraParams : params,</span><br><span class="line">			reader:&#123;</span><br><span class="line">				type:<span class="string">'json'</span>,</span><br><span class="line">				root:<span class="string">'records'</span>,</span><br><span class="line">				totalProperty:<span class="string">'totalCount'</span>,</span><br><span class="line">				no_coinfirm:<span class="string">'no_confirm'</span>,</span><br><span class="line">				no_repair:<span class="string">'no_repair'</span>,</span><br><span class="line">				no_statements:<span class="string">'no_statements'</span>,</span><br><span class="line">				statements:<span class="string">'statements'</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="comment">// 加载对应的 tabpanel 的数据、更新titel</span></span><br><span class="line">		reportStore.load(&#123;</span><br><span class="line">			scope: <span class="keyword">this</span>,</span><br><span class="line">			callback: <span class="function"><span class="keyword">function</span>(<span class="params">records, operation, success</span>) </span>&#123;</span><br><span class="line">				<span class="keyword">var</span> reader = reportStore.getProxy().getReader(); </span><br><span class="line">				Ext.getCmp(<span class="string">'no_confirm'</span>).setTitle(tabpanel1 + <span class="string">'&amp;nbsp;&amp;nbsp;'</span>+reader.jsonData.no_confirm);</span><br><span class="line">				Ext.getCmp(<span class="string">'no_repair'</span>).setTitle(tabpanel2 + <span class="string">'&amp;nbsp;&amp;nbsp;'</span>+reader.jsonData.no_repair);</span><br><span class="line">				Ext.getCmp(<span class="string">'no_statements'</span>).setTitle(tabpanel3 + <span class="string">'&amp;nbsp;&amp;nbsp;'</span>+reader.jsonData.no_statements);</span><br><span class="line">				Ext.getCmp(<span class="string">'statements'</span>).setTitle(tabpanel3 + <span class="string">'&amp;nbsp;&amp;nbsp;'</span>+reader.jsonData.statements);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="fieldset-可折叠控制"><a href="#fieldset-可折叠控制" class="headerlink" title="fieldset 可折叠控制"></a><code>fieldset</code> 可折叠控制</h2><pre><code>`collapsible : true`
+</code></pre><h2 id="监听表格数据双击事件"><a href="#监听表格数据双击事件" class="headerlink" title="监听表格数据双击事件"></a>监听表格数据双击事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">listeners: &#123;</span><br><span class="line">    <span class="comment">// 监听双击事件</span></span><br><span class="line">    itemdblclick: <span class="function"><span class="keyword">function</span> (<span class="params">dataView, record, item, index, e</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 当前数据行数据</span></span><br><span class="line">      <span class="keyword">var</span> data = record.data;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">      <span class="comment">//传参</span></span><br><span class="line">      <span class="keyword">var</span> user_id = data.id;</span><br><span class="line">      <span class="keyword">var</span> process_time = Ext.util.Format.date(data.process_time, <span class="string">'YmdHi'</span>);</span><br><span class="line"></span><br><span class="line">      queryQosLog(user_id, process_time);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Ext-window遮罩效果实现"><a href="#Ext-window遮罩效果实现" class="headerlink" title="Ext window遮罩效果实现"></a><code>Ext window</code>遮罩效果实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在Ext.window.Window 中添加属性</span><br><span class="line">	modal: <span class="literal">true</span>,</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+            <a href="/tags/Web-Plugin/" rel="tag"># Web Plugin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog/Eclipse配置大全/" rel="next" title="Eclipse | STS(Spring Tool Suite)开发工具配置">
+                <i class="fa fa-chevron-left"></i> Eclipse | STS(Spring Tool Suite)开发工具配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog/Java/EasyExcel使用记录/" rel="prev" title="Java使用EasyExcel上传文件">
+                Java使用EasyExcel上传文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+            
+              <p class="site-author-name" itemprop="name">wloop</p>
+              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ColorCoinK" title="GitHub &rarr; https://github.com/ColorCoinK" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ext-4-0-使用笔记"><span class="nav-number">1.</span> <span class="nav-text">Ext 4.0 使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Grid-当前选中行数据"><span class="nav-number">1.1.</span> <span class="nav-text">获取Grid 当前选中行数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列宽自动适应"><span class="nav-number">1.2.</span> <span class="nav-text">列宽自动适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#load-store"><span class="nav-number">1.3.</span> <span class="nav-text">load store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建window"><span class="nav-number">1.4.</span> <span class="nav-text">创建window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取选中行displayField的值"><span class="nav-number">1.5.</span> <span class="nav-text">获取选中行displayField的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取点击行数据"><span class="nav-number">1.6.</span> <span class="nav-text">获取点击行数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Store-load"><span class="nav-number">1.7.</span> <span class="nav-text">Store load</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#store加载传参"><span class="nav-number">1.8.</span> <span class="nav-text">store加载传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监听-tabpanel-事件"><span class="nav-number">1.9.</span> <span class="nav-text">监听 tabpanel 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析store返回自定义参数值"><span class="nav-number">1.10.</span> <span class="nav-text">解析store返回自定义参数值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fieldset-可折叠控制"><span class="nav-number">1.11.</span> <span class="nav-text">fieldset 可折叠控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监听表格数据双击事件"><span class="nav-number">1.12.</span> <span class="nav-text">监听表格数据双击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ext-window遮罩效果实现"><span class="nav-number">1.13.</span> <span class="nav-text">Ext window遮罩效果实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wloop</span>
+
+  
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
