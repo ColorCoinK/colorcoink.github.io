@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew">
 <meta property="og:description" content="执行 shutdown.sh 时关闭 Tomcat 与 进程,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-12T07:02:45.512Z">
+<meta property="og:updated_time" content="2019-04-17T08:30:48.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 手动部署 war 包">
 <meta name="twitter:description" content="执行 shutdown.sh 时关闭 Tomcat 与 进程,">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/04/12 15:02:45" itemprop="dateModified" datetime="2019-04-12T15:02:45+08:00">2019/04/12</time>
+                <time title="修改时间：2019/04/17 16:30:48" itemprop="dateModified" datetime="2019-04-17T16:30:48+08:00">2019/04/17</time>
               
             
           </span>
@@ -623,6 +623,9 @@
 <li>修改<code>catalina.sh</code>文件</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk1.8.0_101</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=/usr/java/jdk1.8.0_101/jre</span><br><span class="line"><span class="built_in">export</span> CATALINA_HOME=/opt/apache-tomcat-8.0.52</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/jre/lib/rt.jar:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要注意<code>JAVA_HOME、JRE_HOME、CATALINA_HOME</code>路径配置</li>
+</ul>
 <ol start="2">
 <li>修改<code>catalina.sh</code>文件,设置记录CATALINA_PID(catalina.sh)</li>
 </ol>
@@ -674,8 +677,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Oracle/Oracle使用记录/" rel="next" title="Oracle 使用笔记">
-                <i class="fa fa-chevron-left"></i> Oracle 使用笔记
+              <a href="/SpringBoot/SpringBoot定时任务/" rel="next" title="SpringBoot 配置定时任务">
+                <i class="fa fa-chevron-left"></i> SpringBoot 配置定时任务
               </a>
             
           </div>
@@ -684,8 +687,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/Impala/Impala笔记/" rel="prev" title="impala 使用记录">
-                impala 使用记录 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Java/Java日期工具类/" rel="prev" title="Java 获取 自定义时间格式时间、上周(周一、周日)、上个月(第一天、最后一天)">
+                Java 获取 自定义时间格式时间、上周(周一、周日)、上个月(第一天、最后一天) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -757,7 +760,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
