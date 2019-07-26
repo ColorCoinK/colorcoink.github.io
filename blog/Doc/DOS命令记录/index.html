@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew">
 <meta property="og:description" content="Doc 常用命令记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-23T09:00:32.224Z">
+<meta property="og:updated_time" content="2019-07-25T01:49:54.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Doc 常用命令记录">
 <meta name="twitter:description" content="Doc 常用命令记录">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/04/23 17:00:32" itemprop="dateModified" datetime="2019-04-23T17:00:32+08:00">2019/04/23</time>
+                <time title="修改时间：2019/07/25 09:49:54" itemprop="dateModified" datetime="2019-07-25T09:49:54+08:00">2019/07/25</time>
               
             
           </span>
@@ -588,11 +588,18 @@
 <li>有多少层级目录就写多少个<code>../</code>便返回相应的某一层</li>
 </ul>
 <h2 id="统计字符串出现次数"><a href="#统计字符串出现次数" class="headerlink" title="统计字符串出现次数"></a>统计字符串出现次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./logs/error.iptv-meshing.log | grep &apos;parameter error&apos; | wc -l</span><br></pre></td></tr></table></figure>
-<h2 id="统计端口TCP连接状态数量"><a href="#统计端口TCP连接状态数量" class="headerlink" title="统计端口TCP连接状态数量"></a>统计端口<code>TCP</code>连接状态数量</h2><p><code>`
-netstat -anp|grep 7090 | grep ESTABLISHED -c</code></p>
+<h2 id="统计端口TCP连接状态数量"><a href="#统计端口TCP连接状态数量" class="headerlink" title="统计端口TCP连接状态数量"></a>统计端口<code>TCP</code>连接状态数量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090 | grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>TCP</code>连接状态</li>
 </ul>
+<h2 id="生成文件夹的目录结构"><a href="#生成文件夹的目录结构" class="headerlink" title="生成文件夹的目录结构"></a>生成文件夹的目录结构</h2><blockquote>
+<p>查看命令 <code>tree /?</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">D:\&gt;tree /?</span><br><span class="line">以图形显示驱动器或路径的文件夹结构。                                                                     </span><br><span class="line"></span><br><span class="line">TREE [drive:][path] [/F] [/A]</span><br><span class="line"></span><br><span class="line">   /F   显示每个文件夹中文件的名称。                                                                     </span><br><span class="line">   /A   使用 ASCII 字符，而不使用扩展字符。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>生成当前目录中指定文件夹下的目录树,列出文件夹中文件的名称</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"># 生成文件命令</span><br><span class="line">D:\Code\sts-work-workspace\iptvMeshing&gt;tree ./src /f &gt;iptv_meshing.txt</span><br><span class="line"></span><br><span class="line"># 生成文件的内容</span><br><span class="line">卷 Development 的文件夹 PATH 列表</span><br><span class="line">卷序列号为 8C4A-90AB</span><br><span class="line">D:\SRC</span><br><span class="line">├─main</span><br><span class="line">│  ├─java</span><br><span class="line">│  │  └─com</span><br><span class="line">│  │      └─sanss</span><br><span class="line">│  │          │  Application.java</span><br><span class="line">│  │          │  </span><br><span class="line">│  │          ├─config</span><br><span class="line">│  │          │      GeocodingProperties.java</span><br><span class="line">│  │          │      HikariDataSourceConfig.java</span><br><span class="line">│  │          │      RestTemplateConfig.java</span><br><span class="line">│  │          │      </span><br><span class="line">│  │          ├─controller</span><br><span class="line">│  │          │      AdUserController.java</span><br><span class="line">│  │          │      Decetion.java</span><br><span class="line">│  │          │      OrderController.java</span><br><span class="line">│  │          │      </span><br><span class="line">│  │          ├─entity</span><br><span class="line">│  │          │  │  AdUserGridDO.java</span><br><span class="line">│  │          │  │  OrderDO.java</span><br><span class="line">│  │          │  │  </span><br><span class="line">│  │          │  └─dto</span><br><span class="line">│  │          │          AdUserDTO.java</span><br><span class="line">│  │          │          GDPoint.java</span><br><span class="line">│  │          │          </span><br><span class="line">│  │          ├─repository</span><br><span class="line">│  │          │      AdUserRepository.java</span><br><span class="line">│  │          │      OrderRepository.java</span><br><span class="line">│  │          │      </span><br><span class="line">│  │          ├─service</span><br><span class="line">│  │          │  │  GeocodeService.java</span><br><span class="line">│  │          │  │  OrderService.java</span><br><span class="line">│  │          │  │  SynchronizeInformationService.java</span><br><span class="line">│  │          │  │  </span><br><span class="line">│  │          │  └─impl</span><br><span class="line">│  │          │          GeocodeServiceImpl.java</span><br><span class="line">│  │          │          OrderServiceImpl.java</span><br><span class="line">│  │          │          SynchronizeInformationServiceImpl.java</span><br><span class="line">│  │          │          </span><br><span class="line">│  │          └─util</span><br><span class="line">│  │              │  ArrayUtil.java</span><br><span class="line">│  │              │  HttpServletRequestReader.java</span><br><span class="line">│  │              │  </span><br><span class="line">│  │              └─geocode</span><br><span class="line">│  │                      GeoCodingUtil.java</span><br><span class="line">│  │                      </span><br><span class="line">│  ├─resources</span><br><span class="line">│  │      application.yml</span><br><span class="line">│  │      geocode.properties</span><br><span class="line">│  │      logback-spring.xml</span><br><span class="line">│  │      </span><br><span class="line">│  └─webapp</span><br><span class="line">└─test</span><br><span class="line">    └─java</span><br><span class="line">        └─com</span><br><span class="line">            └─sanss</span><br><span class="line">                │  ApplicationTest.java</span><br><span class="line">                │  </span><br><span class="line">                ├─config</span><br><span class="line">                │      HikariDataSourceConfigTest.java</span><br><span class="line">                │      </span><br><span class="line">                └─util</span><br><span class="line">                        GeoCodingUtilTest.java</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -629,8 +636,8 @@ netstat -anp|grep 7090 | grep ESTABLISHED -c</code></p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Java/EasyExcel使用记录/" rel="next" title="Java使用EasyExcel上传文件">
-                <i class="fa fa-chevron-left"></i> Java使用EasyExcel上传文件
+              <a href="/all/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -712,7 +719,7 @@ netstat -anp|grep 7090 | grep ESTABLISHED -c</code></p>
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -888,7 +895,15 @@ netstat -anp|grep 7090 | grep ESTABLISHED -c</code></p>
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -946,7 +961,7 @@ netstat -anp|grep 7090 | grep ESTABLISHED -c</code></p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOC-命令-log"><span class="nav-number">1.</span> <span class="nav-text">DOC 命令 log</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹及文件夹下所有文件和文件夹"><span class="nav-number">1.1.</span> <span class="nav-text">删除文件夹及文件夹下所有文件和文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除指定后缀的文件"><span class="nav-number">1.2.</span> <span class="nav-text">删除指定后缀的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前文件加下所有文件夹及文件列表"><span class="nav-number">1.3.</span> <span class="nav-text">查看当前文件加下所有文件夹及文件列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空-DOS-界面"><span class="nav-number">1.4.</span> <span class="nav-text">清空 DOS 界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹"><span class="nav-number">1.5.</span> <span class="nav-text">文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计字符串出现次数"><span class="nav-number">1.6.</span> <span class="nav-text">统计字符串出现次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计端口TCP连接状态数量"><span class="nav-number">1.7.</span> <span class="nav-text">统计端口TCP连接状态数量</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOC-命令-log"><span class="nav-number">1.</span> <span class="nav-text">DOC 命令 log</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹及文件夹下所有文件和文件夹"><span class="nav-number">1.1.</span> <span class="nav-text">删除文件夹及文件夹下所有文件和文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除指定后缀的文件"><span class="nav-number">1.2.</span> <span class="nav-text">删除指定后缀的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看当前文件加下所有文件夹及文件列表"><span class="nav-number">1.3.</span> <span class="nav-text">查看当前文件加下所有文件夹及文件列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空-DOS-界面"><span class="nav-number">1.4.</span> <span class="nav-text">清空 DOS 界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹"><span class="nav-number">1.5.</span> <span class="nav-text">文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计字符串出现次数"><span class="nav-number">1.6.</span> <span class="nav-text">统计字符串出现次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计端口TCP连接状态数量"><span class="nav-number">1.7.</span> <span class="nav-text">统计端口TCP连接状态数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成文件夹的目录结构"><span class="nav-number">1.8.</span> <span class="nav-text">生成文件夹的目录结构</span></a></li></ol></li></ol></div>
             
 
           </div>
