@@ -103,11 +103,11 @@
 <meta name="keywords" content="Intellij IDEA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
-<meta property="og:url" content="http://blog.dew.com/blog/Intellij IDEA运行web项目异常/index.html">
+<meta property="og:url" content="http://blog.dew.com/blog/Intellij-IDEA部署web项目web.xml解析异常/index.html">
 <meta property="og:site_name" content="Dew">
 <meta property="og:description" content="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-12T07:01:55.244Z">
+<meta property="og:updated_time" content="2019-08-02T01:17:46.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
 <meta name="twitter:description" content="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/blog/Intellij IDEA运行web项目异常/">
+  <link rel="canonical" href="http://blog.dew.com/blog/Intellij-IDEA部署web项目web.xml解析异常/">
 
 
 
@@ -444,7 +444,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Intellij IDEA运行web项目异常/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Intellij-IDEA部署web项目web.xml解析异常/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wloop">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/04/12 15:01:55" itemprop="dateModified" datetime="2019-04-12T15:01:55+08:00">2019/04/12</time>
+                <time title="修改时间：2019/08/02 09:17:46" itemprop="dateModified" datetime="2019-08-02T09:17:46+08:00">2019/08/02</time>
               
             
           </span>
@@ -566,44 +566,59 @@
         Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
 <a id="more"></a>
 <h1 id="Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误"><a href="#Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误" class="headerlink" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误"></a>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</h1><blockquote>
-<p>错误信息</p>
+<p>背景    </p>
 </blockquote>
-<p>Intellij IDEA 控制台信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.io.FileNotFoundException: Could not resolve XML resource [<span class="literal">null</span>] <span class="keyword">with</span> public ID [-<span class="comment">//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN], system ID [http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd] and base URI [jar:file:/D:/Code/IDE-workspace/iptvView/target/WEB-INF/lib/standard-1.1.2.jar!/META-INF/c-1_0-rt.tld] to a known, local entity.</span></span><br><span class="line">at org.apache.tomcat.util.descriptor.LocalResolver.resolveEntity(LocalResolver.java:<span class="number">155</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Chrome 浏览器页面信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">HTTP Status <span class="number">500</span> - The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">type Exception report</span><br><span class="line"></span><br><span class="line">message The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line"></span><br><span class="line">description The server encountered an internal error that prevented it <span class="keyword">from</span> fulfilling <span class="keyword">this</span> request.</span><br><span class="line"></span><br><span class="line">exception</span><br><span class="line"></span><br><span class="line">org.apache.jasper.JasperException: The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">	org.apache.jasper.compiler.DefaultErrorHandler.jspError(DefaultErrorHandler.java:<span class="number">55</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.dispatch(ErrorDispatcher.java:<span class="number">277</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.jspError(ErrorDispatcher.java:<span class="number">75</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.generateTldResourcePath(TagLibraryInfoImpl.java:<span class="number">250</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.&lt;init&gt;(TagLibraryInfoImpl.java:<span class="number">125</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseTaglibDirective(Parser.java:<span class="number">421</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseDirective(Parser.java:<span class="number">479</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseElements(Parser.java:<span class="number">1435</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parse(Parser.java:<span class="number">139</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.doParse(ParserController.java:<span class="number">227</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.parse(ParserController.java:<span class="number">100</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:<span class="number">201</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">358</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">338</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">325</span>)</span><br><span class="line">	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:<span class="number">580</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:<span class="number">363</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:<span class="number">396</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:<span class="number">340</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">	org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:<span class="number">238</span>)</span><br><span class="line">	org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:<span class="number">263</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:<span class="number">1208</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:<span class="number">992</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:<span class="number">939</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:<span class="number">856</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:<span class="number">936</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:<span class="number">827</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">687</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:<span class="number">812</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">note The full stack trace <span class="keyword">of</span> the root cause is available <span class="keyword">in</span> the Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span> logs.</span><br><span class="line"></span><br><span class="line">Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
 <ol>
-<li>项目 <code>xxx/WEB-INF/lib</code> 中不存在相关<code>jar</code>包;</li>
+<li><p>intellij IDEA 将应用打成<code>war</code>包可以正常运行及显示 </p>
+</li>
+<li><p>eclipse 使用同样的<code>tomcat | JDK</code>运行正常 </p>
+</li>
+<li><p>intellij IDEA 使用<code>tomcat</code>运行失败 </p>
+</li>
 </ol>
+<blockquote>
+<p>错误信息    </p>
+</blockquote>
+<p>Intellij IDEA 控制台信息 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.io.FileNotFoundException: Could not resolve XML resource [null] with public ID [-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN], system ID [http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd] and base URI [jar:file:/D:/Code/IDE-workspace/iptvView/target/WEB-INF/lib/standard-1.1.2.jar!/META-INF/c-1_0-rt.tld] to a known, local entity.</span><br><span class="line">at org.apache.tomcat.util.descriptor.LocalResolver.resolveEntity(LocalResolver.java:155)</span><br></pre></td></tr></table></figure>
+<p>Chrome 浏览器页面信息        </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">HTTP Status 500 - The absolute uri: http://java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span><br><span class="line">type Exception report</span><br><span class="line"></span><br><span class="line">message The absolute uri: http://java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span><br><span class="line"></span><br><span class="line">description The server encountered an internal error that prevented it from fulfilling this request.</span><br><span class="line"></span><br><span class="line">exception</span><br><span class="line"></span><br><span class="line">org.apache.jasper.JasperException: The absolute uri: http://java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span><br><span class="line">	org.apache.jasper.compiler.DefaultErrorHandler.jspError(DefaultErrorHandler.java:55)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.dispatch(ErrorDispatcher.java:277)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.jspError(ErrorDispatcher.java:75)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.generateTldResourcePath(TagLibraryInfoImpl.java:250)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.<span class="tag">&lt;<span class="name">init</span>&gt;</span>(TagLibraryInfoImpl.java:125)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseTaglibDirective(Parser.java:421)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseDirective(Parser.java:479)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseElements(Parser.java:1435)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parse(Parser.java:139)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.doParse(ParserController.java:227)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.parse(ParserController.java:100)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:201)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:358)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:338)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:325)</span><br><span class="line">	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:580)</span><br><span class="line">	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:363)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:790)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)</span><br><span class="line">	org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:238)</span><br><span class="line">	org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:263)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1208)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:992)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:939)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:856)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:936)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:827)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:687)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:812)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:790)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)</span><br><span class="line">note The full stack trace of the root cause is available in the Apache Tomcat/8.0.52 logs.</span><br><span class="line"></span><br><span class="line">Apache Tomcat/8.0.52</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>项目 <code>xxx/WEB-INF/lib</code> 中不存在相关<code>jar</code>包    </p>
 </blockquote>
 <p>可以从 <a href="https://mvnrepository.com/artifact/javax.servlet/jstl/1.2" target="_blank">mavenrepository地址</a> 中找到相应<code>jar</code>包,添加相关依赖到<code>pom.xml</code>文件中并重新编译，查看问题是否解决。</p>
 <p><strong>注：</strong> 通过添加缺失<code>jar</code>可以解决的就不用往下看了</p>
 <blockquote>
-<ol start="2">
-<li>项目依赖中存在相关依赖,依然无法正常显示页面</li>
-</ol>
+<p>项目依赖中存在相关依赖,依然无法正常显示页面    </p>
 </blockquote>
+<blockquote>
 <blockquote>
 <ol>
 <li>找到项目配置的 <code>tomcat</code> 下 <code>xx\apache-tomcat-8.0.52\conf\context.xml</code>文件</li>
 </ol>
 </blockquote>
+</blockquote>
+<blockquote>
 <blockquote>
 <ol start="2">
 <li>修改文件,添加如下内容 </li>
 </ol>
 </blockquote>
+</blockquote>
 <p> &lt;Context <u> xmlBlockExternal=”false” </u> &gt;</p>
 <p><strong>注：</strong> 只需要添加下划线中的 <code>xmlBlockExternal=&quot;false&quot;</code> 到 <code>Context</code> 标签即可</p>
 <blockquote>
-<p>总结: </p>
+<p>总结：     </p>
 </blockquote>
 <ol>
-<li>出现<code>jsp</code>页面显示错误,一般都是缺少 <code>jar</code> 包所致。可检查在<code>tomcat</code>或编译后的文件夹中是否能够找到相关依赖。</li>
+<li><p>出现<code>jsp</code>页面显示错误,一般都是缺少 <code>jar</code> 包所致。可检查在<code>tomcat</code>或编译后的文件夹中是否能够找到相关依赖。</p>
+</li>
 <li><p>上述异常中缺失的<code>jar</code>有,然而本次并不是缺少<code>jar</code>的错误</p>
+</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">standard-1.1.2.jar、jstl-1.2.jar、jersey-server-1.9.jar、jstl-impl.jar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本博客无法解决疑问时,可简练相关关键字再搜索。</p>
-</li>
+<ol start="3">
+<li>本博客无法解决疑问时,可简练相关关键字再搜索。</li>
 </ol>
 <blockquote>
 <p>参考博客  <a href="https://blog.csdn.net/wb96a1007/article/details/71665683" target="_blank">新版Tomcat无法解析web.xml</a></p>
@@ -644,8 +659,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Oracle/Oracle使用记录/" rel="next" title="Oracle 使用笔记">
-                <i class="fa fa-chevron-left"></i> Oracle 使用笔记
+              <a href="/blog/Linux/Linux部署war包/" rel="next" title="Linux 手动部署 war 包">
+                <i class="fa fa-chevron-left"></i> Linux 手动部署 war 包
               </a>
             
           </div>
@@ -654,8 +669,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/SpringBoot/SpringBoot配置文件详解/" rel="prev" title="SpringBoot配置文件详解">
-                SpringBoot配置文件详解 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Intellij-IDEA运行web项目异常/" rel="prev" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
+                Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
