@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -103,23 +103,23 @@
 <meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle 使用笔记">
-<meta property="og:url" content="http://blog.dew.com/blog/Oracle/Oracle使用记录/index.html">
+<meta property="og:url" content="http://blog.dewloop.com/blog/Oracle/Oracle使用记录/index.html">
 <meta property="og:site_name" content="Dew">
 <meta property="og:description" content="Oracle 使用笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.dew.com/images/oracle-regexp_substr.png">
-<meta property="og:updated_time" content="2019-04-12T07:02:48.279Z">
+<meta property="og:image" content="http://blog.dewloop.com/images/oracle-regexp_substr.png">
+<meta property="og:updated_time" content="2019-10-28T08:00:44.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle 使用笔记">
 <meta name="twitter:description" content="Oracle 使用笔记">
-<meta name="twitter:image" content="http://blog.dew.com/images/oracle-regexp_substr.png">
+<meta name="twitter:image" content="http://blog.dewloop.com/images/oracle-regexp_substr.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/blog/Oracle/Oracle使用记录/">
+  <link rel="canonical" href="http://blog.dewloop.com/blog/Oracle/Oracle使用记录/">
 
 
 
@@ -446,10 +446,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Oracle/Oracle使用记录/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/blog/Oracle/Oracle使用记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wloop">
+      <meta itemprop="name" content="dewloop">
       <meta itemprop="description" content="以梦为马 不负朝华">
       <meta itemprop="image" content="/images/dew-logo.svg">
     </span>
@@ -506,7 +506,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/04/12 15:02:48" itemprop="dateModified" datetime="2019-04-12T15:02:48+08:00">2019/04/12</time>
+                <time title="修改时间：2019/10/28 16:00:44" itemprop="dateModified" datetime="2019-10-28T16:00:44+08:00">2019/10/28</time>
               
             
           </span>
@@ -605,7 +605,15 @@
 <li>Oracle 两个时间相减默认的是天数;</li>
 <li>两个时间相减的差 * 24 是得到的是 小时(hours),依次类推得到的相应的时间差.</li>
 </ol>
-
+<h2 id="查询加上前缀"><a href="#查询加上前缀" class="headerlink" title="查询加上前缀"></a>查询加上前缀</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- concat 函数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="string">'_'</span>,USER_AD) USER_AD, longitude, latitude, grid_x, grid_y <span class="keyword">from</span> t_advertising;</span><br></pre></td></tr></table></figure>
+<h2 id="Oracle使用merge-into"><a href="#Oracle使用merge-into" class="headerlink" title="Oracle使用merge into"></a><code>Oracle</code>使用<code>merge into</code></h2><ul>
+<li>索引</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建索引</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">index</span> meshing_user_ad_idx <span class="keyword">on</span> T_MESHING(USER_AD);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除索引</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> meshing_user_ad_idx;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>merge into语法</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">merge</span> <span class="keyword">into</span> t_meshing t1</span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">select</span> :<span class="keyword">name</span> user_ad, :longitude longitude, :latitude latitude, :gridX gridX, :gridY gridY</span><br><span class="line">       <span class="keyword">from</span> dual) t2</span><br><span class="line"><span class="keyword">on</span> (t1.user_ad = t2.user_ad)</span><br><span class="line"><span class="keyword">when</span> <span class="keyword">matched</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">update</span></span><br><span class="line">    <span class="keyword">set</span> t1.longitude=t2.longitude,</span><br><span class="line">        t1.latitude = t2.latitude,</span><br><span class="line">        t1.grid_x   = t2.gridx,</span><br><span class="line">        t1.grid_y   = t2.gridy</span><br><span class="line"><span class="keyword">when</span> <span class="keyword">not</span> <span class="keyword">matched</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">insert</span> (t1.user_ad, t1.longitude, t1.latitude, t1.grid_x, t1.grid_y)</span><br><span class="line">    <span class="keyword">values</span> (t2.user_ad, t2.longitude, t2.latitude, t2.gridx, t2.gridy);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -641,8 +649,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SpringBoot/SpringBoot基础构建/" rel="next" title="SpringBoot 基础">
-                <i class="fa fa-chevron-left"></i> SpringBoot 基础
+              <a href="/Blog/JQuery/Jquery使用记录/" rel="next" title="Jquery 使用日志">
+                <i class="fa fa-chevron-left"></i> Jquery 使用日志
               </a>
             
           </div>
@@ -651,8 +659,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/Linux/Linux部署war包/" rel="prev" title="Linux 手动部署 war 包">
-                Linux 手动部署 war 包 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Java/Java遍历实体类属性/" rel="prev" title="遍历 Java 实体类属性及值">
+                遍历 Java 实体类属性及值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -711,9 +719,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="dewloop">
             
-              <p class="site-author-name" itemprop="name">wloop</p>
+              <p class="site-author-name" itemprop="name">dewloop</p>
               <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
           </div>
 
@@ -724,7 +732,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -781,7 +789,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -908,7 +920,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">54</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -966,7 +980,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Oracle使用笔记"><span class="nav-number">1.</span> <span class="nav-text">Oracle使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器"><span class="nav-number">1.1.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL查看CLOB类型内容"><span class="nav-number">1.2.</span> <span class="nav-text">SQL查看CLOB类型内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL按月份统计数据"><span class="nav-number">1.3.</span> <span class="nav-text">SQL按月份统计数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle时间转换为5分钟粒度"><span class="nav-number">1.4.</span> <span class="nav-text">Oracle时间转换为5分钟粒度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle将一个字段拆分为两个字段在同行显示结果"><span class="nav-number">1.5.</span> <span class="nav-text">Oracle将一个字段拆分为两个字段在同行显示结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间计算查询"><span class="nav-number">1.6.</span> <span class="nav-text">时间计算查询</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Oracle使用笔记"><span class="nav-number">1.</span> <span class="nav-text">Oracle使用笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#触发器"><span class="nav-number">1.1.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL查看CLOB类型内容"><span class="nav-number">1.2.</span> <span class="nav-text">SQL查看CLOB类型内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL按月份统计数据"><span class="nav-number">1.3.</span> <span class="nav-text">SQL按月份统计数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle时间转换为5分钟粒度"><span class="nav-number">1.4.</span> <span class="nav-text">Oracle时间转换为5分钟粒度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle将一个字段拆分为两个字段在同行显示结果"><span class="nav-number">1.5.</span> <span class="nav-text">Oracle将一个字段拆分为两个字段在同行显示结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间计算查询"><span class="nav-number">1.6.</span> <span class="nav-text">时间计算查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询加上前缀"><span class="nav-number">1.7.</span> <span class="nav-text">查询加上前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle使用merge-into"><span class="nav-number">1.8.</span> <span class="nav-text">Oracle使用merge into</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -991,7 +1005,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">wloop</span>
+  <span class="author" itemprop="copyrightHolder">dewloop</span>
 
   
 
@@ -999,7 +1013,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
