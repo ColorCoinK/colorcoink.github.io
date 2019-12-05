@@ -57,10 +57,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.0.1">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
@@ -103,11 +103,11 @@
 <meta name="keywords" content="Blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库语法对比">
-<meta property="og:url" content="http://blog.dewloop.com/Blog/数据库语法对比/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:url" content="http://blog.dewloop.com/blog/数据库语法对比/index.html">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="统计了在开发过程中,不同数据库实现相同功能的不同语句。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-07T02:31:44.136Z">
+<meta property="og:updated_time" content="2019-12-05T07:29:29.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库语法对比">
 <meta name="twitter:description" content="统计了在开发过程中,不同数据库实现相同功能的不同语句。">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.dewloop.com/Blog/数据库语法对比/">
+  <link rel="canonical" href="http://blog.dewloop.com/blog/数据库语法对比/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>数据库语法对比 | Dew</title>
+  <title>数据库语法对比 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -234,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-blog">
+          <li class="menu-item menu-item-blog menu-item-active">
 
     
     
@@ -444,16 +444,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/Blog/数据库语法对比/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/blog/数据库语法对比/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dewloop">
-      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="name" content="Dew">
+      <meta itemprop="description" content="不努力<br/>你来人间干嘛<br/>做卧底吗">
       <meta itemprop="image" content="/images/dew-logo.svg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/11/07 10:31:44" itemprop="dateModified" datetime="2019-11-07T10:31:44+08:00">2019/11/07</time>
+                <time title="修改时间：2019/12/05 15:29:29" itemprop="dateModified" datetime="2019-12-05T15:29:29+08:00">2019/12/05</time>
               
             
           </span>
@@ -521,7 +521,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
@@ -568,14 +568,19 @@
 <h2 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h2><blockquote>
 <p><code>Oracle</code></p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询 0,10</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">where</span> <span class="keyword">rownum</span> &lt;= <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 10,20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> (</span><br><span class="line">  <span class="keyword">select</span> *,rn <span class="keyword">from</span> t_demo <span class="keyword">where</span> <span class="keyword">rownum</span> &lt;= <span class="number">20</span></span><br><span class="line">)<span class="keyword">where</span> rn &gt; <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>SQL Server</code></p>
 </blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询 0,10</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> t_demo ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 10,20</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">20</span> * <span class="keyword">from</span> addressbook <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span> (<span class="keyword">select</span> top <span class="number">10</span> <span class="keyword">id</span> <span class="keyword">from</span> addressbook)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>MySQL Server</code></p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">&gt; `Impala`</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 0，,0</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 10,20</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">10</span>,<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询 0,10</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 10,20</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">10</span>,<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Impala</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询 0,10</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 10,20</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> t_demo <span class="keyword">limit</span> <span class="number">20</span> <span class="keyword">offset</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -621,7 +626,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Java/Java操作Linux/" rel="prev" title="Java操作Linux">
+              <a href="/blog/Java/Java操作Linux/" rel="prev" title="Java操作Linux">
                 Java操作Linux <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -681,10 +686,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="dewloop">
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="Dew">
             
-              <p class="site-author-name" itemprop="name">dewloop</p>
-              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+              <p class="site-author-name" itemprop="name">Dew</p>
+              <div class="site-description motion-element" itemprop="description">不努力<br>你来人间干嘛<br>做卧底吗</div>
           </div>
 
           
@@ -694,7 +699,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -755,7 +760,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -912,7 +919,7 @@
                   
                     
                   
-                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                  <a href="https://me.csdn.net/weixin_44131142" title="CSDN &rarr; https://me.csdn.net/weixin_44131142" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i></a>
                 </span>
               
             </div>
@@ -967,7 +974,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">dewloop</span>
+  <span class="author" itemprop="copyrightHolder">Dew</span>
 
   
 

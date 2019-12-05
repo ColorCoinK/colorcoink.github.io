@@ -57,10 +57,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.0.1">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
@@ -104,10 +104,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 使用记录">
 <meta property="og:url" content="http://blog.dewloop.com/Blog/Linux/Linux命令/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="Linux 使用记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-07T02:31:44.100Z">
+<meta property="og:updated_time" content="2019-12-03T01:34:07.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 使用记录">
 <meta name="twitter:description" content="Linux 使用记录">
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Linux 使用记录 | Dew</title>
+  <title>Linux 使用记录 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -447,13 +447,13 @@
     <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/Blog/Linux/Linux命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dewloop">
-      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="name" content="Dew">
+      <meta itemprop="description" content="不努力<br/>你来人间干嘛<br/>做卧底吗">
       <meta itemprop="image" content="/images/dew-logo.svg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/11/07 10:31:44" itemprop="dateModified" datetime="2019-11-07T10:31:44+08:00">2019/11/07</time>
+                <time title="修改时间：2019/12/03 09:34:07" itemprop="dateModified" datetime="2019-12-03T09:34:07+08:00">2019/12/03</time>
               
             
           </span>
@@ -595,6 +595,12 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> create gc log monitor</span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -Xloggc:/opt/apache-tomcat-8.0.52/logs/tomcat_gc.log'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC'</span><br></pre></td></tr></table></figure>
 <h2 id="Linux-下查看-Tomcat-并发数"><a href="#Linux-下查看-Tomcat-并发数" class="headerlink" title="Linux 下查看 Tomcat 并发数"></a><code>Linux</code> 下查看 <code>Tomcat</code> 并发数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090|grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
+<h2 id="统计字符串出现次数"><a href="#统计字符串出现次数" class="headerlink" title="统计字符串出现次数"></a>统计字符串出现次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./logs/error.iptv-meshing.log | grep &apos;parameter error&apos; | wc -l</span><br></pre></td></tr></table></figure>
+<h2 id="统计端口TCP连接状态数量"><a href="#统计端口TCP连接状态数量" class="headerlink" title="统计端口TCP连接状态数量"></a>统计端口<code>TCP</code>连接状态数量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090 | grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>TCP</code>连接状态</li>
+</ul>
+
       
     </div>
 
@@ -640,8 +646,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/SpringBoot/SpringBoot实现图片上传功能/" rel="prev" title="SpringBoot 图片上传">
-                SpringBoot 图片上传 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Java/Java遍历实体类属性/" rel="prev" title="遍历 Java 实体类属性及值">
+                遍历 Java 实体类属性及值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -700,10 +706,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="dewloop">
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="Dew">
             
-              <p class="site-author-name" itemprop="name">dewloop</p>
-              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+              <p class="site-author-name" itemprop="name">Dew</p>
+              <div class="site-description motion-element" itemprop="description">不努力<br>你来人间干嘛<br>做卧底吗</div>
           </div>
 
           
@@ -713,7 +719,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -774,7 +780,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -931,7 +939,7 @@
                   
                     
                   
-                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                  <a href="https://me.csdn.net/weixin_44131142" title="CSDN &rarr; https://me.csdn.net/weixin_44131142" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i></a>
                 </span>
               
             </div>
@@ -961,7 +969,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-命令使用记录"><span class="nav-number">1.</span> <span class="nav-text">Linux 命令使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看已经在使用的端口"><span class="nav-number">1.1.</span> <span class="nav-text">查看已经在使用的端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查端口是否被占用"><span class="nav-number">1.2.</span> <span class="nav-text">检查端口是否被占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">1.4.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-相关的进程"><span class="nav-number">1.5.</span> <span class="nav-text">查看 tomcat 相关的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-实时输出日志"><span class="nav-number">1.6.</span> <span class="nav-text">查看 tomcat 实时输出日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看内存信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某个进程-CPU-占用"><span class="nav-number">1.8.</span> <span class="nav-text">某个进程 CPU 占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下-Tomcat-开启查看-GC-信息"><span class="nav-number">1.9.</span> <span class="nav-text">Linux 下 Tomcat 开启查看 GC 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下查看-Tomcat-并发数"><span class="nav-number">1.10.</span> <span class="nav-text">Linux 下查看 Tomcat 并发数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-命令使用记录"><span class="nav-number">1.</span> <span class="nav-text">Linux 命令使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看已经在使用的端口"><span class="nav-number">1.1.</span> <span class="nav-text">查看已经在使用的端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查端口是否被占用"><span class="nav-number">1.2.</span> <span class="nav-text">检查端口是否被占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">1.4.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-相关的进程"><span class="nav-number">1.5.</span> <span class="nav-text">查看 tomcat 相关的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-实时输出日志"><span class="nav-number">1.6.</span> <span class="nav-text">查看 tomcat 实时输出日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看内存信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某个进程-CPU-占用"><span class="nav-number">1.8.</span> <span class="nav-text">某个进程 CPU 占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下-Tomcat-开启查看-GC-信息"><span class="nav-number">1.9.</span> <span class="nav-text">Linux 下 Tomcat 开启查看 GC 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下查看-Tomcat-并发数"><span class="nav-number">1.10.</span> <span class="nav-text">Linux 下查看 Tomcat 并发数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计字符串出现次数"><span class="nav-number">1.11.</span> <span class="nav-text">统计字符串出现次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计端口TCP连接状态数量"><span class="nav-number">1.12.</span> <span class="nav-text">统计端口TCP连接状态数量</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -986,7 +994,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">dewloop</span>
+  <span class="author" itemprop="copyrightHolder">Dew</span>
 
   
 
