@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="Eureka-Server">
-<meta name="keywords" content="Java,SpringCloud">
+  <meta name="description" content="SpringBoot使用spring-data-rest">
+<meta name="keywords" content="Java,SpringBoot,Spring Data Rest">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eureka-Server">
-<meta property="og:url" content="http://blog.dewloop.com/SpringCloud/Eureka-Server/index.html">
+<meta property="og:title" content="SpringBoot使用spring-data-rest">
+<meta property="og:url" content="http://blog.dewloop.com/springboot/SpringBoot使用spring-data-rest/index.html">
 <meta property="og:site_name" content="Dew | Blog">
-<meta property="og:description" content="Eureka-Server">
+<meta property="og:description" content="SpringBoot使用spring-data-rest">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T02:51:22.112Z">
+<meta property="og:updated_time" content="2020-02-24T03:39:11.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eureka-Server">
-<meta name="twitter:description" content="Eureka-Server">
+<meta name="twitter:title" content="SpringBoot使用spring-data-rest">
+<meta name="twitter:description" content="SpringBoot使用spring-data-rest">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.dewloop.com/SpringCloud/Eureka-Server/">
+  <link rel="canonical" href="http://blog.dewloop.com/springboot/SpringBoot使用spring-data-rest/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Eureka-Server | Dew | Blog</title>
+  <title>SpringBoot使用spring-data-rest | Dew | Blog</title>
   
 
 
@@ -251,7 +251,7 @@
         
         
           
-          <li class="menu-item menu-item-springboot">
+          <li class="menu-item menu-item-springboot menu-item-active">
 
     
     
@@ -439,12 +439,12 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-springboot" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/SpringCloud/Eureka-Server/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dewloop.com/springboot/SpringBoot使用spring-data-rest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Dew">
@@ -461,7 +461,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Eureka-Server
+          <h1 class="post-title" itemprop="name headline">SpringBoot使用spring-data-rest
 
               
             
@@ -487,24 +487,12 @@
                 
               
 
-              <time title="创建时间：2019/02/27 15:20:13" itemprop="dateCreated datePublished" datetime="2019-02-27T15:20:13+08:00">2019/02/27</time>
+              <time title="创建时间：2020/02/24 11:37:32 / 修改时间：11:39:11" itemprop="dateCreated datePublished" datetime="2020-02-24T11:37:32+08:00">2020/02/24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019/02/28 10:51:22" itemprop="dateModified" datetime="2019-02-28T10:51:22+08:00">2019/02/28</time>
               
             
           </span>
@@ -521,7 +509,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringCloud/" itemprop="url" rel="index"><span itemprop="name">SpringCloud</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
 
                 
                 
@@ -563,25 +551,8 @@
       
 
       
-        Eureka-Server
+        SpringBoot使用spring-data-rest
 <a id="more"></a>
-<h1 id="基于-Eureka-搭建高可用-双节点服务注册中心"><a href="#基于-Eureka-搭建高可用-双节点服务注册中心" class="headerlink" title="基于 Eureka 搭建高可用(双节点服务注册中心)"></a>基于 Eureka 搭建高可用(双节点服务注册中心)</h1><p>本项目是一个基于 SpringBoot(1.5.19.RELEASE)、SpringCloud(Dalston.SR5)、Eureka 的服务注册中心</p>
-<ul>
-<li>配置文件说明 </li>
-</ul>
-<blockquote>
-<p><code>application.yml</code>: </p>
-</blockquote>
-<p>  单个 <code>Eureka</code> 服务注册中心</p>
-<blockquote>
-<p><code>application-colony.yml</code>: </p>
-</blockquote>
-<p>  双节点注册中心示例,实现双向注册从而提高可用性</p>
-<ol>
-<li>默认使用 <code>application.yml</code> 配置文件;</li>
-<li>使用<code>application-conlony.yml</code> 配置文件时,需要指定激活的配置项.(例如启动<code>server-1</code>,需运行<code>java -jar xx.jar --spring.profiles.active=server-1</code>)</li>
-</ol>
-
       
     </div>
 
@@ -606,7 +577,9 @@
           
             <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/SpringCloud/" rel="tag"># SpringCloud</a>
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/Spring-Data-Rest/" rel="tag"># Spring Data Rest</a>
           
         </div>
       
@@ -619,8 +592,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Web-Plugins/FineBI笔记/" rel="next" title="项目集成 FineBI 应用系统">
-                <i class="fa fa-chevron-left"></i> 项目集成 FineBI 应用系统
+              <a href="/springboot/SpringBoot初始化数据库脚本/" rel="next" title="SpringBoot初始化数据库脚本">
+                <i class="fa fa-chevron-left"></i> SpringBoot初始化数据库脚本
               </a>
             
           </div>
@@ -628,10 +601,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/Eclipse配置大全/" rel="prev" title="Eclipse | STS(Spring Tool Suite)开发工具配置">
-                Eclipse | STS(Spring Tool Suite)开发工具配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,17 +644,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -702,7 +662,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -894,7 +854,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -942,23 +904,6 @@
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于-Eureka-搭建高可用-双节点服务注册中心"><span class="nav-number">1.</span> <span class="nav-text">基于 Eureka 搭建高可用(双节点服务注册中心)</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
       
 
@@ -973,7 +918,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

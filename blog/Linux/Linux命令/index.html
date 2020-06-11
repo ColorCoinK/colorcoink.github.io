@@ -593,7 +593,7 @@
 <ul>
 <li>修改后：</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> create gc log monitor</span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -Xloggc:/opt/apache-tomcat-8.0.52/logs/tomcat_gc.log'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC'</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> create gc <span class="built_in">log</span> monitor</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> OS specific support.  <span class="variable">$var</span> _must_ be <span class="built_in">set</span> to either <span class="literal">true</span> or <span class="literal">false</span>.</span></span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -Xloggc:/opt/apache-tomcat-8.0.52/logs/tomcat_gc.log'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> OS specific support.  <span class="variable">$var</span> _must_ be <span class="built_in">set</span> to either <span class="literal">true</span> or <span class="literal">false</span>.</span></span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC'</span><br></pre></td></tr></table></figure>
 <h2 id="Linux-下查看-Tomcat-并发数"><a href="#Linux-下查看-Tomcat-并发数" class="headerlink" title="Linux 下查看 Tomcat 并发数"></a><code>Linux</code> 下查看 <code>Tomcat</code> 并发数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090|grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
 <h2 id="统计字符串出现次数"><a href="#统计字符串出现次数" class="headerlink" title="统计字符串出现次数"></a>统计字符串出现次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./logs/error.iptv-meshing.log | grep &apos;parameter error&apos; | wc -l</span><br></pre></td></tr></table></figure>
 <h2 id="统计端口TCP连接状态数量"><a href="#统计端口TCP连接状态数量" class="headerlink" title="统计端口TCP连接状态数量"></a>统计端口<code>TCP</code>连接状态数量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090 | grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
@@ -636,9 +636,9 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Java/Java对List的操作/" rel="next" title="去除 List<Object> 中的重复数据">
-                <i class="fa fa-chevron-left"></i> 去除 List<object> 中的重复数据
-              </object></a>
+              <a href="/blog/Oracle/Oracle使用记录/" rel="next" title="Oracle 使用笔记">
+                <i class="fa fa-chevron-left"></i> Oracle 使用笔记
+              </a>
             
           </div>
 
@@ -646,8 +646,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/Java/Java遍历实体类属性/" rel="prev" title="遍历 Java 实体类属性及值">
-                遍历 Java 实体类属性及值 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/JQuery/Jquery使用记录/" rel="prev" title="Jquery 使用日志">
+                Jquery 使用日志 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -719,7 +719,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -911,7 +911,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -990,7 +992,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

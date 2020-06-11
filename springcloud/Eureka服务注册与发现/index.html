@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="搭建Eureka(Edgware.SR5版本)服务注册中心">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-03T06:09:04.906Z">
+<meta property="og:updated_time" content="2020-01-03T08:32:15.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eureka服务注册中心">
 <meta name="twitter:description" content="搭建Eureka(Edgware.SR5版本)服务注册中心">
@@ -487,12 +487,24 @@
                 
               
 
-              <time title="创建时间：2019/04/03 10:45:50 / 修改时间：14:09:04" itemprop="dateCreated datePublished" datetime="2019-04-03T10:45:50+08:00">2019/04/03</time>
+              <time title="创建时间：2019/04/03 10:45:50" itemprop="dateCreated datePublished" datetime="2019-04-03T10:45:50+08:00">2019/04/03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020/01/03 16:32:15" itemprop="dateModified" datetime="2020-01-03T16:32:15+08:00">2020/01/03</time>
               
             
           </span>
@@ -566,10 +578,17 @@
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><blockquote>
 <p><code>application.yml</code> </p>
 </blockquote>
-<p>单个 <code>Eureka</code> 服务注册中心</p>
+<ul>
+<li>单个 <code>Eureka</code> 服务注册中心</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">1001</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">eureka-server</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  instance:</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">localhost</span></span><br><span class="line"><span class="attr">  server:</span></span><br><span class="line"><span class="attr">    enable-self-preservation:</span> <span class="literal">false</span> <span class="comment"># 设为 false,关闭自我保护</span></span><br><span class="line"><span class="attr">    eviction-interval-timer-in-ms:</span> <span class="number">4000</span>  <span class="comment">#清理间隔(单位毫秒,默认是 60*1000)</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    fetch-registry:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    service-url:</span></span><br><span class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>application-colony.yml</code>  </p>
 </blockquote>
+<ul>
+<li>双节点注册中心</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">1001</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> <span class="string">server-1</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  instance:</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">server-1</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    fetch-registry:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    service-url:</span></span><br><span class="line"><span class="comment">#      defaultZone: http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/$&#123;spring.application.name&#125;</span></span><br><span class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://server-2:1002/eureka-server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  server:</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">1002</span></span><br><span class="line"><span class="attr">  spring:</span></span><br><span class="line"><span class="attr">    profiles:</span> <span class="string">server-2</span></span><br><span class="line"><span class="attr">  eureka:</span></span><br><span class="line"><span class="attr">    instance:</span></span><br><span class="line"><span class="attr">      hostname:</span> <span class="string">server-2</span></span><br><span class="line"><span class="attr">    client:</span></span><br><span class="line"><span class="attr">      register-with-eureka:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">      fetch-registry:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">      service-url:</span></span><br><span class="line">        <span class="comment">#      defaultZone: http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/$&#123;spring.application.name&#125;</span></span><br><span class="line"><span class="attr">        defaultZone:</span> <span class="attr">http://server-1:1001/eureka-server</span></span><br></pre></td></tr></table></figure>
 <p>双节点注册中心示例,实现双向注册从而提高可用性详细可以看<a href="http://www.ityouknow.com/springcloud/2017/05/10/springcloud-eureka.html" target="_blank" rel="noopener">注册中心Eureka</a></p>
 <ol>
 <li><p>默认使用 <code>application.yml</code> 配置文件;</p>
@@ -712,7 +731,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -904,7 +923,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -983,7 +1004,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
