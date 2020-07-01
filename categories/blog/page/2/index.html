@@ -479,58 +479,6 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/Blog/Java导出Excel并下载/" itemprop="url">
-            
-              <span itemprop="name">Java导出Excel并下载</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-25T09:46:41+08:00" content="2019/03/25">
-          03-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/Blog/Java/百万数据转换地理编码/" itemprop="url">
-            
-              <span itemprop="name">百万数据转换地理编码</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-14T15:22:37+08:00" content="2019/03/14">
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
           <a class="post-title-link" href="/Blog/Java/Java使用正则表达式仅获取中文/" itemprop="url">
             
               <span itemprop="name">Java使用正则表达式仅获取中文</span>
@@ -609,32 +557,6 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/Blog/HTML/页面跳转url传参的参数获取/" itemprop="url">
-            
-              <span itemprop="name">页面跳转url传参的参数获取</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T09:11:20+08:00" content="2019/03/05">
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
           <a class="post-title-link" href="/Blog/JQuery/Jquery使用记录/" itemprop="url">
             
               <span itemprop="name">Jquery 使用日志</span>
@@ -687,9 +609,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/Blog/Maven/Pom文件配置仓库地址/" itemprop="url">
+          <a class="post-title-link" href="/Blog/Linux/Linux部署war包/" itemprop="url">
             
-              <span itemprop="name">配置单个 maven 项目 pom 依赖仓库地址</span>
+              <span itemprop="name">Linux 手动部署 war 包</span>
             
           </a>
         
@@ -713,9 +635,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/Blog/Linux/Linux部署war包/" itemprop="url">
+          <a class="post-title-link" href="/Blog/Maven/Pom文件配置仓库地址/" itemprop="url">
             
-              <span itemprop="name">Linux 手动部署 war 包</span>
+              <span itemprop="name">配置单个 maven 项目 pom 依赖仓库地址</span>
             
           </a>
         
@@ -838,7 +760,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">71</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -854,6 +776,8 @@
                     
                   
                     
+                    
+                      
                     
                       
                     
@@ -1032,7 +956,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1601,5 +1527,97 @@
 
 </body>
 </html>
+  } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
 
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
