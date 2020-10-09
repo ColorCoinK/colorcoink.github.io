@@ -2281,6 +2281,62 @@
   </entry>
   <entry>
     <title>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</title>
+    <url>/blog/Intellij-IDEA%E8%BF%90%E8%A1%8Cweb%E9%A1%B9%E7%9B%AE%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
+<a id="more"></a>
+<h1 id="Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误"><a href="#Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误" class="headerlink" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误"></a>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</h1><blockquote>
+<p>错误信息</p>
+</blockquote>
+<p>Intellij IDEA 控制台信息<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">java.io.FileNotFoundException: Could not resolve XML resource [<span class="literal">null</span>] <span class="keyword">with</span> public ID [-<span class="comment">//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN], system ID [http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd] and base URI [jar:file:/D:/Code/IDE-workspace/iptvView/target/WEB-INF/lib/standard-1.1.2.jar!/META-INF/c-1_0-rt.tld] to a known, local entity.</span></span><br><span class="line">at org.apache.tomcat.util.descriptor.LocalResolver.resolveEntity(LocalResolver.java:<span class="number">155</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Chrome 浏览器页面信息<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">HTTP Status <span class="number">500</span> - The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">type Exception report</span><br><span class="line"></span><br><span class="line">message The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line"></span><br><span class="line">description The server encountered an internal error that prevented it <span class="keyword">from</span> fulfilling <span class="keyword">this</span> request.</span><br><span class="line"></span><br><span class="line">exception</span><br><span class="line"></span><br><span class="line">org.apache.jasper.JasperException: The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">	org.apache.jasper.compiler.DefaultErrorHandler.jspError(DefaultErrorHandler.java:<span class="number">55</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.dispatch(ErrorDispatcher.java:<span class="number">277</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.jspError(ErrorDispatcher.java:<span class="number">75</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.generateTldResourcePath(TagLibraryInfoImpl.java:<span class="number">250</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.&lt;init&gt;(TagLibraryInfoImpl.java:<span class="number">125</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseTaglibDirective(Parser.java:<span class="number">421</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseDirective(Parser.java:<span class="number">479</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseElements(Parser.java:<span class="number">1435</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parse(Parser.java:<span class="number">139</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.doParse(ParserController.java:<span class="number">227</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.parse(ParserController.java:<span class="number">100</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:<span class="number">201</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">358</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">338</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">325</span>)</span><br><span class="line">	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:<span class="number">580</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:<span class="number">363</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:<span class="number">396</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:<span class="number">340</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">	org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:<span class="number">238</span>)</span><br><span class="line">	org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:<span class="number">263</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:<span class="number">1208</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:<span class="number">992</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:<span class="number">939</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:<span class="number">856</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:<span class="number">936</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:<span class="number">827</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">687</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:<span class="number">812</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">note The full stack trace <span class="keyword">of</span> the root cause is available <span class="keyword">in</span> the Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span> logs.</span><br><span class="line"></span><br><span class="line">Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li>项目 <code>xxx/WEB-INF/lib</code> 中不存在相关<code>jar</code>包;</li>
+</ol>
+</blockquote>
+<p>可以从 <a href="https://mvnrepository.com/artifact/javax.servlet/jstl/1.2" target="_blank">mavenrepository地址</a> 中找到相应<code>jar</code>包,添加相关依赖到<code>pom.xml</code>文件中并重新编译，查看问题是否解决。</p>
+<p><strong>注：</strong> 通过添加缺失<code>jar</code>可以解决的就不用往下看了</p>
+<blockquote>
+<ol start="2">
+<li>项目依赖中存在相关依赖,依然无法正常显示页面</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol>
+<li>找到项目配置的 <code>tomcat</code> 下 <code>xx\apache-tomcat-8.0.52\conf\context.xml</code>文件</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>修改文件,添加如下内容 </li>
+</ol>
+</blockquote>
+<p> &lt;Context <u> xmlBlockExternal=”false” </u> &gt;</p>
+<p><strong>注：</strong> 只需要添加下划线中的 <code>xmlBlockExternal=&quot;false&quot;</code> 到 <code>Context</code> 标签即可</p>
+<blockquote>
+<p>总结: </p>
+</blockquote>
+<ol>
+<li>出现<code>jsp</code>页面显示错误,一般都是缺少 <code>jar</code> 包所致。可检查在<code>tomcat</code>或编译后的文件夹中是否能够找到相关依赖。</li>
+<li><p>上述异常中缺失的<code>jar</code>有,然而本次并不是缺少<code>jar</code>的错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">standard-1.1.2.jar、jstl-1.2.jar、jersey-server-1.9.jar、jstl-impl.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本博客无法解决疑问时,可简练相关关键字再搜索。</p>
+</li>
+</ol>
+<blockquote>
+<p>参考博客  <a href="https://blog.csdn.net/wb96a1007/article/details/71665683" target="_blank">新版Tomcat无法解析web.xml</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>Intellij IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</title>
     <url>/blog/Intellij-IDEA%E9%83%A8%E7%BD%B2web%E9%A1%B9%E7%9B%AEweb.xml%E8%A7%A3%E6%9E%90%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
 <a id="more"></a>
@@ -2351,62 +2407,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</title>
-    <url>/blog/Intellij-IDEA%E8%BF%90%E8%A1%8Cweb%E9%A1%B9%E7%9B%AE%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
-<a id="more"></a>
-<h1 id="Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误"><a href="#Intellij-IDEA-部署-Web-项目时-web-xml-无法正常解析导致-jsp-显示错误" class="headerlink" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误"></a>Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误</h1><blockquote>
-<p>错误信息</p>
-</blockquote>
-<p>Intellij IDEA 控制台信息<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">java.io.FileNotFoundException: Could not resolve XML resource [<span class="literal">null</span>] <span class="keyword">with</span> public ID [-<span class="comment">//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN], system ID [http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd] and base URI [jar:file:/D:/Code/IDE-workspace/iptvView/target/WEB-INF/lib/standard-1.1.2.jar!/META-INF/c-1_0-rt.tld] to a known, local entity.</span></span><br><span class="line">at org.apache.tomcat.util.descriptor.LocalResolver.resolveEntity(LocalResolver.java:<span class="number">155</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Chrome 浏览器页面信息<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">HTTP Status <span class="number">500</span> - The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">type Exception report</span><br><span class="line"></span><br><span class="line">message The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line"></span><br><span class="line">description The server encountered an internal error that prevented it <span class="keyword">from</span> fulfilling <span class="keyword">this</span> request.</span><br><span class="line"></span><br><span class="line">exception</span><br><span class="line"></span><br><span class="line">org.apache.jasper.JasperException: The absolute uri: http:<span class="comment">//java.sun.com/jsp/jstl/core cannot be resolved in either web.xml or the jar files deployed with this application</span></span><br><span class="line">	org.apache.jasper.compiler.DefaultErrorHandler.jspError(DefaultErrorHandler.java:<span class="number">55</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.dispatch(ErrorDispatcher.java:<span class="number">277</span>)</span><br><span class="line">	org.apache.jasper.compiler.ErrorDispatcher.jspError(ErrorDispatcher.java:<span class="number">75</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.generateTldResourcePath(TagLibraryInfoImpl.java:<span class="number">250</span>)</span><br><span class="line">	org.apache.jasper.compiler.TagLibraryInfoImpl.&lt;init&gt;(TagLibraryInfoImpl.java:<span class="number">125</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseTaglibDirective(Parser.java:<span class="number">421</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseDirective(Parser.java:<span class="number">479</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parseElements(Parser.java:<span class="number">1435</span>)</span><br><span class="line">	org.apache.jasper.compiler.Parser.parse(Parser.java:<span class="number">139</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.doParse(ParserController.java:<span class="number">227</span>)</span><br><span class="line">	org.apache.jasper.compiler.ParserController.parse(ParserController.java:<span class="number">100</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:<span class="number">201</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">358</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">338</span>)</span><br><span class="line">	org.apache.jasper.compiler.Compiler.compile(Compiler.java:<span class="number">325</span>)</span><br><span class="line">	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:<span class="number">580</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:<span class="number">363</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:<span class="number">396</span>)</span><br><span class="line">	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:<span class="number">340</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">	org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:<span class="number">238</span>)</span><br><span class="line">	org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:<span class="number">263</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:<span class="number">1208</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:<span class="number">992</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:<span class="number">939</span>)</span><br><span class="line">	org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:<span class="number">856</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:<span class="number">936</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:<span class="number">827</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">687</span>)</span><br><span class="line">	org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:<span class="number">812</span>)</span><br><span class="line">	javax.servlet.http.HttpServlet.service(HttpServlet.java:<span class="number">790</span>)</span><br><span class="line">	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:<span class="number">52</span>)</span><br><span class="line">note The full stack trace <span class="keyword">of</span> the root cause is available <span class="keyword">in</span> the Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span> logs.</span><br><span class="line"></span><br><span class="line">Apache Tomcat/<span class="number">8.0</span><span class="number">.52</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<ol>
-<li>项目 <code>xxx/WEB-INF/lib</code> 中不存在相关<code>jar</code>包;</li>
-</ol>
-</blockquote>
-<p>可以从 <a href="https://mvnrepository.com/artifact/javax.servlet/jstl/1.2" target="_blank">mavenrepository地址</a> 中找到相应<code>jar</code>包,添加相关依赖到<code>pom.xml</code>文件中并重新编译，查看问题是否解决。</p>
-<p><strong>注：</strong> 通过添加缺失<code>jar</code>可以解决的就不用往下看了</p>
-<blockquote>
-<ol start="2">
-<li>项目依赖中存在相关依赖,依然无法正常显示页面</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol>
-<li>找到项目配置的 <code>tomcat</code> 下 <code>xx\apache-tomcat-8.0.52\conf\context.xml</code>文件</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>修改文件,添加如下内容 </li>
-</ol>
-</blockquote>
-<p> &lt;Context <u> xmlBlockExternal=”false” </u> &gt;</p>
-<p><strong>注：</strong> 只需要添加下划线中的 <code>xmlBlockExternal=&quot;false&quot;</code> 到 <code>Context</code> 标签即可</p>
-<blockquote>
-<p>总结: </p>
-</blockquote>
-<ol>
-<li>出现<code>jsp</code>页面显示错误,一般都是缺少 <code>jar</code> 包所致。可检查在<code>tomcat</code>或编译后的文件夹中是否能够找到相关依赖。</li>
-<li><p>上述异常中缺失的<code>jar</code>有,然而本次并不是缺少<code>jar</code>的错误</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">standard-1.1.2.jar、jstl-1.2.jar、jersey-server-1.9.jar、jstl-impl.jar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本博客无法解决疑问时,可简练相关关键字再搜索。</p>
-</li>
-</ol>
-<blockquote>
-<p>参考博客  <a href="https://blog.csdn.net/wb96a1007/article/details/71665683" target="_blank">新版Tomcat无法解析web.xml</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>Intellij IDEA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>去除 List<Object> 中的重复数据</title>
     <url>/blog/Java/Java%E5%AF%B9List%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[去除 List<object> 中的重复数据
@@ -2445,41 +2445,6 @@
         <tag>Java</tag>
         <tag>Calendar</tag>
         <tag>Date</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>遍历 Java 实体类属性及值</title>
-    <url>/blog/Java/Java%E9%81%8D%E5%8E%86%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[遍历 Java 实体类属性及值
-<a id="more"></a>
-<h1 id="遍历Java实体类属性及值"><a href="#遍历Java实体类属性及值" class="headerlink" title="遍历Java实体类属性及值"></a>遍历<code>Java</code>实体类属性及值</h1><blockquote>
-<p>核心代码    </p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			System.out.println(property+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"用户播放轨迹查询Qos 日志失败,参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>示例    </p>
-</blockquote>
-<p>将查询参数封装为<code>url</code><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 遍历属性类、属性值</span></span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			String params = property + <span class="string">"="</span> + value;</span><br><span class="line">			<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">				requestURL.append(params);</span><br><span class="line">				flag = <span class="keyword">false</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				requestURL.append(<span class="string">"&amp;"</span> + params);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"URL参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="获取父类的属性及属性值"><a href="#获取父类的属性及属性值" class="headerlink" title="获取父类的属性及属性值"></a>获取父类的属性及属性值</h1><p><strong>注:</strong> 以下代码中使用<code>Intellij IDEA</code>并使用了<code>lombok</code>,可以使用<code>get/set</code>替代<code>@Data</code>注解;可以重写<code>toString()</code>方法替代<code>@ToString</code>注解;<br>可以使用构造方法,替代<code>@AllArgsConstructor</code>注解。</p>
-<blockquote>
-<p><code>TextMailDTO</code>父类</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> TextMailDTO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 文本邮件实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/11/7 9:56</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 主题</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String subject;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 文本内容</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String text;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 接收者邮箱</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String receiver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>info</code>子类</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> Info</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 信息内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/12/3 10:03</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> <span class="keyword">extends</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver, String description)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">		<span class="keyword">this</span>.description = description;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>实现获取父类属性及属性值的方法代码块</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  获取父类的属性及属性值方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getAllFields</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	Class clazz = object.getClass();</span><br><span class="line"></span><br><span class="line">	List&lt;Field&gt; fieldList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">while</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">		Field[] fields = clazz.getDeclaredFields();</span><br><span class="line">		fieldList.addAll(<span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(fields)));</span><br><span class="line">		clazz = clazz.getSuperclass();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fieldList.size(); i++) &#123;</span><br><span class="line">			Field field = fieldList.get(i);</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(object).toString();</span><br><span class="line"></span><br><span class="line">			log.info(property + <span class="string">":\t &#123;&#125;"</span>, value);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		log.error(<span class="string">"参数为:\t&#123;&#125;"</span>, clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>blog</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Entity</tag>
       </tags>
   </entry>
   <entry>
@@ -2637,6 +2602,41 @@
       <tags>
         <tag>Linux</tag>
         <tag>War</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>遍历 Java 实体类属性及值</title>
+    <url>/blog/Java/Java%E9%81%8D%E5%8E%86%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[遍历 Java 实体类属性及值
+<a id="more"></a>
+<h1 id="遍历Java实体类属性及值"><a href="#遍历Java实体类属性及值" class="headerlink" title="遍历Java实体类属性及值"></a>遍历<code>Java</code>实体类属性及值</h1><blockquote>
+<p>核心代码    </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			System.out.println(property+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"用户播放轨迹查询Qos 日志失败,参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>示例    </p>
+</blockquote>
+<p>将查询参数封装为<code>url</code><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 遍历属性类、属性值</span></span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			String params = property + <span class="string">"="</span> + value;</span><br><span class="line">			<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">				requestURL.append(params);</span><br><span class="line">				flag = <span class="keyword">false</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				requestURL.append(<span class="string">"&amp;"</span> + params);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"URL参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="获取父类的属性及属性值"><a href="#获取父类的属性及属性值" class="headerlink" title="获取父类的属性及属性值"></a>获取父类的属性及属性值</h1><p><strong>注:</strong> 以下代码中使用<code>Intellij IDEA</code>并使用了<code>lombok</code>,可以使用<code>get/set</code>替代<code>@Data</code>注解;可以重写<code>toString()</code>方法替代<code>@ToString</code>注解;<br>可以使用构造方法,替代<code>@AllArgsConstructor</code>注解。</p>
+<blockquote>
+<p><code>TextMailDTO</code>父类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> TextMailDTO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 文本邮件实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/11/7 9:56</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 主题</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String subject;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 文本内容</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String text;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 接收者邮箱</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String receiver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>info</code>子类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> Info</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 信息内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/12/3 10:03</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> <span class="keyword">extends</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver, String description)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">		<span class="keyword">this</span>.description = description;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现获取父类属性及属性值的方法代码块</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  获取父类的属性及属性值方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getAllFields</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	Class clazz = object.getClass();</span><br><span class="line"></span><br><span class="line">	List&lt;Field&gt; fieldList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">while</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">		Field[] fields = clazz.getDeclaredFields();</span><br><span class="line">		fieldList.addAll(<span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(fields)));</span><br><span class="line">		clazz = clazz.getSuperclass();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fieldList.size(); i++) &#123;</span><br><span class="line">			Field field = fieldList.get(i);</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(object).toString();</span><br><span class="line"></span><br><span class="line">			log.info(property + <span class="string">":\t &#123;&#125;"</span>, value);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		log.error(<span class="string">"参数为:\t&#123;&#125;"</span>, clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>blog</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Entity</tag>
       </tags>
   </entry>
   <entry>
@@ -3056,47 +3056,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Eclipse | STS(Spring Tool Suite)开发工具配置</title>
-    <url>/blog/Eclipse%E9%85%8D%E7%BD%AE%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[Eclipse | STS(Spring Tool Suite)开发工具配置
-<a id="more"></a>
-<h1 id="开发环境中Eclipse、STS-Spring-Tool-Suite-通用配置"><a href="#开发环境中Eclipse、STS-Spring-Tool-Suite-通用配置" class="headerlink" title="开发环境中Eclipse、STS(Spring Tool Suite)通用配置"></a>开发环境中<code>Eclipse</code>、<code>STS(Spring Tool Suite)</code>通用配置</h1><blockquote>
-<p><code>Java</code>实体类，重写<code>toString()</code>.生成<code>JSON</code>字符串配置    </p>
-</blockquote>
-<ol>
-<li><p><code>Eclipse</code> 快捷键 <code>Alt + S</code>  选择 <code>Generate toString</code>，重写<code>toString()</code>方法    </p>
-<p> <img src="/images/step1.png" alt="步骤一"></p>
-</li>
-<li><p>添加自定义的<code>format</code>格式，选择<code>Edit</code></p>
-<p> <img src="/images/step2.png" alt="步骤二"></p>
-<ul>
-<li><p>格式化文本内容</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">"$&#123;member.name()&#125;"</span>:<span class="string">"$&#123;member.value&#125;"</span>, <span class="string">"$&#123;otherMembers&#125;"</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>新的<code>template</code>，输入<code>Name</code>和<code>Pattern</code></p>
-<p> <img src="/images/step3.png" alt="步骤三"></p>
-</li>
-<li><p>点击<code>OK</code>，完成创建。</p>
-<p> <img src="/images/step4.png" alt="步骤四"></p>
-</li>
-<li><p>回到第一个页面，默认选中刚刚创建的<code>JSONString</code>，点击<code>Generate</code>完成创建</p>
-<p> <img src="/images/step5.png" alt="步骤五"></p>
-</li>
-<li><p>创建完成后效果</p>
-<p> <img src="/images/step6.png" alt="结果"></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>Eclipse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ext 4.0 使用笔记</title>
     <url>/blog/Ext%204.0%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[Ext 4.0 使用笔记
@@ -3140,6 +3099,32 @@
       <tags>
         <tag>Blog</tag>
         <tag>Web Plugin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML log</title>
+    <url>/blog/HTML/HTML%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>css设置奇偶行数、跳转、border渐变色、xml转为json、js获取查询参数<br><a id="more"></a></p>
+<h1 id="HTML-应用记录"><a href="#HTML-应用记录" class="headerlink" title="HTML 应用记录"></a>HTML 应用记录</h1><h2 id="css获取奇偶行数"><a href="#css获取奇偶行数" class="headerlink" title="css获取奇偶行数"></a><code>css</code>获取奇偶行数</h2><ul>
+<li>奇数行：<code>td:nth-child(odd){}</code></li>
+<li><p>偶数行：<code>td:nth-child(even){}</code></p>
+<p>  <strong>css选择器：</strong><a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank">参考地址</a> </p>
+</li>
+</ul>
+<h2 id="跳转html页面"><a href="#跳转html页面" class="headerlink" title="跳转html页面"></a>跳转<code>html</code>页面</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">parent.window.location.href = <span class="string">"../main/index.do"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="border设置渐变色"><a href="#border设置渐变色" class="headerlink" title="border设置渐变色"></a><code>border</code>设置渐变色</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.customborder</span> &#123;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-webkit-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-moz-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-o-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数组首尾添加空对象"><a href="#数组首尾添加空对象" class="headerlink" title="数组首尾添加空对象"></a>数组首尾添加空对象</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 头部添加</span></span><br><span class="line">result.unshift(&#123;&#125;);</span><br><span class="line"><span class="comment">// 数组 尾部添加</span></span><br><span class="line">result.push(&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="将XML字符串转为JSON对象"><a href="#将XML字符串转为JSON对象" class="headerlink" title="将XML字符串转为JSON对象"></a>将XML字符串转为JSON对象</h2><ul>
+<li>下载插件<code>http://www.kawa.net/works/js/xml/objtree-e.html#download</code></li>
+<li>按照案例实现即可</li>
+</ul>
+<h2 id="JS函数获取url参数"><a href="#JS函数获取url参数" class="headerlink" title="JS函数获取url参数"></a>JS函数获取url参数</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryParams</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> params = url.split(<span class="string">'?'</span>)[<span class="number">1</span>].split(<span class="string">"&amp;"</span>);</span><br><span class="line">	<span class="keyword">var</span> param = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;params.length;i++) &#123;</span><br><span class="line">		<span class="built_in">console</span>.info(params[i]);</span><br><span class="line">		<span class="keyword">var</span> pair = params[i].split(<span class="string">'='</span>);</span><br><span class="line">		param[pair[<span class="number">0</span>]] = pair[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.info(<span class="built_in">JSON</span>.stringify(param))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>blog</category>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -3207,29 +3192,44 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML log</title>
-    <url>/blog/HTML/HTML%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>css设置奇偶行数、跳转、border渐变色、xml转为json、js获取查询参数<br><a id="more"></a></p>
-<h1 id="HTML-应用记录"><a href="#HTML-应用记录" class="headerlink" title="HTML 应用记录"></a>HTML 应用记录</h1><h2 id="css获取奇偶行数"><a href="#css获取奇偶行数" class="headerlink" title="css获取奇偶行数"></a><code>css</code>获取奇偶行数</h2><ul>
-<li>奇数行：<code>td:nth-child(odd){}</code></li>
-<li><p>偶数行：<code>td:nth-child(even){}</code></p>
-<p>  <strong>css选择器：</strong><a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank">参考地址</a> </p>
+    <title>Eclipse | STS(Spring Tool Suite)开发工具配置</title>
+    <url>/blog/Eclipse%E9%85%8D%E7%BD%AE%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[Eclipse | STS(Spring Tool Suite)开发工具配置
+<a id="more"></a>
+<h1 id="开发环境中Eclipse、STS-Spring-Tool-Suite-通用配置"><a href="#开发环境中Eclipse、STS-Spring-Tool-Suite-通用配置" class="headerlink" title="开发环境中Eclipse、STS(Spring Tool Suite)通用配置"></a>开发环境中<code>Eclipse</code>、<code>STS(Spring Tool Suite)</code>通用配置</h1><blockquote>
+<p><code>Java</code>实体类，重写<code>toString()</code>.生成<code>JSON</code>字符串配置    </p>
+</blockquote>
+<ol>
+<li><p><code>Eclipse</code> 快捷键 <code>Alt + S</code>  选择 <code>Generate toString</code>，重写<code>toString()</code>方法    </p>
+<p> <img src="/images/step1.png" alt="步骤一"></p>
+</li>
+<li><p>添加自定义的<code>format</code>格式，选择<code>Edit</code></p>
+<p> <img src="/images/step2.png" alt="步骤二"></p>
+<ul>
+<li><p>格式化文本内容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">"$&#123;member.name()&#125;"</span>:<span class="string">"$&#123;member.value&#125;"</span>, <span class="string">"$&#123;otherMembers&#125;"</span>&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="跳转html页面"><a href="#跳转html页面" class="headerlink" title="跳转html页面"></a>跳转<code>html</code>页面</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">parent.window.location.href = <span class="string">"../main/index.do"</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="border设置渐变色"><a href="#border设置渐变色" class="headerlink" title="border设置渐变色"></a><code>border</code>设置渐变色</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.customborder</span> &#123;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-webkit-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-moz-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">-o-linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">	<span class="attribute">border-image</span>: <span class="built_in">linear-gradient</span>(#F80, #2ED) <span class="number">20</span> <span class="number">20</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="数组首尾添加空对象"><a href="#数组首尾添加空对象" class="headerlink" title="数组首尾添加空对象"></a>数组首尾添加空对象</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// 头部添加</span></span><br><span class="line">result.unshift(&#123;&#125;);</span><br><span class="line"><span class="comment">// 数组 尾部添加</span></span><br><span class="line">result.push(&#123;&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="将XML字符串转为JSON对象"><a href="#将XML字符串转为JSON对象" class="headerlink" title="将XML字符串转为JSON对象"></a>将XML字符串转为JSON对象</h2><ul>
-<li>下载插件<code>http://www.kawa.net/works/js/xml/objtree-e.html#download</code></li>
-<li>按照案例实现即可</li>
-</ul>
-<h2 id="JS函数获取url参数"><a href="#JS函数获取url参数" class="headerlink" title="JS函数获取url参数"></a>JS函数获取url参数</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryParams</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> params = url.split(<span class="string">'?'</span>)[<span class="number">1</span>].split(<span class="string">"&amp;"</span>);</span><br><span class="line">	<span class="keyword">var</span> param = &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;params.length;i++) &#123;</span><br><span class="line">		<span class="built_in">console</span>.info(params[i]);</span><br><span class="line">		<span class="keyword">var</span> pair = params[i].split(<span class="string">'='</span>);</span><br><span class="line">		param[pair[<span class="number">0</span>]] = pair[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">console</span>.info(<span class="built_in">JSON</span>.stringify(param))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+</li>
+<li><p>新的<code>template</code>，输入<code>Name</code>和<code>Pattern</code></p>
+<p> <img src="/images/step3.png" alt="步骤三"></p>
+</li>
+<li><p>点击<code>OK</code>，完成创建。</p>
+<p> <img src="/images/step4.png" alt="步骤四"></p>
+</li>
+<li><p>回到第一个页面，默认选中刚刚创建的<code>JSONString</code>，点击<code>Generate</code>完成创建</p>
+<p> <img src="/images/step5.png" alt="步骤五"></p>
+</li>
+<li><p>创建完成后效果</p>
+<p> <img src="/images/step6.png" alt="结果"></p>
+</li>
+</ol>
+]]></content>
       <categories>
         <category>blog</category>
-        <category>HTML</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
+        <tag>Eclipse</tag>
       </tags>
   </entry>
   <entry>
