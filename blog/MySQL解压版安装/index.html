@@ -57,10 +57,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dew-logo-medium.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dew-logo.png?v=7.0.1">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="MySQL 8.0 版本使用.zip文件安装过程中遇到的一些问题,整理成了文章为同样遇到问题的你提供参考。ERROR 1130 (HY000) Host &amp;#39;xx-PC&amp;#39; is not allowed to connect to this MySQL server错误的解决方案">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-07T05:30:31.377Z">
+<meta property="og:updated_time" content="2020-07-07T06:05:08.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL解压版安装">
 <meta name="twitter:description" content="MySQL 8.0 版本使用.zip文件安装过程中遇到的一些问题,整理成了文章为同样遇到问题的你提供参考。ERROR 1130 (HY000) Host &amp;#39;xx-PC&amp;#39; is not allowed to connect to this MySQL server错误的解决方案">
@@ -487,7 +487,7 @@
                 
               
 
-              <time title="创建时间：2020/07/07 13:28:29 / 修改时间：13:30:31" itemprop="dateCreated datePublished" datetime="2020-07-07T13:28:29+08:00">2020/07/07</time>
+              <time title="创建时间：2020/07/07 13:28:29 / 修改时间：14:05:08" itemprop="dateCreated datePublished" datetime="2020-07-07T13:28:29+08:00">2020/07/07</time>
             
 
             
@@ -649,6 +649,10 @@
 </blockquote>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'dew'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'root'</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无法使用新增的账号访问数据库</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- grant all privileges on `数据库名字`.* to `新建账号`@'localhost';</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> dew_boot_learning.* <span class="keyword">to</span> dew@<span class="string">'localhost'</span>;</span><br></pre></td></tr></table></figure>
 <hr>
 <p><strong>注:</strong>希望我记录的解决方法能帮到你,如果你在实际过程中遇到其他的问题。可以在文章下留言,我看到后会及时回复。</p>
 
