@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="SQL 常用函数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T07:23:52.220Z">
+<meta property="og:updated_time" content="2020-10-16T07:06:02.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 常用函数">
 <meta name="twitter:description" content="SQL 常用函数">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020/01/14 15:23:52" itemprop="dateModified" datetime="2020-01-14T15:23:52+08:00">2020/01/14</time>
+                <time title="修改时间：2020/10/16 15:06:02" itemprop="dateModified" datetime="2020-10-16T15:06:02+08:00">2020/10/16</time>
               
             
           </span>
@@ -599,7 +599,14 @@
 </ol>
 </li>
 </ul>
-
+<h1 id="MySQL-字符串查找函数"><a href="#MySQL-字符串查找函数" class="headerlink" title="MySQL 字符串查找函数"></a>MySQL 字符串查找函数</h1><blockquote>
+<p><code>find_in_set</code>与<code>regexp</code>函数</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line">     <span class="keyword">from</span> t_media_resource</span><br><span class="line">     <span class="keyword">where</span> <span class="number">1</span> = <span class="number">1</span></span><br><span class="line">       <span class="keyword">and</span> <span class="keyword">if</span>(<span class="keyword">not</span> find_in_set(<span class="string">'0'</span>, <span class="string">'1,2'</span>), <span class="keyword">instr</span>(<span class="string">'1,2'</span>, media_type), <span class="number">1</span> = <span class="number">1</span>)</span><br><span class="line">       <span class="keyword">and</span> <span class="keyword">if</span>(<span class="string">'综合|KOL推荐'</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>, media_classify regexp (<span class="string">'综合|KOL推荐'</span>), <span class="number">1</span> = <span class="number">1</span>)</span><br><span class="line">       <span class="keyword">and</span> <span class="keyword">if</span>(<span class="string">'大表哥'</span> != <span class="string">''</span>, media_name regexp (<span class="string">'大表哥'</span>), <span class="number">1</span> = <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="MySQL-拼接多个字符串"><a href="#MySQL-拼接多个字符串" class="headerlink" title="MySQL 拼接多个字符串"></a>MySQL 拼接多个字符串</h1><ul>
+<li>可以自定义拼接的字符,例如: <code>|</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">concat_ws</span>(<span class="string">'|'</span>, column_1, column_2,...) MESSAGE <span class="keyword">from</span> t_tablename;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -914,6 +921,10 @@
                     
                       
                     
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
@@ -972,7 +983,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-常用函数及错误记录"><span class="nav-number">1.</span> <span class="nav-text">SQL 常用函数及错误记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-与Oracle-的函数"><span class="nav-number">2.</span> <span class="nav-text">MySQL 与Oracle 的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串转datetime"><span class="nav-number">2.1.</span> <span class="nav-text">字符串转datetime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datetime转为指定格式字符串"><span class="nav-number">2.2.</span> <span class="nav-text">datetime转为指定格式字符串</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-常用函数及错误记录"><span class="nav-number">1.</span> <span class="nav-text">SQL 常用函数及错误记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-与Oracle-的函数"><span class="nav-number">2.</span> <span class="nav-text">MySQL 与Oracle 的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串转datetime"><span class="nav-number">2.1.</span> <span class="nav-text">字符串转datetime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datetime转为指定格式字符串"><span class="nav-number">2.2.</span> <span class="nav-text">datetime转为指定格式字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-字符串查找函数"><span class="nav-number">3.</span> <span class="nav-text">MySQL 字符串查找函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-拼接多个字符串"><span class="nav-number">4.</span> <span class="nav-text">MySQL 拼接多个字符串</span></a></li></ol></div>
             
 
           </div>
@@ -993,7 +1004,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

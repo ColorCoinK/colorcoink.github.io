@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="impala 使用记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-12T07:02:57.678Z">
+<meta property="og:updated_time" content="2020-10-26T02:37:36.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="impala 使用记录">
 <meta name="twitter:description" content="impala 使用记录">
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/04/12 15:02:57" itemprop="dateModified" datetime="2019-04-12T15:02:57+08:00">2019/04/12</time>
+                <time title="修改时间：2020/10/26 10:37:36" itemprop="dateModified" datetime="2020-10-26T10:37:36+08:00">2020/10/26</time>
               
             
           </span>
@@ -581,6 +581,61 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement = connection.prepareStatement(sql);</span><br></pre></td></tr></table></figure>
 <p>修改后代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement = connection.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>ResultSet</code>枚举类</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>枚举值</th>
+<th>数值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FETCH_FORWARD</td>
+<td>1000</td>
+<td></td>
+</tr>
+<tr>
+<td>FETCH_REVERSE</td>
+<td>1001</td>
+<td></td>
+</tr>
+<tr>
+<td>FETCH_UNKNOWN</td>
+<td>1002</td>
+<td></td>
+</tr>
+<tr>
+<td>TYPE_FORWARD_ONLY</td>
+<td>1003</td>
+<td>只能向前滚动(默认值)</td>
+</tr>
+<tr>
+<td>TYPE_SCROLL_INSENSITIVE</td>
+<td>1004</td>
+<td></td>
+</tr>
+<tr>
+<td>TYPE_SCROLL_SENSITIVE</td>
+<td>1005</td>
+<td></td>
+</tr>
+<tr>
+<td>CONCUR_READ_ONLY</td>
+<td>1007</td>
+<td></td>
+</tr>
+<tr>
+<td>CONCUR_UPDATABLE</td>
+<td>1008</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
 
@@ -628,8 +683,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Maven/Pom文件配置仓库地址/" rel="prev" title="配置单个 maven 项目 pom 依赖仓库地址">
-                配置单个 maven 项目 pom 依赖仓库地址 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Java/Java遍历实体类属性/" rel="prev" title="遍历 Java 实体类属性及值">
+                遍历 Java 实体类属性及值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -897,6 +952,10 @@
                     
                       
                     
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
@@ -976,7 +1035,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
