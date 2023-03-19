@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="SpringBoot配置文件详解">
-<meta name="keywords" content="Java,SpringBoot">
+  <meta name="description" content="SpringBoot自定义配置文件内容获取">
+<meta name="keywords" content="SpringBoot,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot配置文件详解">
 <meta property="og:url" content="http://blog.dew.com/SpringBoot/SpringBoot配置文件详解/index.html">
-<meta property="og:site_name" content="Dew">
-<meta property="og:description" content="SpringBoot配置文件详解">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="SpringBoot自定义配置文件内容获取">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T01:50:05.376Z">
+<meta property="og:updated_time" content="2021-03-25T02:37:53.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot配置文件详解">
-<meta name="twitter:description" content="SpringBoot配置文件详解">
+<meta name="twitter:description" content="SpringBoot自定义配置文件内容获取">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>SpringBoot配置文件详解 | Dew</title>
+  <title>SpringBoot配置文件详解 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -470,12 +470,24 @@
                 
               
 
-              <time title="创建时间：2019/03/04 09:48:42 / 修改时间：09:50:05" itemprop="dateCreated datePublished" datetime="2019-03-04T09:48:42+08:00">2019/03/04</time>
+              <time title="创建时间：2019/03/04 09:48:42" itemprop="dateCreated datePublished" datetime="2019-03-04T09:48:42+08:00">2019/03/04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021/03/25 10:37:53" itemprop="dateModified" datetime="2021-03-25T10:37:53+08:00">2021/03/25</time>
               
             
           </span>
@@ -534,8 +546,149 @@
       
 
       
-        SpringBoot配置文件详解
-<a id="more"></a>
+        <p>SpringBoot自定义配置文件内容获取<br><a id="more"></a></p>
+<h1 id="SpringBoot配置文件内容获取"><a href="#SpringBoot配置文件内容获取" class="headerlink" title="SpringBoot配置文件内容获取"></a><code>SpringBoot</code>配置文件内容获取</h1><blockquote>
+<p>前提</p>
+</blockquote>
+<ol>
+<li>添加以下依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="新建实体类获取application-yml-applicaiton-properties配置文件内容"><a href="#新建实体类获取application-yml-applicaiton-properties配置文件内容" class="headerlink" title="新建实体类获取application.yml/applicaiton.properties配置文件内容"></a>新建实体类获取<code>application.yml/applicaiton.properties</code>配置文件内容</h2><ol>
+<li><code>@Component</code>、<code>@ConfigurationProperties</code> 注解</li>
+</ol>
+<blockquote>
+<h5><code>application.yml</code>配置文件</h5>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">9099</span></span><br><span class="line"><span class="attr">user:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">markdown</span></span><br><span class="line"><span class="attr">  age:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5>实体类</h5>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserConfig</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String age;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** 省略get/set 方法 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5>测试类</h5>
+</blockquote>
+<ul>
+<li>测试是否能够正确获取配置文件内容</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserConfigTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserConfig properties;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">propertiesTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(properties.name() + <span class="string">"\t"</span> + properties.getAge());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>@Component</code>、<code>@Value</code> 注解</li>
+</ol>
+<ul>
+<li><code>application.yml/application.properties</code> 文件内容不变</li>
+</ul>
+<blockquote>
+<h5>实体类</h5>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User2Config</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(value = <span class="string">"$&#123;user.url&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(value = <span class="string">"$&#123;user.age&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String age;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** 省略get/set 方法 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5>测试类</h5>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User2ConfigTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> User2Config properties;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">propertiesTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(properties.name() + <span class="string">"\t"</span> + properties.getAge());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建实体类获取自定义-xx-properties-配置文件内容"><a href="#创建实体类获取自定义-xx-properties-配置文件内容" class="headerlink" title="创建实体类获取自定义(xx.properties)配置文件内容"></a>创建实体类获取自定义(<code>xx.properties</code>)配置文件内容</h2><ul>
+<li>注: 自定义配置文件最好还是使用<code>.properties</code>格式的文件,注解方式还不支持手动加载<code>.yml</code>格式文件的功能</li>
+</ul>
+<ol>
+<li><code>@Configuration</code>注解替换<code>@Component</code>注解,<code>@PropertySource(&quot;classpath:xx.properties&quot;)</code></li>
+</ol>
+<blockquote>
+<h5>创建自定义配置文件<code>my.properties</code></h5>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 高德——地理编码</span><br><span class="line">geo.url= http://restapi.amap.com/v3/geocode/geo</span><br><span class="line">geo.key= 11111</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5>实体类</h5>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:geocode.properties"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeocodingProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(value = <span class="string">"$&#123;geo.url&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(value = <span class="string">"$&#123;geo.key&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*省略get/set方法*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5>测试类</h5>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeoCodingUtilTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> GeocodingProperties properties;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">propertiesTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(properties.getKey() + <span class="string">"\t"</span> + properties.getUrl());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置文件可创建在<code>resource</code>中的文件夹下,使用相对根目录的文件夹即可(默认<code>resources/</code>为根目录)</li>
+</ul>
+<h2 id="Configuration、-PropertySource、-ConfigurationProperties"><a href="#Configuration、-PropertySource、-ConfigurationProperties" class="headerlink" title="@Configuration、@PropertySource、@ConfigurationProperties"></a><code>@Configuration</code>、<code>@PropertySource</code>、<code>@ConfigurationProperties</code></h2><ul>
+<li>注: 使用<code>@configuration</code>与<code>@ConfigurationProperties</code>注解时,需要在启动类(<code>Application.java</code>)中增加<code>@EnableConfigurationProperties(PhoneProperties.class)</code>注解。</li>
+</ul>
+<blockquote>
+<p>配置文件</p>
+</blockquote>
+<ul>
+<li>配置文件路径<code>resources/properties/phone.properties&quot;)</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">phone.model= iPhone <span class="number">8</span> Plus</span><br><span class="line">phone.price= <span class="number">5266</span></span><br><span class="line">phone.system= iOS <span class="number">12.2</span>.x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动类    </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties</span>(PhoneProperties.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Application.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>配置文件实体类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@PropertySource</span>(value = <span class="string">"classpath:properties/phone.properties"</span>)</span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"phone"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String model;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Double price;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String system;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*省略get/set、toString()方法*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhonePropertiesTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PhoneProperties phoneProperties;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">phonePropertiesTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(phoneProperties.toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用Environment方法获取配置文件的值"><a href="#使用Environment方法获取配置文件的值" class="headerlink" title="使用Environment方法获取配置文件的值"></a>使用<code>Environment</code>方法获取配置文件的值</h2><blockquote>
+<p>注解说明  </p>
+</blockquote>
+<ul>
+<li><p><code>@Component</code></p>
+<ol>
+<li><p>将普通的<code>pojo</code>实例化到<code>Spring</code>容器中,相当于<code>xml</code>配置文件中的<code>&lt;bean id=&quot;&quot; class=&quot;&quot;/&gt;</code>;</p>
+</li>
+<li><p>泛指组件,当组件不好归类的的时候,可以使用这个组件。</p>
+</li>
+</ol>
+</li>
+<li><p><code>@Configutration</code></p>
+<ol>
+<li><p>用于定义配置类;</p>
+</li>
+<li><p><code>@Configuration</code> 中所有带<code>@Bean</code>注解的方法都会被动态代理,因此调用该方法返回的都是同一个实例。</p>
+</li>
+<li><p><code>@Component</code> 与 <code>@Component</code> 区别详细介绍,<a href="https://blog.csdn.net/isea533/article/details/78072133" target="_blank"><code>Spring @Configuration 和 @Component</code>区别</a></p>
+</li>
+</ol>
+</li>
+<li><p><code>@PropertySource</code></p>
+<ol>
+<li>通过注解的方式将<code>properties</code>配置文件中的值存储到<code>Spring</code>的<code>Enviroment</code>中,<code>Environment</code>接口提供方法去读取配置文件中的值,参数时<code>properties</code>文件中定义的<code>key</code>值。</li>
+</ol>
+</li>
+<li><p><code>@ConfigurationProperties</code></p>
+<ol>
+<li><p>将同类的配置信息封装成实体类;</p>
+</li>
+<li><p>与<code>@ConfigurationProperties</code>一起使用时,需要在启动类增加<code>@EnableConfigurationProperties</code>注解并制定该实体类为配置类 或 使用<code>@Component</code>注解替代<code>@Configuration</code>注解。</p>
+</li>
+</ol>
+</li>
+<li><p><code>@Value</code></p>
+<ol>
+<li><p><code>@value</code>属性名,在属性名上添加该注解;</p>
+</li>
+<li><p>默认读取的配置文件是<code>application.yml/application.properties</code>,可在<code>@RestController/@Controller</code>中获取配置。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="在非Controller-中无法获取配置类-或-注入相应注解"><a href="#在非Controller-中无法获取配置类-或-注入相应注解" class="headerlink" title="在非Controller 中无法获取配置类 或 注入相应注解"></a><h5>在非<code>Controller</code> 中无法获取配置类 或 注入相应注解</h5></h3><ul>
+<li>在工具类中,获取<code>RestTemplate</code>注解以及自定义配置文件为例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Point 1: 使用类注解`@Conponent`</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeoCodingUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> GeocodingProperties properties;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Point 2: 将本类设置为属性</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> GeoCodingUtil geoCodingUtil;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@PostConstruct</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		geoCodingUtil = <span class="keyword">this</span>;</span><br><span class="line">		geoCodingUtil.properties = <span class="keyword">this</span>.properties;</span><br><span class="line">		geoCodingUtil.restTemplate = <span class="keyword">this</span>.restTemplate;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 调用示例</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getProperties</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(geoCodingUtil.properties.getUrl());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注解说明</p>
+</blockquote>
+<ul>
+<li><p><code>@PostConstruct</code></p>
+<ol>
+<li>被<code>@PostConstruct</code>修饰的方法会在服务器加载<code>Servlet</code>的时候运行,并且只会被服务器调用一次，类似于<code>Servlet</code>的<code>init()</code>方法。被<code>@PostContruct</code>修饰的方法会在构造函数之后,<code>init()</code>方法之前运行。</li>
+<li><code>@PostContruct</code> 注释的<code>init()</code>方法,会在<code>@Configuration</code>配置之前运行。例如: 在执行预加载函数前,需要加载配置项则需要<code>implements CommandLineRunner</code>接口,若使用<code>@PostContruct</code>则只有在<code>init()</code>方法执行完才能获取<code>@Configuration</code>注解的自定义配置项。</li>
+</ol>
+</li>
+</ul>
+
       
     </div>
 
@@ -558,9 +711,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
             <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -573,8 +726,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/JQuery/Jquery使用记录/" rel="next" title="Jquery 使用日志">
-                <i class="fa fa-chevron-left"></i> Jquery 使用日志
+              <a href="/Blog/Intellij IDEA运行web项目异常/" rel="next" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
+                <i class="fa fa-chevron-left"></i> Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
               </a>
             
           </div>
@@ -583,7 +736,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Maven/Pom文件常用配置/" rel="prev" title="Pom 文件常用配置">
+              <a href="/blog/Maven/Pom文件常用配置/" rel="prev" title="Pom 文件常用配置">
                 Pom 文件常用配置 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -629,8 +782,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -647,7 +809,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -700,7 +862,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -807,7 +985,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -855,6 +1067,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot配置文件内容获取"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot配置文件内容获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建实体类获取application-yml-applicaiton-properties配置文件内容"><span class="nav-number">1.1.</span> <span class="nav-text">新建实体类获取application.yml/applicaiton.properties配置文件内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">application.yml配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">测试类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">测试类</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#创建实体类获取自定义-xx-properties-配置文件内容"><span class="nav-number">1.2.</span> <span class="nav-text">创建实体类获取自定义(xx.properties)配置文件内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">创建自定义配置文件my.properties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.0.2.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.0.0.3.</span> <span class="nav-text">测试类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration、-PropertySource、-ConfigurationProperties"><span class="nav-number">1.3.</span> <span class="nav-text">@Configuration、@PropertySource、@ConfigurationProperties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Environment方法获取配置文件的值"><span class="nav-number">1.4.</span> <span class="nav-text">使用Environment方法获取配置文件的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">1.5.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在非Controller-中无法获取配置类-或-注入相应注解"><span class="nav-number">1.5.1.</span> <span class="nav-text">在非Controller 中无法获取配置类 或 注入相应注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.1.0.1.</span> <span class="nav-text">在非Controller 中无法获取配置类 或 注入相应注解</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -869,7 +1098,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

@@ -103,11 +103,11 @@
 <meta name="keywords" content="Impala">
 <meta property="og:type" content="article">
 <meta property="og:title" content="impala 使用记录">
-<meta property="og:url" content="http://blog.dew.com/Blog/Impala/Impala笔记/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:url" content="http://blog.dew.com/blog/Impala/Impala笔记/index.html">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="impala 使用记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T03:10:57.875Z">
+<meta property="og:updated_time" content="2020-06-29T06:35:11.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="impala 使用记录">
 <meta name="twitter:description" content="impala 使用记录">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/Blog/Impala/Impala笔记/">
+  <link rel="canonical" href="http://blog.dew.com/blog/Impala/Impala笔记/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>impala 使用记录 | Dew</title>
+  <title>impala 使用记录 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -234,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-blog">
+          <li class="menu-item menu-item-blog menu-item-active">
 
     
     
@@ -427,7 +427,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Impala/Impala笔记/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Impala/Impala笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wloop">
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -470,12 +470,24 @@
                 
               
 
-              <time title="创建时间：2019/02/28 11:00:13 / 修改时间：11:10:57" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
+              <time title="创建时间：2019/02/28 11:00:13" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020/06/29 14:35:11" itemprop="dateModified" datetime="2020-06-29T14:35:11+08:00">2020/06/29</time>
               
             
           </span>
@@ -492,14 +504,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/Impala/" itemprop="url" rel="index"><span itemprop="name">Impala</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/Impala/" itemprop="url" rel="index"><span itemprop="name">Impala</span></a></span>
 
                 
                 
@@ -543,7 +555,7 @@
       
         impala 使用记录
 <a id="more"></a>
-<h1 id="impala-使用记录"><a href="#impala-使用记录" class="headerlink" title="impala 使用记录"></a>impala 使用记录</h1><h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><blockquote>
+<h1 id="impala-使用记录"><a href="#impala-使用记录" class="headerlink" title="impala 使用记录"></a>impala 使用记录</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><blockquote>
 <p>进入 <code>impala</code></p>
 </blockquote>
 <pre><code>impala-shell    
@@ -564,6 +576,16 @@
 <li>每个<code>SQL</code>语句结束时需要加 ‘;’,当数据量大时可以使用<code>limit</code>;</li>
 <li>查询时尽量使用数据分区字段,可以有效减少查询时间时间</li>
 </ol>
+<h2 id="函数总结"><a href="#函数总结" class="headerlink" title="函数总结"></a>函数总结</h2><blockquote>
+<p><code>form_unixtime</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 时间戳转为制定格式的字符串</span></span><br><span class="line"> <span class="keyword">select</span> from_unixtime(<span class="keyword">unix_timestamp</span>()<span class="number">-3</span>*<span class="number">24</span>*<span class="number">3600</span>,<span class="string">'yyyyMMdd'</span>) daytime;</span><br></pre></td></tr></table></figure>
+<p>|———-|<br>| daytime  |<br>|———-|<br>| 20200626 |</p>
+<blockquote>
+<p><code>unix_timestamp</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取当前时间戳</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">unix_timestamp</span>() <span class="keyword">as</span> <span class="built_in">time</span>;</span><br></pre></td></tr></table></figure>
+<p>|————|<br>| time       |<br>|————|<br>| 1593441066 |</p>
 
       
     </div>
@@ -600,8 +622,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/Intellij IDEA运行web项目异常/" rel="next" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
-                <i class="fa fa-chevron-left"></i> Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
+              <a href="/Blog/Linux/Linux部署war包/" rel="next" title="Linux 手动部署 war 包">
+                <i class="fa fa-chevron-left"></i> Linux 手动部署 war 包
               </a>
             
           </div>
@@ -610,8 +632,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Oracle/Oracle使用记录/" rel="prev" title="Oracle 使用笔记">
-                Oracle 使用笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/Maven/Pom文件配置仓库地址/" rel="prev" title="配置单个 maven 项目 pom 依赖仓库地址">
+                配置单个 maven 项目 pom 依赖仓库地址 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -683,7 +705,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -736,7 +758,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -843,7 +881,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -901,7 +973,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#impala-使用记录"><span class="nav-number">1.</span> <span class="nav-text">impala 使用记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本命令"><span class="nav-number">2.</span> <span class="nav-text">基本命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#impala-使用记录"><span class="nav-number">1.</span> <span class="nav-text">impala 使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">1.1.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数总结"><span class="nav-number">1.2.</span> <span class="nav-text">函数总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -922,7 +994,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

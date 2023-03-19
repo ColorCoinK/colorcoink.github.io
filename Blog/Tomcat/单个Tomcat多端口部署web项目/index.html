@@ -103,11 +103,11 @@
 <meta name="keywords" content="Tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat 多端口部署 web 项目">
-<meta property="og:url" content="http://blog.dew.com/Blog/Tomcat/单个Tomcat多端口部署web项目/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:url" content="http://blog.dew.com/blog/Tomcat/单个Tomcat多端口部署web项目/index.html">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="Tomcat 多端口部署 web 项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T04:58:40.335Z">
+<meta property="og:updated_time" content="2020-05-27T09:12:31.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 多端口部署 web 项目">
 <meta name="twitter:description" content="Tomcat 多端口部署 web 项目">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/Blog/Tomcat/单个Tomcat多端口部署web项目/">
+  <link rel="canonical" href="http://blog.dew.com/blog/Tomcat/单个Tomcat多端口部署web项目/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Tomcat 多端口部署 web 项目 | Dew</title>
+  <title>Tomcat 多端口部署 web 项目 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -234,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-blog">
+          <li class="menu-item menu-item-blog menu-item-active">
 
     
     
@@ -427,7 +427,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Tomcat/单个Tomcat多端口部署web项目/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Tomcat/单个Tomcat多端口部署web项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wloop">
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/03/04 12:58:40" itemprop="dateModified" datetime="2019-03-04T12:58:40+08:00">2019/03/04</time>
+                <time title="修改时间：2020/05/27 17:12:31" itemprop="dateModified" datetime="2020-05-27T17:12:31+08:00">2020/05/27</time>
               
             
           </span>
@@ -504,14 +504,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/Tomcat/" itemprop="url" rel="index"><span itemprop="name">Tomcat</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/Tomcat/" itemprop="url" rel="index"><span itemprop="name">Tomcat</span></a></span>
 
                 
                 
@@ -562,7 +562,18 @@
 <h1 id="多个-Tomcat-部署"><a href="#多个-Tomcat-部署" class="headerlink" title="多个 Tomcat 部署"></a><h3>多个 <code>Tomcat</code> 部署</h3></h1><h2 id="上传多个不同版本-tomcat-tomcat-部署多个实例"><a href="#上传多个不同版本-tomcat-tomcat-部署多个实例" class="headerlink" title="上传多个不同版本 tomcat/tomcat 部署多个实例"></a>上传多个不同版本 tomcat/tomcat 部署多个实例</h2><h2 id="修改-server-xml"><a href="#修改-server-xml" class="headerlink" title="修改 server.xml"></a>修改 <code>server.xml</code></h2><p>默认 server.xml 配置</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span> <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span> <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span> <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span> <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span> <span class="attr">appBase</span>=<span class="string">"webapps"</span> <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span> <span class="attr">prefix</span>=<span class="string">"localhost_access_log"</span> <span class="attr">suffix</span>=<span class="string">".txt"</span> <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 修改 shutdown 端口,如果同样使用 8005 那么关闭其中一个时另外的 shutdown.port= 7005 的tomcat 也会被关闭 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"7005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span> <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span> <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span> <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 修改启动端口号 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"7090"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"7443"</span> <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">maxSpareThreads</span>=<span class="string">"75"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"7009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"7443"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span> <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span> <span class="attr">appBase</span>=<span class="string">"webapps"</span> <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span> <span class="attr">prefix</span>=<span class="string">"localhost_access_log"</span> <span class="attr">suffix</span>=<span class="string">".txt"</span> <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="关闭tomcat-时杀死进程"><a href="#关闭tomcat-时杀死进程" class="headerlink" title="关闭tomcat 时杀死进程"></a>关闭tomcat 时杀死进程</h1><blockquote>
+<p>修改<code>catalina.sh</code>文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 设置记录 CATALINA_PID</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 该设置会在启动时在 /bin 目录下新建CATALINA_PID 文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭时从 CATALINA_PID 文件找到 pid,<span class="built_in">kill</span> 同时删除 CATALINA_PID 文件</span></span><br><span class="line">if [ -z "$CATALINA_PID" ]; then</span><br><span class="line">  CATALINA_PID=$PRGDIR/CATALINA_PID</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改<code>shutdown.sh</code>文件,在最后一行加上<code>-force</code></p>
+</blockquote>
+<p>更新Tomcat版本</p>
+<blockquote>
+<p>增加catalina.sh 配置</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_101</span><br><span class="line">export JRE_HOME=/usr/java/jdk1.8.0_101/jre</span><br><span class="line">export CATALINA_HOME=/opt/tomcat-iptvview/apache-tomcat-8.5.40</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> specify jdk version</span></span><br><span class="line">JAVA_HOME=/usr/java/jdk1.8.0_101</span><br><span class="line">JRE_HOME=/usr/java/jdk1.8.0_101/jre</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -598,8 +609,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SpringBoot/SpringBoot配置多数据源/" rel="next" title="SpringBoot + Durid | Hikari 多数据源 JDBCTemplate">
-                <i class="fa fa-chevron-left"></i> SpringBoot + Durid | Hikari 多数据源 JDBCTemplate
+              <a href="/SpringBoot/Springboot自定义主键增长策略/" rel="next" title="SpringBoot + Redis 自定义主键增长策略">
+                <i class="fa fa-chevron-left"></i> SpringBoot + Redis 自定义主键增长策略
               </a>
             
           </div>
@@ -608,8 +619,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/SpringBoot/Hikari/SpringBoot配置多数据源JPA/" rel="prev" title="SpringBoot + Hikari +JPA 多数据源">
-                SpringBoot + Hikari +JPA 多数据源 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Java/根据jar文件生成pom依赖/" rel="prev" title="普通 Java/Jave Web 转为 Maven 项目">
+                普通 Java/Jave Web 转为 Maven 项目 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -681,7 +692,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -734,7 +745,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -841,7 +868,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -899,7 +960,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单个-Tomcat-运行多个实例、分配不同端口"><span class="nav-number">1.</span> <span class="nav-text">单个 Tomcat 运行多个实例、分配不同端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">单个 Tomcat 运行多个实例、分配不同端口</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#多个-Tomcat-部署"><span class="nav-number">2.</span> <span class="nav-text">多个 Tomcat 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">多个 Tomcat 部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传多个不同版本-tomcat-tomcat-部署多个实例"><span class="nav-number">2.1.</span> <span class="nav-text">上传多个不同版本 tomcat/tomcat 部署多个实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-server-xml"><span class="nav-number">2.2.</span> <span class="nav-text">修改 server.xml</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单个-Tomcat-运行多个实例、分配不同端口"><span class="nav-number">1.</span> <span class="nav-text">单个 Tomcat 运行多个实例、分配不同端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">单个 Tomcat 运行多个实例、分配不同端口</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#多个-Tomcat-部署"><span class="nav-number">2.</span> <span class="nav-text">多个 Tomcat 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">多个 Tomcat 部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传多个不同版本-tomcat-tomcat-部署多个实例"><span class="nav-number">2.1.</span> <span class="nav-text">上传多个不同版本 tomcat/tomcat 部署多个实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-server-xml"><span class="nav-number">2.2.</span> <span class="nav-text">修改 server.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭tomcat-时杀死进程"><span class="nav-number">3.</span> <span class="nav-text">关闭tomcat 时杀死进程</span></a></li></div>
             
 
           </div>
@@ -920,7 +981,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

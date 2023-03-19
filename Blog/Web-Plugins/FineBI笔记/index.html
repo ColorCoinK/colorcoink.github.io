@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="项目集成 FineBI 应用系统">
+  <meta name="description" content="FineBI后台Java集成报表页面">
 <meta name="keywords" content="FineBI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目集成 FineBI 应用系统">
-<meta property="og:url" content="http://blog.dew.com/Blog/Web-Plugins/FineBI笔记/index.html">
-<meta property="og:site_name" content="Dew">
-<meta property="og:description" content="项目集成 FineBI 应用系统">
+<meta property="og:url" content="http://blog.dew.com/blog/Web-Plugins/FineBI笔记/index.html">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="FineBI后台Java集成报表页面">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T07:40:46.345Z">
+<meta property="og:updated_time" content="2019-04-12T07:01:41.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目集成 FineBI 应用系统">
-<meta name="twitter:description" content="项目集成 FineBI 应用系统">
+<meta name="twitter:description" content="FineBI后台Java集成报表页面">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/Blog/Web-Plugins/FineBI笔记/">
+  <link rel="canonical" href="http://blog.dew.com/blog/Web-Plugins/FineBI笔记/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>项目集成 FineBI 应用系统 | Dew</title>
+  <title>项目集成 FineBI 应用系统 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -234,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-blog">
+          <li class="menu-item menu-item-blog menu-item-active">
 
     
     
@@ -427,7 +427,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Web-Plugins/FineBI笔记/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Web-Plugins/FineBI笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wloop">
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/02/28 15:40:46" itemprop="dateModified" datetime="2019-02-28T15:40:46+08:00">2019/02/28</time>
+                <time title="修改时间：2019/04/12 15:01:41" itemprop="dateModified" datetime="2019-04-12T15:01:41+08:00">2019/04/12</time>
               
             
           </span>
@@ -504,14 +504,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/Web-Plugins/" itemprop="url" rel="index"><span itemprop="name">Web Plugins</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/Web-Plugins/" itemprop="url" rel="index"><span itemprop="name">Web Plugins</span></a></span>
 
                 
                 
@@ -553,10 +553,16 @@
       
 
       
-        项目集成 FineBI 应用系统
-<a id="more"></a>
-<h1 id="项目集成-FineBI-应用系统-s"><a href="#项目集成-FineBI-应用系统-s" class="headerlink" title="项目集成 FineBI 应用系统 s"></a>项目集成 FineBI 应用系统 s</h1><blockquote>
-<p>页面    </p>
+        <p>FineBI后台Java集成报表页面<br><a id="more"></a></p>
+<h1 id="项目集成-FineBI-应用系统"><a href="#项目集成-FineBI-应用系统" class="headerlink" title="项目集成 FineBI 应用系统"></a>项目集成 FineBI 应用系统</h1><ul>
+<li>概述  <ol>
+<li>安装 <code>FineBI</code> 客户端,或已有 <code>FineBI</code> 服务端;</li>
+<li>使用<code>FineBI Web 页面集成</code>;</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>前提    </p>
 </blockquote>
 <ol>
 <li><p>安装<code>FIneBi</code> 找到<code>..\FineBI5.0\webapps\webroot</code> 文件夹，复制文件至<code>..\apache-tomcat-9.0.8\webapps\</code>目录下;</p>
@@ -568,12 +574,37 @@
 <li><p>访问<code>http://127.0.0.1:8080/webroot/decision</code> 出现<code>FineBI</code>登录配置页面.</p>
 </li>
 </ol>
-<blockquote>
-<p>数据库连接配置    </p>
-</blockquote>
 <ul>
-<li>连接 <code>iptvView</code> 项目时，需要修改部署项目 <code>Tomcat 8.0.x</code> 中的 <code>xx\webapps\webroots\WEB-INF\lib</code> 的 <code>ojdbc14.jar</code> 改为 <code>ojdbc6.jar</code>    </li>
+<li>如有变动或启动失败,可以查看官网地址<a href="http://help.finebi.com/doc-view-45" target="_blank">Tomcat 服务器部署</a></li>
 </ul>
+<h2 id="web-页面集成"><a href="#web-页面集成" class="headerlink" title="web 页面集成"></a>web 页面集成</h2><blockquote>
+<p>实现思路</p>
+</blockquote>
+<ol>
+<li>配置登录<code>FineBI</code>系统信息,创建配置文件或设置配置文件到主配置文件中;</li>
+<li>创建登录跳转链接 &gt;&gt; 实现通过访问项目地址 &gt;&gt; 返回登录FineBI登录地址,携带登录信息 &gt;&gt; 重定向至<code>FineBI</code>系统</li>
+<li>完成集成</li>
+</ol>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><blockquote>
+<p><code>finebi.properties</code>配置文件内容</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">finebi.path= webroot/decision/login/cross/domain</span><br><span class="line">finebi.redirect= webroot/decision</span><br><span class="line"></span><br><span class="line">#-------localhost-------</span><br><span class="line">#finebi.ip=xxxx</span><br><span class="line">#finebi.port=xxxx</span><br><span class="line"></span><br><span class="line">#--------online---------</span><br><span class="line">finebi.ip=xxxx</span><br><span class="line">finebi.port=xxxxx</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>finebi.path</code>: 登录<code>FineBI</code>接口<code>URL</code></li>
+<li><code>finebi.redirect</code>: 登录成功后重定向<code>URL</code></li>
+<li><code>finebi.ip</code>: <code>FineBI</code> 服务部署地址</li>
+<li><code>finebi.port</code>: <code>FineBI</code> 服务部署端口</li>
+</ul>
+<blockquote>
+<p>实体类获取配置文件内容</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: FineBIProperties</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: FineBI 系统相关配置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2018/12/05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FineBIProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String ip;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String port;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String path;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> String redirect;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="comment">// 读取配置文件</span></span><br><span class="line">		Properties property = <span class="keyword">new</span> Properties();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ClassLoader cl = Thread.currentThread().getContextClassLoader();</span><br><span class="line">			InputStream inputStream = <span class="keyword">new</span> BufferedInputStream(cl.getResourceAsStream(<span class="string">"finebi.properties"</span>));</span><br><span class="line">			property.load(inputStream);</span><br><span class="line">			inputStream.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		ip = property.getProperty(<span class="string">"finebi.ip"</span>);</span><br><span class="line">		port = property.getProperty(<span class="string">"finebi.port"</span>);</span><br><span class="line">		path = property.getProperty(<span class="string">"finebi.path"</span>);</span><br><span class="line">		redirect = property.getProperty(<span class="string">"finebi.redirect"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 拼接登录FineBI 系统的登录URL</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">loginFineBI</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String finbiURL = <span class="string">"http://"</span> + ip + <span class="string">":"</span> + port + <span class="string">"/"</span> + path + <span class="string">"?"</span>;</span><br><span class="line">		<span class="keyword">return</span> finbiURL;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 拼接登陆后重定向的URL</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">redirectURL</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String finbiURL = <span class="string">"http://"</span> + ip + <span class="string">":"</span> + port + <span class="string">"/"</span> + redirect;</span><br><span class="line">		<span class="keyword">return</span> finbiURL;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="访问API返回登录FinBI系统登录URL"><a href="#访问API返回登录FinBI系统登录URL" class="headerlink" title="访问API返回登录FinBI系统登录URL"></a>访问API返回登录FinBI系统登录URL</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sanss.finebi.FineBIProperties;</span><br><span class="line"><span class="keyword">import</span> com.sanss.user.entity.User;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: FineBIController</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 接入 FineBI 相关</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2018/12/05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"finebi"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FineBIController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> Object</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: getLoginUrl</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 获取登录 FineBI 系统的路径,Path</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(value = <span class="string">"getLoginPath"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getLoginUrl</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">		FineBIProperties properties = <span class="keyword">new</span> FineBIProperties();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取登录用户信息</span></span><br><span class="line">		User user = <span class="keyword">new</span> User(<span class="string">"张三"</span>,<span class="string">"1234"</span>);</span><br><span class="line">		String userName = user.getUser_name();</span><br><span class="line">		String password = user.getPasswd();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取登录 FineBI 的地址</span></span><br><span class="line">		String url = properties.loginFineBI();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 拼接 FineBI 登录 url</span></span><br><span class="line">		StringBuffer str = <span class="keyword">new</span> StringBuffer(url);</span><br><span class="line">		str.append(</span><br><span class="line">				<span class="string">"fine_username="</span> + userName + <span class="string">"&amp;fine_password="</span> + password + <span class="string">"&amp;validity=-1"</span></span><br><span class="line">						+ <span class="string">"&amp;&amp;callback=loginFineBI"</span>);</span><br><span class="line"></span><br><span class="line">		result.put(<span class="string">"url"</span>, str);</span><br><span class="line">		result.put(<span class="string">"redirect"</span>, properties.redirectURL());</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>登录的用户信息获取方式有可能不一样,需要根据自身现状进行调整。</li>
+</ul>
+<h3 id="FineBI跳转页面"><a href="#FineBI跳转页面" class="headerlink" title="FineBI跳转页面"></a>FineBI跳转页面</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>FineBI 页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">html &#123;</span></span><br><span class="line"><span class="undefined">	overflow: hidden;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">html, body, iframe &#123;</span></span><br><span class="line"><span class="undefined">	width: 100%;</span></span><br><span class="line"><span class="undefined">	height: 100%;</span></span><br><span class="line"><span class="undefined">	margin: 0px;</span></span><br><span class="line"><span class="undefined">	padding: 0px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">iframe &#123;</span></span><br><span class="line"><span class="undefined">	border: none;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">scrolling</span>=<span class="string">"no"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="comment">/** 获取项目名称 */</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">getProjectName</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> pathName = <span class="built_in">window</span>.document.location.pathname;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">var</span> projectName = pathName.substring(<span class="number">0</span>,pathName.substr(<span class="number">1</span>).indexOf(<span class="string">'/'</span>)+<span class="number">1</span>);</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> projectName;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">		<span class="comment">//../js/util.js中定义的获取项目名称的方法</span></span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> projectName = getProjectName();</span></span><br><span class="line"><span class="javascript">		$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			$.getJSON(projectName + <span class="string">'/finebi/getLoginPath.do'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">				$.ajax(&#123;</span></span><br><span class="line"><span class="actionscript">					type : <span class="string">'GET'</span>,</span></span><br><span class="line"><span class="undefined">					url : data.url,</span></span><br><span class="line"><span class="actionscript">					dataType : <span class="string">'jsonp'</span>,</span></span><br><span class="line"><span class="actionscript">					success : <span class="function"><span class="keyword">function</span><span class="params">(token)</span> </span>&#123;</span></span><br><span class="line"><span class="undefined">						loginFineBI(data, token);</span></span><br><span class="line"><span class="undefined">					&#125;</span></span><br><span class="line"><span class="undefined">				&#125;);</span></span><br><span class="line"><span class="undefined">			&#125;);</span></span><br><span class="line"><span class="undefined">		&#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> loginFineBI = <span class="function"><span class="keyword">function</span><span class="params">(data, token)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">			$(<span class="string">'iframe'</span>).attr(<span class="string">"src"</span>, data.redirect);</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他的集成方式"><a href="#其他的集成方式" class="headerlink" title="其他的集成方式"></a>其他的集成方式</h3><p><strong>注：</strong>以上方式实现登录需要同步<code>项目连接数据库用户登录相关表</code>与<code>FineBI系统的用户信息表</code>才能实现登录,也可以采用<code>Token</code>或其他方式实现登录,有关其他的详细步骤可以查看官网<a href="http://help.finebi.com/doc-view-372.html" target="_blank">Web页面集成简单例子</a></p>
 
       
     </div>
@@ -610,8 +641,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/all/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/SpringCloud/Eureka-Server/" rel="next" title="Eureka-Server">
+                <i class="fa fa-chevron-left"></i> Eureka-Server
               </a>
             
           </div>
@@ -620,8 +651,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Doc/DOS命令记录/" rel="prev" title="Doc 常用命令记录">
-                Doc 常用命令记录 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/HTML/HTML笔记/" rel="prev" title="HTML log">
+                HTML log <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -693,7 +724,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -746,7 +777,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -853,7 +900,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -911,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目集成-FineBI-应用系统-s"><span class="nav-number">1.</span> <span class="nav-text">项目集成 FineBI 应用系统 s</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目集成-FineBI-应用系统"><span class="nav-number">1.</span> <span class="nav-text">项目集成 FineBI 应用系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web-页面集成"><span class="nav-number">1.1.</span> <span class="nav-text">web 页面集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问API返回登录FinBI系统登录URL"><span class="nav-number">1.1.2.</span> <span class="nav-text">访问API返回登录FinBI系统登录URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FineBI跳转页面"><span class="nav-number">1.1.3.</span> <span class="nav-text">FineBI跳转页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他的集成方式"><span class="nav-number">1.1.4.</span> <span class="nav-text">其他的集成方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -932,7 +1013,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

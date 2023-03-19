@@ -104,10 +104,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 使用记录">
 <meta property="og:url" content="http://blog.dew.com/Blog/Linux/Linux命令/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="Linux 使用记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-11T00:37:28.569Z">
+<meta property="og:updated_time" content="2021-03-24T02:13:45.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 使用记录">
 <meta name="twitter:description" content="Linux 使用记录">
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Linux 使用记录 | Dew</title>
+  <title>Linux 使用记录 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019/03/11 08:37:28" itemprop="dateModified" datetime="2019-03-11T08:37:28+08:00">2019/03/11</time>
+                <time title="修改时间：2021/03/24 10:13:45" itemprop="dateModified" datetime="2021-03-24T10:13:45+08:00">2021/03/24</time>
               
             
           </span>
@@ -577,6 +577,14 @@
 <li>修改后：</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> create gc log monitor</span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC -Xloggc:/opt/apache-tomcat-8.0.52/logs/tomcat_gc.log'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> OS specific support.  $var _must_ be set to either true or false.</span><br><span class="line">JAVA_OPTS='-Xms2048m -Xmx2048m -XX:PermSize=256m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -XX:ParallelGCThreads=8 -XX:+UseConcMarkSweepGC'</span><br></pre></td></tr></table></figure>
+<h2 id="Linux-下查看-Tomcat-并发数"><a href="#Linux-下查看-Tomcat-并发数" class="headerlink" title="Linux 下查看 Tomcat 并发数"></a><code>Linux</code> 下查看 <code>Tomcat</code> 并发数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090|grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
+<h2 id="统计字符串出现次数"><a href="#统计字符串出现次数" class="headerlink" title="统计字符串出现次数"></a>统计字符串出现次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ./logs/error.iptv-meshing.log | grep &apos;parameter error&apos; | wc -l</span><br></pre></td></tr></table></figure>
+<h2 id="统计端口TCP连接状态数量"><a href="#统计端口TCP连接状态数量" class="headerlink" title="统计端口TCP连接状态数量"></a>统计端口<code>TCP</code>连接状态数量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp|grep 7090 | grep ESTABLISHED -c</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>TCP</code>连接状态</li>
+</ul>
+<h2 id="导入MySQL数据库数据"><a href="#导入MySQL数据库数据" class="headerlink" title="导入MySQL数据库数据"></a>导入<code>MySQL</code>数据库数据</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 连接mysql</span><br><span class="line">mysql  -u用户名  -p密码</span><br><span class="line">2. 连接你要导入的数据库的名字</span><br><span class="line">mysql&gt; use  数据库名</span><br><span class="line">3. 导入sql文件</span><br><span class="line">mysql&gt; source  /tmp/database.sql;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -612,8 +620,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/Linux/Linux部署war包/" rel="next" title="Linux 手动部署 war 包">
-                <i class="fa fa-chevron-left"></i> Linux 手动部署 war 包
+              <a href="/Blog/Intellij IDEA部署web项目web.xml解析异常/" rel="next" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
+                <i class="fa fa-chevron-left"></i> Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误
               </a>
             
           </div>
@@ -622,8 +630,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/JQuery/Jquery使用记录/" rel="prev" title="Jquery 使用日志">
-                Jquery 使用日志 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Intellij-IDEA运行web项目异常/" rel="prev" title="Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误">
+                Intellij IDEA 部署 Web 项目时,web.xml 无法正常解析导致 jsp 显示错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -695,7 +703,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -748,7 +756,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -855,7 +879,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -913,7 +971,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-命令使用记录"><span class="nav-number">1.</span> <span class="nav-text">Linux 命令使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看已经在使用的端口"><span class="nav-number">1.1.</span> <span class="nav-text">查看已经在使用的端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查端口是否被占用"><span class="nav-number">1.2.</span> <span class="nav-text">检查端口是否被占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">1.4.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-相关的进程"><span class="nav-number">1.5.</span> <span class="nav-text">查看 tomcat 相关的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-实时输出日志"><span class="nav-number">1.6.</span> <span class="nav-text">查看 tomcat 实时输出日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看内存信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某个进程-CPU-占用"><span class="nav-number">1.8.</span> <span class="nav-text">某个进程 CPU 占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下-Tomcat-开启查看-GC-信息"><span class="nav-number">1.9.</span> <span class="nav-text">Linux 下 Tomcat 开启查看 GC 信息</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-命令使用记录"><span class="nav-number">1.</span> <span class="nav-text">Linux 命令使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看已经在使用的端口"><span class="nav-number">1.1.</span> <span class="nav-text">查看已经在使用的端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查端口是否被占用"><span class="nav-number">1.2.</span> <span class="nav-text">检查端口是否被占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除文件"><span class="nav-number">1.4.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-相关的进程"><span class="nav-number">1.5.</span> <span class="nav-text">查看 tomcat 相关的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看-tomcat-实时输出日志"><span class="nav-number">1.6.</span> <span class="nav-text">查看 tomcat 实时输出日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看内存信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#某个进程-CPU-占用"><span class="nav-number">1.8.</span> <span class="nav-text">某个进程 CPU 占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下-Tomcat-开启查看-GC-信息"><span class="nav-number">1.9.</span> <span class="nav-text">Linux 下 Tomcat 开启查看 GC 信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下查看-Tomcat-并发数"><span class="nav-number">1.10.</span> <span class="nav-text">Linux 下查看 Tomcat 并发数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计字符串出现次数"><span class="nav-number">1.11.</span> <span class="nav-text">统计字符串出现次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计端口TCP连接状态数量"><span class="nav-number">1.12.</span> <span class="nav-text">统计端口TCP连接状态数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入MySQL数据库数据"><span class="nav-number">1.13.</span> <span class="nav-text">导入MySQL数据库数据</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -934,7 +992,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

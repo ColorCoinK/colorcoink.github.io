@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="IDEA优化笔记">
+<meta name="keywords" content="Blog,IDEA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IDEA优化笔记">
+<meta property="og:url" content="http://blog.dew.com/draft/IDEA优化笔记.html">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="IDEA优化笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.dew.com/images/idea-groovy.png">
+<meta property="og:updated_time" content="2020-10-27T05:38:24.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IDEA优化笔记">
+<meta name="twitter:description" content="IDEA优化笔记">
+<meta name="twitter:image" content="http://blog.dew.com/images/idea-groovy.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dew.com/draft/IDEA优化笔记.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>IDEA优化笔记 | Dew | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dew | Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">焦虑的肉松面包</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-file"></i> <br>Blog</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springboot/" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>SpringBoot</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>SpringCloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">IDEA优化笔记
+
+</h1>
+
+<div class="post-meta">
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          IDEA优化笔记
+<a id="more"></a>
+<h1 id="下载-安装"><a href="#下载-安装" class="headerlink" title="下载/安装"></a>下载/安装</h1><blockquote>
+<p>下载路径</p>
+</blockquote>
+<p>链接: <a href="https://www.jetbrains.com/zh-cn/idea/download/#section=windows" target="_blank"><code>https://www.jetbrains.com/zh-cn/idea/download/#section=windows</code></a></p>
+<h1 id="配置注释模板"><a href="#配置注释模板" class="headerlink" title="配置注释模板"></a>配置注释模板</h1><p><strong>注:</strong> 可根据实际情况自行调整,本文只列举了<code>Java开发</code>常用的注释模板。</p>
+<blockquote>
+<p>文件生成时的模板<code>File and Code Template</code></p>
+</blockquote>
+<ul>
+<li>设置路径: <code>File --&gt; Settings --&gt; Editor --&gt; File and Code Template --&gt; Files(右侧Tab选项卡,默认为Files)</code>,选择对应的文件</li>
+</ul>
+<blockquote>
+<p>注释文件模板</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><code>Class</code></p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != "")</span><br><span class="line">    <span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;</span><br><span class="line">#end</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> $&#123;NAME&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br&gt;</span></span><br><span class="line"><span class="comment">    TODO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> luohui &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> **/</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;NAME&#125;&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p><code>Interface</code></p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != "")</span><br><span class="line">    <span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;</span><br><span class="line">#end</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> $&#123;NAME&#125; &lt;br&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *  TODO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;NAME&#125; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p><code>Enum</code></p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != "")</span><br><span class="line">    <span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;</span><br><span class="line">#end</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> $&#123;NAME&#125;&lt;br&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> *  TODO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;NAME&#125; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Includes</code></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><code>ActionScript File Header</code></p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>Name</code>: <code>ActionScript File Header</code></li>
+<li><code>Extension</code>: <code>as</code></li>
+</ul>
+<figure class="highlight as"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @Author: Dew </span></span><br><span class="line"><span class="comment"> * @Date: Created in $&#123;DATE&#125; $&#123;TIME&#125; </span></span><br><span class="line"><span class="comment"> * @Description:    $&#123;description&#125; </span></span><br><span class="line"><span class="comment"> * @Modified By:   </span></span><br><span class="line"><span class="comment"> * @Version:     $version$</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p><code>File Header</code></p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@Author</span>: luohui</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@ClassName</span>: $&#123;PACKAGE_NAME&#125;</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@Description</span>: TODO</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@Date</span>: $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h1 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置<code>Maven</code></h1><blockquote>
+<p>步骤一: 下载<code>Maven</code></p>
+</blockquote>
+<ul>
+<li>下载路径: <a href="http://maven.apache.org/download.cgi" target="_blank"><code>http://maven.apache.org/download.cgi</code></a></li>
+<li>下载文件: <code>Binary tar.gz archive</code>或者<code>Binary zip archive</code></li>
+</ul>
+<blockquote>
+<p>步骤二: 更改镜像地址(本文替换为阿里源,也可以替换为公司私服镜像)</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/SETTINGS/1.0.0"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment">   | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment">   |</span></span><br><span class="line"><span class="comment">   | Default: ~/.m2/repository</span></span><br><span class="line"><span class="comment">  &lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 配置本地repository路径 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven-repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">username</span>&gt;</span>deployment<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">password</span>&gt;</span>deployment<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 私服镜像配置 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">username</span>&gt;</span>deployment<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">password</span>&gt;</span>deployment<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 私服镜像配置 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">server</span>&gt;</span>  </span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>thirdparty<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">			<span class="tag">&lt;<span class="name">username</span>&gt;</span>username<span class="tag">&lt;/<span class="name">username</span>&gt;</span>  </span><br><span class="line">			<span class="tag">&lt;<span class="name">password</span>&gt;</span>password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>saicmotor<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">name</span>&gt;</span>本地nuxus私服镜像<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 服务器镜像的URL地址 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">url</span>&gt;</span>https://私服路径<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">&lt;!-- *号表示是所有的Maven仓库镜像 --&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 还可以有以下几种取值：【central】、【repo1,repo2】、【*,!inhouse】、【external:*】 等 --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">nexus.host</span>&gt;</span>http://search.maven.org<span class="tag">&lt;/<span class="name">nexus.host</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!-- 远程仓库配置，下载与上传通过此配置的仓库。该配置覆盖了pom.xml中的 repositories --&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">name</span>&gt;</span>Repository for Local Nexus Server<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">url</span>&gt;</span>$&#123;nexus.host&#125;/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">						<span class="comment">&lt;!-- 从远程仓库检查更新的频率：dailly——每天检查一次，默认值；never——从不更新；always——每次构建都检查更新；interval:x——间隔x分钟检查一次； --&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">name</span>&gt;</span>Plugin Repository for Local Nexus Server<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">url</span>&gt;</span>$&#123;nexus.host&#125;/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>步骤三: 选择<code>Maven</code>路径</p>
+</blockquote>
+<h1 id="配置数据库生成实体类DewPOJOs-groovy"><a href="#配置数据库生成实体类DewPOJOs-groovy" class="headerlink" title="配置数据库生成实体类DewPOJOs.groovy"></a>配置数据库生成实体类<code>DewPOJOs.groovy</code></h1><blockquote>
+<p>配置文件路径</p>
+</blockquote>
+<ul>
+<li>打开某个项目后,在左侧有<code>Scratches and Consoles</code>文件夹.</li>
+</ul>
+<p><img src="/images/idea-groovy.png" alt="idea-groovy"></p>
+<blockquote>
+<p>文件内容(全选覆盖即可)</p>
+</blockquote>
+<ul>
+<li>自定义<code>Generate xx.groovy</code>生成数据库表对应的实体类</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.intellij.database.model.DasTable</span><br><span class="line"><span class="keyword">import</span> com.intellij.database.util.Case</span><br><span class="line"><span class="keyword">import</span> com.intellij.database.util.DasUtil</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Available context bindings:</span></span><br><span class="line"><span class="comment"> *   SELECTION   Iterable&lt;DasObject&gt;</span></span><br><span class="line"><span class="comment"> *   PROJECT     project</span></span><br><span class="line"><span class="comment"> *   FILES       files helper</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ============= 常量区域 =================</span></span><br><span class="line">useLogicDelete = <span class="literal">true</span>; <span class="comment">/* 启用逻辑删除 */</span></span><br><span class="line">useLombok = <span class="literal">true</span>;<span class="comment">/*是否启用lombok*/</span></span><br><span class="line">useSerializable = <span class="literal">true</span>;<span class="comment">/*是否启用实体序列化*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 类型转换 ,负责将数据库类型转换为java类型,转换逻辑取自 mybatis */</span></span><br><span class="line">typeMapping = [</span><br><span class="line">        (<span class="regexp">~/(?i)real|decimal|numeric/</span>)        : <span class="string">"BigDecimal"</span>,</span><br><span class="line">        (<span class="regexp">~/(?i)tinyint|smallint|mediumint/</span>)  : <span class="string">"Integer"</span>,</span><br><span class="line">        (<span class="regexp">~/(?i)int|bigint/</span>)                  : <span class="string">"Long"</span>,</span><br><span class="line">        (<span class="regexp">~/(?i)enum/</span>)                        : <span class="string">"String"</span>, <span class="comment">/* 枚举统一转换为字符串*/</span></span><br><span class="line">        (<span class="regexp">~/(?i)float|double/</span>)                : <span class="string">"Double"</span>, <span class="comment">/* 根据自己的需求可以考虑其他类型*/</span></span><br><span class="line">        (<span class="regexp">~/(?i)datetime|timestamp|date|time/</span>): <span class="string">"Date"</span>,</span><br><span class="line">        (<span class="regexp">~/(?i)/</span>)                            : <span class="string">"String"</span> <span class="comment">/*其余的统一转成字符串*/</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* java 别名映射 ,负责导包*/</span></span><br><span class="line">javaAliasMap = [</span><br><span class="line">        <span class="string">"BigDecimal"</span>        : <span class="string">"java.math.BigDecimal"</span>,</span><br><span class="line">        <span class="string">"Date"</span>              : <span class="string">"java.util.Date"</span>,</span><br><span class="line">        <span class="string">"Getter"</span>            : <span class="string">"lombok.Getter"</span>,</span><br><span class="line">        <span class="string">"Setter"</span>            : <span class="string">"lombok.Setter"</span>,</span><br><span class="line">        <span class="string">"Data"</span>              : <span class="string">"lombok.Data"</span>,</span><br><span class="line">        <span class="string">"NoArgsConstructor"</span> : <span class="string">"lombok.NoArgsConstructor"</span>,</span><br><span class="line">        <span class="string">"AllArgsConstructor"</span>: <span class="string">"lombok.AllArgsConstructor"</span>,</span><br><span class="line">        <span class="string">"ToString"</span>          : <span class="string">"lombok.ToString"</span>,</span><br><span class="line">        <span class="string">"Serializable"</span>      : <span class="string">"java.io.Serializable"</span>,</span><br><span class="line">        <span class="string">"Table"</span>             : <span class="string">"cn.jpanda.common.page.annotations.Table"</span>,</span><br><span class="line">        <span class="string">"TableID"</span>           : <span class="string">"cn.jpanda.common.page.annotations.TableID"</span>,</span><br><span class="line">        <span class="string">"Column"</span>            : <span class="string">"cn.jpanda.common.page.annotations.Column"</span>,</span><br><span class="line">        <span class="string">"Logic"</span>             : <span class="string">"cn.jpanda.common.page.annotations.Logic"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* =========  运行时属性定义 ============*/</span></span><br><span class="line"><span class="comment">// 代码生成路径,在脚本中通过弹出文件框进行选择</span></span><br><span class="line">String packageName = <span class="string">""</span></span><br><span class="line"><span class="comment">/* 待引入的java类*/</span></span><br><span class="line">importClass = [];</span><br><span class="line"><span class="comment">/* 待使用注解 */</span></span><br><span class="line">usesAnnotations = [];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 脚本入口 */</span></span><br><span class="line"><span class="comment">/* 选择文件目录 ,并执行生成代码操作 */</span></span><br><span class="line">FILES.chooseDirectoryAndSave(<span class="string">"Choose directory"</span>, <span class="string">"Choose where to store generated files"</span>) &#123; dir -&gt;</span><br><span class="line">    SELECTION.filter &#123; it <span class="keyword">instanceof</span> DasTable &#125;.each &#123; generate(it, dir) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> generate(table, dir) &#123;</span><br><span class="line">    <span class="comment">// step1: 获取包名</span></span><br><span class="line">    packageName = getPackageName(dir)</span><br><span class="line">    <span class="comment">// step2: 获取当前表名对应的类名称,表名及类名可以自行调整</span></span><br><span class="line">    <span class="keyword">def</span> className = javaName(table.getName().replace(<span class="string">'t_'</span>, <span class="string">''</span>), <span class="literal">true</span>)</span><br><span class="line">    <span class="comment">// step3: 加载lombok注解</span></span><br><span class="line">    <span class="keyword">if</span> (useLombok) &#123;</span><br><span class="line">        usesAnnotations = [];</span><br><span class="line">        [<span class="string">"Data"</span>, <span class="string">"ToString"</span>, <span class="string">"NoArgsConstructor"</span>, <span class="string">"AllArgsConstructor"</span>].each() &#123;</span><br><span class="line">            convertAliasesAndImportClasses(it)</span><br><span class="line">            usesAnnotations &lt;&lt; it;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// step4: 加载序列化</span></span><br><span class="line">    <span class="keyword">if</span> (useSerializable) &#123;</span><br><span class="line">        convertAliasesAndImportClasses(<span class="string">"Serializable"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// step5: 加载自定义类注解</span></span><br><span class="line">    loadCustomAnnotationToClass(table, className, dir);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// step6: 处理所有数据列定义</span></span><br><span class="line">    <span class="keyword">def</span> properties = processDataColumnDefinition(table);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// step7: 生成代码</span></span><br><span class="line">    <span class="keyword">new</span> File(dir <span class="keyword">as</span> File, className + <span class="string">".java"</span>).withPrintWriter(<span class="string">"utf-8"</span>) &#123;</span><br><span class="line">        out -&gt;</span><br><span class="line">            generate(out, className, properties, table)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成实体类代码</span></span><br><span class="line"><span class="keyword">def</span> generate(out, className, properties, table) &#123;</span><br><span class="line">    <span class="comment">// step 1: 输出包名</span></span><br><span class="line">    out.println <span class="string">"package $packageName"</span></span><br><span class="line">    out.println <span class="string">""</span></span><br><span class="line">    out.println <span class="string">""</span></span><br><span class="line">    <span class="comment">// step2: 导入类</span></span><br><span class="line">    importClass.each() &#123;</span><br><span class="line">        out.println <span class="string">"import $&#123;it&#125;;"</span></span><br><span class="line">    &#125;</span><br><span class="line">    out.println <span class="string">""</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 补充:生成注释</span></span><br><span class="line">    generateClassComments(out, table)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// step3: 生成类注解</span></span><br><span class="line">    usesAnnotations.each() &#123;</span><br><span class="line">        out.println <span class="string">"@$&#123;it&#125;"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// step4: 生成类名</span></span><br><span class="line">    out.print <span class="string">"public class $className"</span></span><br><span class="line">    <span class="keyword">if</span> (useSerializable) &#123;</span><br><span class="line">        out.println(<span class="string">" implements Serializable &#123;"</span>)</span><br><span class="line">        out.println <span class="string">""</span></span><br><span class="line">        <span class="comment">/* 生成序列化ID*/</span></span><br><span class="line">        out.println genSerialID()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        out.println <span class="string">"&#123;"</span></span><br><span class="line">    &#125;</span><br><span class="line">    out.println <span class="string">""</span></span><br><span class="line">    <span class="comment">// step5: 处理每个属性定义</span></span><br><span class="line">    properties.each() &#123;</span><br><span class="line">        <span class="comment">// step5.1: 输出注释</span></span><br><span class="line">        <span class="keyword">if</span> (isNotEmpty(it.comment)) &#123;</span><br><span class="line">            out.println <span class="string">"\t/**"</span></span><br><span class="line">            out.println <span class="string">"\t * $&#123;it.comment&#125;"</span></span><br><span class="line">            out.println <span class="string">"\t */"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//step5.2: 输出注解</span></span><br><span class="line">        it.annos.each() &#123;</span><br><span class="line">            out.println <span class="string">"\t@$&#123;it&#125;"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*step5.3: 输入字段内容*/</span></span><br><span class="line">        out.println <span class="string">"\tprivate $&#123;it.type&#125; $&#123;it.name&#125;;"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// step6: 生成getter/setter方法</span></span><br><span class="line">    <span class="keyword">if</span> (!useLombok) &#123;</span><br><span class="line">        <span class="comment">// 在未启用lombok的情况下生成getter/setter方法</span></span><br><span class="line">        properties.each() &#123;</span><br><span class="line">            out.println <span class="string">""</span></span><br><span class="line">            out.println <span class="string">"  public $&#123;it.type&#125; get$&#123;it.name.capitalize()&#125;() &#123;"</span></span><br><span class="line">            out.println <span class="string">"    return $&#123;it.name&#125;;"</span></span><br><span class="line">            out.println <span class="string">"  &#125;"</span></span><br><span class="line">            out.println <span class="string">""</span></span><br><span class="line">            out.println <span class="string">"  public void set$&#123;it.name.capitalize()&#125;($&#123;it.type&#125; $&#123;it.name&#125;) &#123;"</span></span><br><span class="line">            out.println <span class="string">"    this.$&#123;it.name&#125; = $&#123;it.name&#125;;"</span></span><br><span class="line">            out.println <span class="string">"  &#125;"</span></span><br><span class="line">            out.println <span class="string">""</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// step7: 结尾</span></span><br><span class="line">    out.println <span class="string">"&#125;"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> processDataColumnDefinition(table) &#123;</span><br><span class="line">    <span class="comment">// 加载当前数据库主键</span></span><br><span class="line">    <span class="keyword">def</span> primaryKey = <span class="string">""</span></span><br><span class="line">    <span class="keyword">def</span> prKey = DasUtil.getPrimaryKey(table);</span><br><span class="line">    <span class="keyword">if</span> (prKey != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">def</span> keyRef = prKey.getColumnsRef();</span><br><span class="line">        <span class="keyword">if</span> (keyRef != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">def</span> it = keyRef.iterate();</span><br><span class="line">            <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">                <span class="comment">// 默认只处理单主键</span></span><br><span class="line">                primaryKey = it.next();</span><br><span class="line">            &#125;</span><br><span class="line">            primaryKey = javaName(primaryKey, <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 依次处理每一行数据列</span></span><br><span class="line">    DasUtil.getColumns(table).reduce([]) &#123; properties, col -&gt;</span><br><span class="line">        <span class="comment">// 获取JDBC类型</span></span><br><span class="line">        <span class="keyword">def</span> spec = Case.LOWER.apply(col.getDataType().getSpecification())</span><br><span class="line">        <span class="comment">// 将JDBC类型映射为JAVA类型</span></span><br><span class="line">        <span class="keyword">def</span> typeStr = typeMapping.find &#123; p, t -&gt; p.matcher(spec).find() &#125;.value</span><br><span class="line">        <span class="comment">// 判断该类型是否需要导包</span></span><br><span class="line">        convertAliasesAndImportClasses(typeStr);</span><br><span class="line">        <span class="comment">// 将列名称转换为字段名称</span></span><br><span class="line">        <span class="keyword">def</span> javaName = javaName(col.getName(), <span class="literal">false</span>);</span><br><span class="line">        <span class="comment">// 当前列是否为主键</span></span><br><span class="line">        <span class="keyword">def</span> isPrimaryKey = javaName.equals(primaryKey);</span><br><span class="line">        <span class="comment">// 是否为逻辑删除标记</span></span><br><span class="line">        <span class="keyword">def</span> isLogicDeleteFlag = isLogicDelete(javaName);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> property = [</span><br><span class="line">                <span class="string">name   :</span> javaName,  <span class="comment">/* java属性名*/</span></span><br><span class="line"><span class="symbol">                colName:</span> col.getName(), <span class="comment">/*jdbc列名*/</span></span><br><span class="line">                <span class="string">type   :</span> typeStr, <span class="comment">/*java类型*/</span></span><br><span class="line"><span class="symbol">                comment:</span> col.getComment(),<span class="comment">/*注释*/</span></span><br><span class="line">                <span class="string">isKey  :</span> isPrimaryKey, <span class="comment">/*是否为数据表主键*/</span></span><br><span class="line">                <span class="string">isDel  :</span> isLogicDeleteFlag, <span class="comment">/*是否是逻辑删除标志*/</span></span><br><span class="line">                <span class="string">annos  :</span> [] <span class="comment">/*需要添加的属性注解*/</span></span><br><span class="line">        ]</span><br><span class="line">        loadCustomAnnotationsToProperty(property);</span><br><span class="line">        properties &lt;&lt; property;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> javaName(str, capitalize) &#123;</span><br><span class="line">    <span class="keyword">def</span> s = com.intellij.psi.codeStyle.NameUtil.splitNameIntoWords(str)</span><br><span class="line">            .collect &#123; Case.LOWER.apply(it).capitalize() &#125;</span><br><span class="line">            .join(<span class="string">""</span>)</span><br><span class="line">            .replaceAll(<span class="regexp">/[^\p&#123;javaJavaIdentifierPart&#125;[_]]/</span>, <span class="string">"_"</span>)</span><br><span class="line">    capitalize || s.length() == <span class="number">1</span> ? s : Case.LOWER.apply(s[<span class="number">0</span>]) + s[<span class="number">1.</span>.<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">def</span> isNotEmpty(content) &#123;</span><br><span class="line">    <span class="keyword">return</span> content != <span class="literal">null</span> &amp;&amp; content.toString().trim().length() &gt; <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> String genSerialID() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"\tprivate static final long serialVersionUID =  "</span> + Math.abs(<span class="keyword">new</span> Random().nextLong()) + <span class="string">"L;"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 生成包名</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">def</span> getPackageName(dir) &#123;</span><br><span class="line">    <span class="keyword">return</span> dir.toString().replaceAll(<span class="string">"\\\\"</span>, <span class="string">"."</span>).replaceAll(<span class="string">"/"</span>, <span class="string">"."</span>).replaceAll(<span class="string">"^.*src(\\.main\\.java\\.)?"</span>, <span class="string">""</span>) + <span class="string">";"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断一个java属性是否为逻辑删除</span></span><br><span class="line"><span class="comment"> * [根据自己的需求重构该测试]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> property 属性名称</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">boolean</span> isLogicDelete(property) &#123;</span><br><span class="line">    <span class="keyword">return</span> useLogicDelete &amp;&amp; property.equalsIgnoreCase(<span class="string">"DeleteFlag"</span>) || property.equalsIgnoreCase(<span class="string">"DelFlag"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导入lombok的类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> importLombokPackage() &#123;</span><br><span class="line">    <span class="keyword">if</span> (useLombok) &#123;</span><br><span class="line">        [<span class="string">"lombok.Data"</span>, <span class="string">"lombok.ToString"</span>].each() &#123;</span><br><span class="line">            doImportClass(it);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导入一个包名称</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> className</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> doImportClass(className) &#123;</span><br><span class="line">    <span class="keyword">if</span> (importClass.count &#123; it -&gt; it.equalsIgnoreCase(className) &#125; == <span class="number">0</span>) &#123;</span><br><span class="line">        importClass &lt;&lt; className;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> convertAliasesAndImportClasses(className) &#123;</span><br><span class="line">    <span class="keyword">def</span> entry = javaAliasMap.find &#123; p, t -&gt; p.equalsIgnoreCase(className) &#125;;</span><br><span class="line">    <span class="keyword">if</span> (entry == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">def</span> fullName = entry.value</span><br><span class="line">    <span class="keyword">if</span> (isNotEmpty(fullName)) &#123;</span><br><span class="line">        doImportClass(fullName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> loadCustomAnnotationToClass(table, className, dir) &#123;</span><br><span class="line">    <span class="comment">// 根据自己的需求实现,加载自定义的注解,比如JPA注解</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> loadCustomAnnotationsToProperty(property) &#123;</span><br><span class="line">    <span class="comment">// 根据自己的需求实现,加载自定义属性注解,比如这里,我使用了自定义的注解</span></span><br><span class="line">    <span class="keyword">if</span> (property.isDel) &#123;</span><br><span class="line">        convertAliasesAndImportClasses(<span class="string">"Logic"</span>);</span><br><span class="line"><span class="comment">//        property.annos &lt;&lt; "Logic";</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (property.isKey) &#123;</span><br><span class="line">        convertAliasesAndImportClasses(<span class="string">"TableID"</span>);</span><br><span class="line"><span class="comment">//        property.annos &lt;&lt; "TableID";</span></span><br><span class="line">    &#125;</span><br><span class="line">    convertAliasesAndImportClasses(<span class="string">"Column"</span>);</span><br><span class="line"><span class="comment">//    property.annos &lt;&lt; "Column";</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> generateClassComments(out, table) &#123;</span><br><span class="line">    <span class="comment">/* 生成类注释 */</span></span><br><span class="line">    [<span class="string">"/**"</span>,</span><br><span class="line">     <span class="string">" * "</span>,</span><br><span class="line">     <span class="string">" * $&#123;table.getComment()&#125;"</span>,</span><br><span class="line">     <span class="string">" * @author Dew"</span>,</span><br><span class="line">     <span class="string">" * @version 1.0"</span>,</span><br><span class="line">     <span class="string">" * @since "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).format(<span class="keyword">new</span> Date()),</span><br><span class="line">     <span class="string">" */"</span></span><br><span class="line">    ].each() &#123;</span><br><span class="line">        out.println <span class="string">"$&#123;it&#125;"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+            
+              <p class="site-author-name" itemprop="name">wloop</p>
+              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ColorCoinK" title="GitHub &rarr; https://github.com/ColorCoinK" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-安装"><span class="nav-number">1.</span> <span class="nav-text">下载/安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置注释模板"><span class="nav-number">2.</span> <span class="nav-text">配置注释模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置Maven"><span class="nav-number">3.</span> <span class="nav-text">配置Maven</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置数据库生成实体类DewPOJOs-groovy"><span class="nav-number">4.</span> <span class="nav-text">配置数据库生成实体类DewPOJOs.groovy</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wloop</span>
+
+  
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

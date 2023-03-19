@@ -104,10 +104,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot 图片上传">
 <meta property="og:url" content="http://blog.dew.com/SpringBoot/SpringBoot实现图片上传功能/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="SpringBoot 图片上传">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T06:16:43.905Z">
+<meta property="og:updated_time" content="2021-01-26T06:52:36.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot 图片上传">
 <meta name="twitter:description" content="SpringBoot 图片上传">
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>SpringBoot 图片上传 | Dew</title>
+  <title>SpringBoot 图片上传 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -470,12 +470,24 @@
                 
               
 
-              <time title="创建时间：2019/02/28 11:00:13 / 修改时间：14:16:43" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
+              <time title="创建时间：2019/02/28 11:00:13" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021/01/26 14:52:36" itemprop="dateModified" datetime="2021-01-26T14:52:36+08:00">2021/01/26</time>
               
             
           </span>
@@ -559,14 +571,18 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">layui.use(<span class="string">'upload'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $ = layui.jquery, upload = layui.upload;</span><br><span class="line">	<span class="comment">//普通图片上传</span></span><br><span class="line">	<span class="keyword">var</span> uploadInst = upload.render(&#123;</span><br><span class="line">		url : <span class="string">'../picture/uploadImg'</span><span class="comment">//图片上传action路径配置</span></span><br><span class="line">		,<span class="attr">data</span> : &#123;</span><br><span class="line">			folder : <span class="string">'hotel/'</span></span><br><span class="line">		&#125;,</span><br><span class="line">		before : <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">			<span class="comment">//预读本地文件示例，不支持ie8</span></span><br><span class="line">			obj.preview(<span class="function"><span class="keyword">function</span>(<span class="params">index, file,</span></span></span><br><span class="line"><span class="function"><span class="params">					result</span>) </span>&#123;</span><br><span class="line">				$(<span class="string">'#imgSrc'</span>).attr(<span class="string">'src'</span>, result); <span class="comment">//图片链接（base64）,显示缩略图</span></span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;,</span><br><span class="line">		done : <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (data.data.message == <span class="string">'success'</span>) &#123;</span><br><span class="line">				$(<span class="string">'#hotelPicture'</span>).val(</span><br><span class="line">						data.data.picUrl);<span class="comment">//设置图片相对路径，表单提交时提交图片url</span></span><br><span class="line">				<span class="keyword">return</span> layer.msg(<span class="string">'上传成功!'</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		error : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">//演示失败状态，并实现重传</span></span><br><span class="line">			<span class="keyword">var</span> demoText = $(<span class="string">'#demoText'</span>);</span><br><span class="line">			demoText</span><br><span class="line">					.html(<span class="string">'&lt;span style="color: #FF5722;"&gt;上传失败&lt;/span&gt; &lt;a class="layui-btn layui-btn-mini demo-reload"&gt;重试&lt;/a&gt;'</span>);</span><br><span class="line">			demoText.find(<span class="string">'.demo-reload'</span>).on(</span><br><span class="line">					<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">						uploadInst.upload();</span><br><span class="line">					&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">```	</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">##  修改配置文件 </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&gt; 第二步: 修改配置文件 </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">```properties</span></span><br><span class="line"><span class="regexp"># file write static resource path</span></span><br><span class="line"><span class="regexp">web.upload-path=F:/</span>temp/springboot/</span><br><span class="line"></span><br><span class="line">spring.mvc.static-path-pattern=<span class="comment">/**</span></span><br><span class="line"><span class="comment">spring.resources.static-locations=classpath:/templates/,classpath:/META-INF/resources/,classpath:/resources/,\</span></span><br><span class="line"><span class="comment">  classpath:/static/,classpath:/public/,file:$&#123;web.upload-path&#125;</span></span><br></pre></td></tr></table></figure>
 <p>注： web.upload-path 为图片保存路径，若使用linux系统部署需要将绝对路径替换为相对路径。    例如：</p>
-<h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><blockquote>
+<h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><ul>
+<li>在<code>SpringBoot 2.x</code>版本中,<a href="## 页面显示配置    ">页面静态资源配置</a>无法实现。故采用配置文件的方式实现了，可以忽略本文中的<code>页面显示配置</code>或采用其他的方式。</li>
+</ul>
+<blockquote>
 <p>第三步：文件上传API    </p>
 </blockquote>
-<pre><code>文件上传API待更新
-</code></pre><h2 id="页面显示配置"><a href="#页面显示配置" class="headerlink" title="页面显示配置"></a>页面显示配置</h2><blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置外部文件夹可通过HTTP访问图片,即配置静态资源路径</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  mvc:</span></span><br><span class="line">		<span class="attr">static-path-pattern:</span> <span class="string">/**</span></span><br><span class="line">	<span class="attr">web:</span></span><br><span class="line"><span class="attr">    resources:</span></span><br><span class="line"><span class="attr">      static-locations:</span> <span class="attr">classpath:/static/,file:/temp/fileupload/image</span></span><br><span class="line"><span class="comment"># 上传文件路径配置</span></span><br><span class="line"><span class="attr">web:</span></span><br><span class="line"><span class="attr">  upload:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">/temp/fileupload/image</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;web.upload.image&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String imageUrl;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Title</span> uploading &lt;br&gt;</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Description</span> 上传背景图片&lt;br&gt;</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Param</span></span></span><br><span class="line"><span class="comment">	*</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> groupId</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span> java.lang.Object</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="meta">@PostMapping</span>(value = <span class="string">"uploading"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">uploading</span><span class="params">(MultipartFile file)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 图片保存到数据库的相对路径</span></span><br><span class="line">	String filePath = <span class="keyword">this</span>.saveImages(file);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 根据实际情况修改返回值</span></span><br><span class="line">	Map&lt;String ,Object&gt; result = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	s.put(<span class="string">"filePath"</span>,filePath)</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> ResponseDTO&lt;&gt;(Boolean.TRUE, result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Title</span> saveImages &lt;br&gt;</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Description</span> 保存视频文件 &lt;br&gt;</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@Param</span></span></span><br><span class="line"><span class="comment">	*</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@param</span> image</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span> java.lang.String 例如(image/20210122/20210122130940421.jpg)</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">saveImages</span><span class="params">(MultipartFile image)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取原文件名</span></span><br><span class="line">	String name = image.getOriginalFilename();</span><br><span class="line">	<span class="comment">// 获取文件后缀</span></span><br><span class="line">	String subffix = name.substring(name.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>, name.length());</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 日期文件夹</span></span><br><span class="line">	String nowFolder = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd"</span>).format(<span class="keyword">new</span> Date());</span><br><span class="line">	<span class="comment">// 新的文件名以日期命名:</span></span><br><span class="line">	String fileName = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMddHHmmssSSS"</span>).format(<span class="keyword">new</span> Date()) + <span class="string">"."</span> + subffix;</span><br><span class="line">	<span class="comment">// 获取项目路径到webapp</span></span><br><span class="line">	String filepath = imageUrl + <span class="string">"/"</span> + nowFolder;</span><br><span class="line">	File file = <span class="keyword">new</span> File(filepath);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 文件路径不存在时,创建文件夹(可创建多层文件夹)</span></span><br><span class="line">	<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">		file.mkdirs();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 实际保存路径</span></span><br><span class="line">	filepath += (<span class="string">"/"</span> + fileName);</span><br><span class="line">	<span class="comment">// 保存文件</span></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		image.transferTo(<span class="keyword">new</span> File(filepath));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 保存数据库的相对路径</span></span><br><span class="line">	String relativePath = <span class="string">"image/"</span> + nowFolder + <span class="string">"/"</span> + fileName;</span><br><span class="line">	<span class="keyword">return</span> relativePath;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="页面显示配置"><a href="#页面显示配置" class="headerlink" title="页面显示配置"></a>页面显示配置</h2><blockquote>
 <p>第四步：图片在前端页面显示路径配置，不配置显示不了图片    </p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.com.weiyi.wisdomh.Config;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebAppConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;web.upload-path&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String imgPath;<span class="comment">//application.properties中的文件资源位置</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片访问方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(imgPath.equals(<span class="string">""</span>) || imgPath.equals(<span class="string">"$&#123;web.upload-path&#125;"</span>))&#123;</span><br><span class="line">            String imagesPath = WebAppConfig.class.getClassLoader().getResource(<span class="string">""</span>).getPath();</span><br><span class="line">            <span class="keyword">if</span>(imagesPath.indexOf(<span class="string">".jar"</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                imagesPath = imagesPath.substring(<span class="number">0</span>, imagesPath.indexOf(<span class="string">".jar"</span>));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(imagesPath.indexOf(<span class="string">"classes"</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                imagesPath = <span class="string">"file:"</span>+imagesPath.substring(<span class="number">0</span>, imagesPath.indexOf(<span class="string">"classes"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            imagesPath = imagesPath.substring(<span class="number">0</span>, imagesPath.lastIndexOf(<span class="string">"/"</span>))+<span class="string">"/images/"</span>;</span><br><span class="line">            imgPath = imagesPath;</span><br><span class="line">        &#125;</span><br><span class="line">        LoggerFactory.getLogger(WebAppConfig.class).info(<span class="string">"imagesPath="</span>+imgPath);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/images/**"</span>).addResourceLocations(imgPath);</span><br><span class="line">        <span class="keyword">super</span>.addResourceHandlers(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebAppConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;web.upload.image&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String imgPath;<span class="comment">//application.properties中的文件资源位置</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片访问方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(imgPath.equals(<span class="string">""</span>) || imgPath.equals(<span class="string">"$&#123;web.upload.image&#125;"</span>))&#123;</span><br><span class="line">            String imagesPath = WebAppConfig.class.getClassLoader().getResource(<span class="string">""</span>).getPath();</span><br><span class="line">            <span class="keyword">if</span>(imagesPath.indexOf(<span class="string">".jar"</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                imagesPath = imagesPath.substring(<span class="number">0</span>, imagesPath.indexOf(<span class="string">".jar"</span>));</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(imagesPath.indexOf(<span class="string">"classes"</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                imagesPath = <span class="string">"file:"</span>+imagesPath.substring(<span class="number">0</span>, imagesPath.indexOf(<span class="string">"classes"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            imagesPath = imagesPath.substring(<span class="number">0</span>, imagesPath.lastIndexOf(<span class="string">"/"</span>))+<span class="string">"/images/"</span>;</span><br><span class="line">            imgPath = imagesPath;</span><br><span class="line">        &#125;</span><br><span class="line">        LoggerFactory.getLogger(WebAppConfig.class).info(<span class="string">"imagesPath="</span>+imgPath);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/images/**"</span>).addResourceLocations(imgPath);</span><br><span class="line">        <span class="keyword">super</span>.addResourceHandlers(registry);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -614,8 +630,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/SpringBoot/SpringBoot定时任务/" rel="prev" title="SpringBoot 配置定时任务">
-                SpringBoot 配置定时任务 <i class="fa fa-chevron-right"></i>
+              <a href="/SpringBoot/SpringBoot多环境配置/" rel="prev" title="SpringBoot 多环境配置">
+                SpringBoot 多环境配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -687,7 +703,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -740,7 +756,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -847,7 +879,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -926,7 +992,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

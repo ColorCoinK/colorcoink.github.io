@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="导入地址信息文件,调用地理编码信息(高德地理编码)">
+<meta name="keywords" content="Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百万数据转换地理编码">
+<meta property="og:url" content="http://blog.dew.com/Blog/Java/百万数据转换地理编码/index.html">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="导入地址信息文件,调用地理编码信息(高德地理编码)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-01T02:55:41.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百万数据转换地理编码">
+<meta name="twitter:description" content="导入地址信息文件,调用地理编码信息(高德地理编码)">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dew.com/Blog/Java/百万数据转换地理编码/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>百万数据转换地理编码 | Dew | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dew | Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">焦虑的肉松面包</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-file"></i> <br>Blog</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springboot/" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>SpringBoot</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>SpringCloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Java/百万数据转换地理编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wloop">
+      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="image" content="/images/dew-logo.svg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dew | Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">百万数据转换地理编码
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019/03/14 15:22:37" itemprop="dateCreated datePublished" datetime="2019-03-14T15:22:37+08:00">2019/03/14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020/07/01 10:55:41" itemprop="dateModified" datetime="2020-07-01T10:55:41+08:00">2020/07/01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>导入地址信息文件,调用地理编码信息(高德地理编码)<br><a id="more"></a></p>
+<h1 id="批量地址数据获取地理编码信息-数据量可达百万"><a href="#批量地址数据获取地理编码信息-数据量可达百万" class="headerlink" title="批量地址数据获取地理编码信息(数据量可达百万)"></a>批量地址数据获取地理编码信息(数据量可达百万)</h1><ul>
+<li>本文章的来自于作者工作中的真实项目,如果看到文章的你有更好的建议,烦请在文章下留言或私信我。</li>
+</ul>
+<blockquote>
+<p>逻辑梳理</p>
+</blockquote>
+<ol>
+<li>获取上传的文件内容,转换为程序可操作的数据;<ol>
+<li>地址为空的数据,可以直接保存;</li>
+</ol>
+</li>
+<li>将地址转为需要入库的数据结构;<ol>
+<li>地址为数组,当地理编码数据异常时需要将当前数组保存为错误数据(目前是保存到文件中)</li>
+<li>调用<code>批量地理编码接口</code>时,需要注意地址的格式</li>
+</ol>
+</li>
+<li>数据入库。<ol>
+<li>正常数据可使用分批入库,节省操作时间;</li>
+<li>为空数据直接入库;</li>
+<li>调用批量地理编码接口查询错误的数据,需要逐一查询确认查询结果无异议后,统一入库。</li>
+</ol>
+</li>
+</ol>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>本文只阐述了作者在开发中的需求和实现,肯定和读者的境况有些不同需要读者自行调整和修改部分代码。对读者有帮助的可能是文件读取、多线程查询、指定大小截取二维数组、多线程入库等部分代码块,文章主要是为有困惑的读者提供部分思路,实际问题需要具体分析和解决。
+</code></pre><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><blockquote>
+<p><code>pom.xml</code></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.code.gson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>application.yml</code></p>
+</blockquote>
+<ul>
+<li>数据源配置可以参考作者的另一个篇文章,文章地址<a href="/springboot/SpringBoot配置多数据源/"><code>SpringBoot配置多数据源</code></a></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span></span><br><span class="line"><span class="attr">    active:</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">  servlet:</span></span><br><span class="line"><span class="attr">    multipart:</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      max-file-size:</span> <span class="number">104857600</span> <span class="comment"># 上传文件大小设置</span></span><br><span class="line"><span class="attr">      max-request-size:</span> <span class="number">104857600</span></span><br><span class="line"><span class="attr">geo:</span></span><br><span class="line"><span class="attr">  url:</span> <span class="attr">https://restapi.amap.com/v3/geocode/geo</span></span><br><span class="line"><span class="attr">  key:</span> <span class="comment"># 申请的key</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jasypt:</span></span><br><span class="line"><span class="attr">  encryptor:</span></span><br><span class="line"><span class="attr">    password:</span> <span class="number">484</span><span class="string">bef877405a9c8</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># developer environment</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  profiles:</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line"><span class="attr">    primary:</span></span><br><span class="line"><span class="attr">      driver-class-name:</span> <span class="string">com.cloudera.impala.jdbc41.Driver</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:impala://127.0.0.1:21050/default</span></span><br><span class="line"><span class="attr">    secondary:</span></span><br><span class="line"><span class="attr">      driver-class-name:</span> <span class="string">oracle.jdbc.OracleDriver</span></span><br><span class="line">      <span class="comment"># 不加密</span></span><br><span class="line"><span class="attr">      jdbc-url:</span> <span class="attr">jdbc:oracle:thin:@//127.0.0.1:1521/testdb</span></span><br><span class="line"><span class="attr">      username:</span> <span class="string">username</span></span><br><span class="line"><span class="attr">      password:</span> <span class="string">pwd12563</span></span><br><span class="line"><span class="attr">fileupload:</span></span><br><span class="line"><span class="attr">  geocode:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="comment"># 文件保存地址  D:/fileupload/</span></span><br><span class="line"><span class="attr">    name:</span> <span class="comment"># 保存的文件名 data.txt</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置文件实体类"><a href="#配置文件实体类" class="headerlink" title="配置文件实体类"></a>配置文件实体类</h3><blockquote>
+<p>错误数据保存地址</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: GeocodeFileProperties</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 高德地理编码查询失败文件保存地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/08/09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"fileupload.geocode"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeocodeFileProperties</span> </span></span><br><span class="line"><span class="class">	</span></span><br><span class="line"><span class="class">	/**</span></span><br><span class="line"><span class="class">	 * 	文件保存路径</span></span><br><span class="line"><span class="class">	 */</span></span><br><span class="line"><span class="class">	<span class="title">private</span> <span class="title">String</span> <span class="title">path</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 	文件保存名称</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>高德地理编码配置文件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Primary;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"geo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeocodingProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String key;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SpringBoot使用RestTemplate调用RESRful"><a href="#SpringBoot使用RestTemplate调用RESRful" class="headerlink" title="SpringBoot使用RestTemplate调用RESRful"></a><code>SpringBoot</code>使用<code>RestTemplate</code>调用<code>RESRful</code></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.client.ClientHttpRequestFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.client.HttpComponentsClientHttpRequestFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">(ClientHttpRequestFactory factory)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> RestTemplate(factory);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ClientHttpRequestFactory <span class="title">simplClientHttpRequestFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		HttpComponentsClientHttpRequestFactory factory = <span class="keyword">new</span> HttpComponentsClientHttpRequestFactory();</span><br><span class="line">		factory.setConnectionRequestTimeout(<span class="number">10000</span>);</span><br><span class="line">		factory.setConnectTimeout(<span class="number">10000</span>);</span><br><span class="line">		factory.setReadTimeout(<span class="number">10000</span>);</span><br><span class="line">		<span class="keyword">return</span> factory;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h2><blockquote>
+<p>文件内容对应的实体类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: AddressUserDTO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 用户上传文件对应实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/04/18</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddressUserDTO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 用户AD</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 用户地址</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String address;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"&#123;\"name\":\""</span> + name + <span class="string">"\", \"address\":\""</span> + address + <span class="string">"\"&#125;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>入库的实体类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: GDPoint</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将经纬度转换为 数据库经纬度 50m 栅格编码 :  X= trunc( 经度/0.000129  ), Y= trunc(纬度/0.00245)  取整</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/02/20</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GDPoint</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> X = <span class="number">0.000129</span>, Y = <span class="number">0.00245</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 经度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Integer longitude;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 维度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Integer latitude;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GDPoint</span><span class="params">(String longitude, String latitude)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span> lng = Double.parseDouble(longitude);</span><br><span class="line">		<span class="keyword">double</span> lat = Double.parseDouble(latitude);</span><br><span class="line">		<span class="keyword">this</span>.longitude = (<span class="keyword">int</span>) Math.ceil(lng / X);</span><br><span class="line">		<span class="keyword">this</span>.latitude = (<span class="keyword">int</span>) Math.ceil(lat / Y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>网格数据实体类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span> 网格数据库实体类映射</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 数据入库实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/3/29 15:56</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddressGridDO</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 	地址</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String address;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 	经度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String longitude;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 	纬度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String latitude;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 	网格编号X</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Integer gridX;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 *	 网格编号Y</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> Integer gridY;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AddressGridDO</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AddressGridDO</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.address = address;</span><br><span class="line">		<span class="keyword">this</span>.gridX = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">this</span>.gridY = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">this</span>.longitude = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">this</span>.latitude = <span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AddressGridDO</span><span class="params">(String address, String longitude, String latitude, Integer gridX, Integer gridY)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.address = address;</span><br><span class="line">		<span class="keyword">this</span>.longitude = longitude;</span><br><span class="line">		<span class="keyword">this</span>.latitude = latitude;</span><br><span class="line">		<span class="keyword">this</span>.gridX = gridX;</span><br><span class="line">		<span class="keyword">this</span>.gridY = gridY;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a><code>Repository</code></h2><ul>
+<li><p>数据库使用的是<code>Oracle</code>,如果是使用<code>MySQL</code>或其他数据库烦请自行百度.暂时没有添加相关代码。</p>
+</li>
+<li><p>数据源配置可以参考作者的另一个篇文章,文章地址<a href="/springboot/SpringBoot配置多数据源/"><code>SpringBoot配置多数据源</code></a></p>
+</li>
+</ul>
+<blockquote>
+<p>地址转换为网格后的数据入库</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.namedparam.SqlParameterSource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddressRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> NamedParameterJdbcTemplate secondaryJdbcTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span> 用户网格数据批量入库</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Param</span> [list 入库的数据]</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Date</span> 14:45 2019/4/1</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Return</span> void</span></span><br><span class="line"><span class="comment">	 **/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">batchSaveAdvertising</span><span class="params">(List&lt;AddressGridDO&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// merge into 语法是存在则替换,需要特别注意数据更新的条件.以免出现数据被批量更新为同一记录!</span></span><br><span class="line">		String sql = <span class="string">"merge into t_address_grid t1 using(select :address address,:longitude longitude,:latitude latitude,:gridX gridX,:gridY gridY from dual) t2 on (t1.address = t2.address) when matched then update set t1.longitude=t2.longitude , t1.latitude = t2.latitude , t1.grid_x = t2.gridx , t1.grid_y = t2.gridy when not matched then insert (t1.address,t1.longitude,t1.latitude,t1.grid_x,t1.grid_y) values (t2.address,t2.longitude,t2.latitude,t2.gridx,t2.gridy)"</span>;</span><br><span class="line"></span><br><span class="line">		SqlParameterSource[] beanSource = SqlParameterSourceUtils.createBatch(list.toArray());</span><br><span class="line">		secondaryJdbcTemplate.batchUpdate(sql, beanSource);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">		log.info(<span class="string">"数据入库时间:\t&#123;&#125;,入库数据大小:\t&#123;&#125;"</span>, (end - start), list.size());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Service逻辑实现"><a href="#Service逻辑实现" class="headerlink" title="Service逻辑实现"></a><code>Service</code>逻辑实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.FileAlreadyExistsException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Future;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: GeocodeServiceImpl</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 地址信息网格化</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/04/16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeocodeServiceImpl</span> <span class="keyword">implements</span> <span class="title">SynchronizeInformationService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> GeocodeFileProperties geocodeFileProperties;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> AddressRepository addressRepository;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GeocodeServiceImpl</span><span class="params">(GeocodeFileProperties geocodeFileProperties,</span></span></span><br><span class="line"><span class="function"><span class="params">			AddressRepository addressRepository)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.geocodeFileProperties = geocodeFileProperties;</span><br><span class="line">		<span class="keyword">this</span>.addressRepository = addressRepository;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">synchronizationInformation</span><span class="params">(MultipartFile file)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		result.put(<span class="string">"success"</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		Long timestamp = System.currentTimeMillis();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			AnalysisText analysisText = <span class="keyword">new</span> AnalysisText();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 读取文件内容,并且拆分为10个一组的list</span></span><br><span class="line">			Map&lt;String, List&lt;List&lt;AddressUserDTO&gt;&gt;&gt; txtList = analysisText.txt2List(file);</span><br><span class="line">			List&lt;List&lt;AddressUserDTO&gt;&gt; models = txtList.get(<span class="string">"group"</span>);</span><br><span class="line">			log.info(<span class="string">"不为空地址数量:\t"</span> + ((models.size() - <span class="number">1</span>) * <span class="number">10</span> + (models.get(models.size() - <span class="number">1</span>)).size()));</span><br><span class="line">			<span class="keyword">this</span>.batchSaveByAddressNotEmpty(models, <span class="keyword">true</span>, timestamp);</span><br><span class="line"></span><br><span class="line">			List&lt;List&lt;AddressUserDTO&gt;&gt; emptys = txtList.get(<span class="string">"emptyList"</span>);</span><br><span class="line">			log.info(<span class="string">"为空地址请求列表数:"</span> + emptys.get(<span class="number">0</span>).size());</span><br><span class="line">			<span class="keyword">this</span>.batchSaveByAddressNotEmpty(emptys, <span class="keyword">false</span>, timestamp);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 读取查询地理编码错误地址内容,入库</span></span><br><span class="line">			<span class="keyword">this</span>.saveErrorData(timestamp);</span><br><span class="line"></span><br><span class="line">			result.put(<span class="string">"success"</span>, <span class="keyword">true</span>);</span><br><span class="line">			result.put(<span class="string">"msg"</span>, <span class="string">"导入成功"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileAlreadyExistsException e) &#123;</span><br><span class="line">			log.info(<span class="string">"不存在错误地址"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			result.put(<span class="string">"msg"</span>, <span class="string">"系统错误,请重试或联系管理员"</span>);</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			result.put(<span class="string">"msg"</span>, <span class="string">"文件内容有误,请联系管理员"</span>);</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> models txt文本数据</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> flag true: 地址不为空 false: 地址为空 void</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: batchSave</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 批量保存地址信息数据,创建的线程数取决于机器的配置。需要根据自身情况增加或减少,如果引起宕机等后果本人概不负责…………</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">batchSaveByAddressNotEmpty</span><span class="params">(List&lt;List&lt;AddressUserDTO&gt;&gt; models, <span class="keyword">boolean</span> flag, Long timestamp)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 10w 二维数组长度List</span></span><br><span class="line">		List&lt;List&lt;AddressGridDO&gt;&gt; groupList = <span class="keyword">new</span> AnalysisText().groupList(models, <span class="number">3000</span>, flag, timestamp);</span><br><span class="line">		log.info(<span class="string">"##查询分组数据大小: &#123;&#125;"</span>, groupList.size());</span><br><span class="line">		<span class="comment">// 100w 数据待保存,最多创建4个线程</span></span><br><span class="line">		<span class="comment">// 创建线程数 = 数据总数 / groupList</span></span><br><span class="line">		<span class="keyword">int</span> threadPoolSize = groupList.size();</span><br><span class="line">		<span class="comment">// 最多创建 4 个线程</span></span><br><span class="line">		threadPoolSize = threadPoolSize &gt;= <span class="number">4</span> ? <span class="number">4</span> : threadPoolSize;</span><br><span class="line">		log.info(<span class="string">"##不为空: &#123;&#125; 地址列表,入库创建的线程数: &#123;&#125;"</span>, threadPoolSize);</span><br><span class="line">		ExecutorService executor = Executors.newFixedThreadPool(threadPoolSize);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 拆分网格数据</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = groupList.size(); i &lt; length; i++) &#123;</span><br><span class="line">				List&lt;AddressGridDO&gt; list = groupList.get(i);</span><br><span class="line">				BatchSaveThread saveThread = <span class="keyword">new</span> BatchSaveThread(list);</span><br><span class="line">				executor.execute(saveThread);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			executor.shutdown();</span><br><span class="line">			log.info(<span class="string">"##不为空: &#123;&#125;,地址列表入库完成"</span>, flag);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: saveErrorData</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 保存查询错误的地址信息 void</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveErrorData</span><span class="params">(Long timestamp)</span> <span class="keyword">throws</span> FileAlreadyExistsException </span>&#123;</span><br><span class="line">		String path = geocodeFileProperties.getPath() + <span class="string">"/"</span> + timestamp + <span class="string">"_"</span> + geocodeFileProperties.getName();</span><br><span class="line">		FileReader reader = <span class="keyword">null</span>;</span><br><span class="line">		BufferedReader br = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 校验文件是否存在</span></span><br><span class="line">			File file = <span class="keyword">new</span> File(path);</span><br><span class="line">			<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">				log.info(<span class="string">"无错误数据"</span>);</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> FileNotFoundException();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			reader = <span class="keyword">new</span> FileReader(path);</span><br><span class="line">			br = <span class="keyword">new</span> BufferedReader(reader);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 读取文件内容</span></span><br><span class="line">			String line;</span><br><span class="line">			List&lt;AddressUserDTO&gt; models = <span class="keyword">null</span>;</span><br><span class="line">			List&lt;AddressUserDTO&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">				models = JSON.parseArray(line, AddressUserDTO.class);</span><br><span class="line">				list.addAll(models);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 错误数据List</span></span><br><span class="line">			log.info(<span class="string">"错误地址数据量:\t"</span> + list.size());</span><br><span class="line"></span><br><span class="line">			List&lt;AddressGridDO&gt; geocode = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			AddressGridDO value = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 地理编码——经纬度</span></span><br><span class="line">			String[] array;</span><br><span class="line">			<span class="comment">// 用户AD、用户地址、经度,纬度</span></span><br><span class="line">			String name, address, longitude, latitude;</span><br><span class="line"></span><br><span class="line">			GeoCodingUtil geoCodingUtil = <span class="keyword">new</span> GeoCodingUtil();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (AddressUserDTO advertisingModel : list) &#123;</span><br><span class="line">				name = advertisingModel.getName();</span><br><span class="line">				address = advertisingModel.getAddress();</span><br><span class="line"></span><br><span class="line">				String point = geoCodingUtil.getShanghaiGeocoding(address);</span><br><span class="line">				<span class="keyword">if</span> (<span class="string">"[]"</span>.equals(point)) &#123;</span><br><span class="line">					value = <span class="keyword">new</span> AddressGridDO(advertisingModel.getName(), <span class="string">""</span>, <span class="string">""</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">					geocode.add(value);</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 获取经纬度</span></span><br><span class="line">				array = point.split(<span class="string">","</span>);</span><br><span class="line">				longitude = array[<span class="number">0</span>];</span><br><span class="line">				latitude = array[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">				GDPoint gdPoint = <span class="keyword">new</span> GDPoint(longitude, latitude);</span><br><span class="line"></span><br><span class="line">				value = <span class="keyword">new</span> AddressGridDO(name, longitude, latitude, gdPoint.getLongitude(), gdPoint.getLatitude());</span><br><span class="line">				geocode.add(value);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 多线程 执行数据入库</span></span><br><span class="line">			<span class="keyword">this</span>.saveBatchErrorData(geocode, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException fileNotFoundException) &#123;</span><br><span class="line">			log.error(<span class="string">"当前导入的文件中没有错误数据"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			log.error(<span class="string">"存错误地址信息方法错误,错误内容:\t"</span> + e.getMessage());</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">					reader.close();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (br != <span class="keyword">null</span>) &#123;</span><br><span class="line">					br.close();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 删除文件</span></span><br><span class="line">				File file = <span class="keyword">new</span> File(path);</span><br><span class="line">				<span class="keyword">if</span> (file.exists() &amp;&amp; file.isFile()) &#123;</span><br><span class="line">					file.delete();</span><br><span class="line">					log.info(<span class="string">"删除文件路径:\t"</span> + path);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * @Title saveBatchErrorData</span></span><br><span class="line"><span class="comment">	 * @Description 批量保存错误地址编码</span></span><br><span class="line"><span class="comment">	 * @Param</span></span><br><span class="line"><span class="comment">	 * @param geocode</span></span><br><span class="line"><span class="comment">	 * @return void</span></span><br><span class="line"><span class="comment">	 **/</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveBatchErrorData</span><span class="params">(List&lt;AddressGridDO&gt; geocode, <span class="keyword">int</span> groupSize)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 批量入库</span></span><br><span class="line">		AnalysisText analysisText = <span class="keyword">new</span> AnalysisText();</span><br><span class="line">		List&lt;List&lt;AddressGridDO&gt;&gt; geocodeList = analysisText.spilitGroup(geocode, groupSize * <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> threadPoolSize = geocodeList.size();</span><br><span class="line">		threadPoolSize = threadPoolSize &gt;= <span class="number">4</span> ? <span class="number">4</span> : threadPoolSize;</span><br><span class="line">		ExecutorService executor = Executors.newFixedThreadPool(threadPoolSize);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 拆分网格数据</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = geocodeList.size(); i &lt; length; i++) &#123;</span><br><span class="line">				List&lt;AddressGridDO&gt; list = geocodeList.get(i);</span><br><span class="line">				BatchSaveThread saveThread = <span class="keyword">new</span> BatchSaveThread(list);</span><br><span class="line">				executor.execute(saveThread);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			executor.shutdown();</span><br><span class="line">			log.info(<span class="string">"不为空地址列表入库完成"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ClassName</span>: BatchSaveThread</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 多线程执行入库操作</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@date</span> 2019/03/14</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">BatchSaveThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> List&lt;AddressGridDO&gt; list;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BatchSaveThread</span><span class="params">(List&lt;AddressGridDO&gt; list)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.list = list;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (list.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				addressRepository.batchSaveAdvertising(list);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ClassName</span>: BatchRestAPIThread</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 多线程查询API, 地理编码操作</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@date</span> 2019/03/18</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">BatchRestAPIThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">List</span>&lt;<span class="title">AddressGridDO</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">		AnalysisText analysisText = <span class="keyword">new</span> AnalysisText();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Long timestamp;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressUserDTO&gt;&gt; list;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BatchRestAPIThread</span><span class="params">(Long timestamp, List&lt;List&lt;AddressUserDTO&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.timestamp = timestamp;</span><br><span class="line">			<span class="keyword">this</span>.list = list;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> List&lt;AddressGridDO&gt; <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			List&lt;AddressGridDO&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = list.size(); i &lt; length; i++) &#123;</span><br><span class="line">				result.addAll(analysisText.geocodes(list.get(i), timestamp));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ClassName</span>: AnalysisText</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 解析批量导入的txt文件</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@date</span> 2019/03/14</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">AnalysisText</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * @Title txt2List</span></span><br><span class="line"><span class="comment">		 * @Description txt 文件解析为两组list : &#123;"group":地址不为空的List&lt;List&lt;AddressUserDTO&gt;&gt;,"emptyList": address 为空的List&#125;</span></span><br><span class="line"><span class="comment">		 * @Param</span></span><br><span class="line"><span class="comment">		 * @param file</span></span><br><span class="line"><span class="comment">		 * @return java.util.Map&lt;java.lang.String,java.util.List&lt;java.util.List&lt;com.sanss.entity.dto.AddressUserDTO&gt;&gt;&gt;</span></span><br><span class="line"><span class="comment">		 **/</span></span><br><span class="line">		<span class="keyword">private</span> Map&lt;String, List&lt;List&lt;AddressUserDTO&gt;&gt;&gt; txt2List(MultipartFile file) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">			Map&lt;String, List&lt;List&lt;AddressUserDTO&gt;&gt;&gt; result = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			InputStreamReader reader = <span class="keyword">null</span>;</span><br><span class="line">			BufferedReader br = <span class="keyword">null</span>;</span><br><span class="line">			List&lt;List&lt;AddressUserDTO&gt;&gt; group = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			List&lt;List&lt;AddressUserDTO&gt;&gt; emptyList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			AddressUserDTO value = <span class="keyword">null</span>;</span><br><span class="line">			<span class="comment">// 地址不为空的数据</span></span><br><span class="line">			List&lt;AddressUserDTO&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">10</span>);</span><br><span class="line">			<span class="comment">// 地址为空的数据</span></span><br><span class="line">			List&lt;AddressUserDTO&gt; empty = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">				String encoding = <span class="keyword">this</span>.getEncoding(file);</span><br><span class="line">				log.info(<span class="string">"文件编码格式:\t&#123;&#125;"</span>, encoding);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 设置字符编码,中文乱码</span></span><br><span class="line">				<span class="comment">// reader = new InputStreamReader(file.getInputStream(), "UTF-8");</span></span><br><span class="line">				reader = <span class="keyword">new</span> InputStreamReader(file.getInputStream(), encoding);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// reader = new InputStreamReader(file.getInputStream(), "GBK");</span></span><br><span class="line">				<span class="comment">// 缓存读取文件</span></span><br><span class="line">				br = <span class="keyword">new</span> BufferedReader(reader);</span><br><span class="line">				String line = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 内数组大小</span></span><br><span class="line">				<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">				String[] split;</span><br><span class="line">				String userAD, address;</span><br><span class="line">				<span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">					<span class="keyword">if</span> (!<span class="string">""</span>.equals(line)) &#123;</span><br><span class="line">						<span class="comment">// 设置行内分隔符"，"</span></span><br><span class="line">						split = line.split(<span class="string">","</span>);</span><br><span class="line">						<span class="comment">// 用户AD</span></span><br><span class="line">						userAD = split[<span class="number">0</span>];</span><br><span class="line">						<span class="comment">// 用户地址,示例："世纪大道地铁站***"</span></span><br><span class="line">						address = split[<span class="number">1</span>];</span><br><span class="line">						address = address.trim().replaceAll(<span class="string">"\\*"</span>, <span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">						<span class="comment">// 地址为空与不为空拆分开</span></span><br><span class="line">						<span class="keyword">if</span> (!<span class="string">""</span>.equals(address)) &#123;</span><br><span class="line">							value = <span class="keyword">new</span> AddressUserDTO(userAD, address);</span><br><span class="line">							list.add(value);</span><br><span class="line">							++i;</span><br><span class="line">						&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">							value = <span class="keyword">new</span> AddressUserDTO(userAD, <span class="string">""</span>);</span><br><span class="line">							empty.add(value);</span><br><span class="line">							<span class="keyword">continue</span>;</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">						<span class="comment">// 十个一组分成若干小组</span></span><br><span class="line">						<span class="keyword">if</span> (i % <span class="number">10</span> == <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">							group.add(j, list);</span><br><span class="line">							list = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">10</span>);</span><br><span class="line">							j++;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 行数对10取余不足10的部分</span></span><br><span class="line">				<span class="keyword">if</span> (!<span class="string">"[]"</span>.equals(list.toString()) &amp;&amp; list != <span class="keyword">null</span>) &#123;</span><br><span class="line">					group.add(j, list);</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Empty list 不进行 10 分组</span></span><br><span class="line">				emptyList.add(empty);</span><br><span class="line"></span><br><span class="line">				result.put(<span class="string">"group"</span>, group);</span><br><span class="line">				result.put(<span class="string">"emptyList"</span>, emptyList);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">return</span> result;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				result.put(<span class="string">"group"</span>, group);</span><br><span class="line">				result.put(<span class="string">"emptyList"</span>, emptyList);</span><br><span class="line">				<span class="keyword">return</span> result;</span><br><span class="line">			&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">				reader.close();</span><br><span class="line">				br.close();</span><br><span class="line">				log.info(<span class="string">"文件读完:\t"</span> + <span class="keyword">new</span> Date());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * @Title getEncoding</span></span><br><span class="line"><span class="comment">		 * @Description 获取文件编码</span></span><br><span class="line"><span class="comment">		 * @Param</span></span><br><span class="line"><span class="comment">		 * @param file</span></span><br><span class="line"><span class="comment">		 * @return java.lang.String</span></span><br><span class="line"><span class="comment">		 **/</span></span><br><span class="line">		<span class="function"><span class="keyword">private</span> String <span class="title">getEncoding</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">			BufferedInputStream inputStream = <span class="keyword">new</span> BufferedInputStream(file.getInputStream());</span><br><span class="line">			<span class="keyword">int</span> p = (inputStream.read() &lt;&lt; <span class="number">8</span>) + inputStream.read();</span><br><span class="line">			String encoding = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">switch</span> (p) &#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0xefbb</span>:</span><br><span class="line">					encoding = <span class="string">"UTF-8"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0xfffe</span>:</span><br><span class="line">					encoding = <span class="string">"Unicode"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0xfeff</span>:</span><br><span class="line">					encoding = <span class="string">"UTF-16BE"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0x5c75</span>:</span><br><span class="line">					encoding = <span class="string">"ANSI|ASCII"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">default</span>:</span><br><span class="line">					encoding = <span class="string">"GBK"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> encoding;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> groupSize 分组区间</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> flag true:地址不为空|false:地址为空</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: groupList</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 地址为空、地址不为空 —— 地理编码</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressGridDO&gt;&gt; groupList(List&lt;List&lt;AddressUserDTO&gt;&gt; list, <span class="keyword">int</span> groupSize, <span class="keyword">boolean</span> flag,</span><br><span class="line">				Long timestamp) &#123;</span><br><span class="line">			<span class="comment">// if (flag) &#123; return this.groupNotEmpty(list, groupSize, timestamp); &#125;</span></span><br><span class="line">			<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>.groupNotEmptySinglethread(list, groupSize, timestamp);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.groupEmpty(list, groupSize);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> modelGroup 10个地址为一组的List</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> groupSize 分组大小</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> timestamp 访问API接口的时间戳</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: groupNotEmptySinglethread</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 不为空地址列表使用单线程查询API, 获取返回结果</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressGridDO&gt;&gt; groupNotEmptySinglethread(List&lt;List&lt;AddressUserDTO&gt;&gt; modelGroup, <span class="keyword">int</span> groupSize,</span><br><span class="line">				Long timestamp) &#123;</span><br><span class="line">			List&lt;AddressGridDO&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			List&lt;List&lt;AddressGridDO&gt;&gt; listGroup = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				AnalysisText analysisText = <span class="keyword">new</span> AnalysisText();</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = modelGroup.size(); i &lt; length; i++) &#123;</span><br><span class="line">					list.addAll(analysisText.geocodes(modelGroup.get(i), timestamp));</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 10w 数组查询 API后返回的是100w 数据,数据按 groupSize * 10 一组拆分</span></span><br><span class="line">				listGroup = <span class="keyword">this</span>.spilitGroup(list, groupSize * <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">return</span> listGroup;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">				<span class="keyword">return</span> listGroup;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * @Title groupNotEmptyMultithreading</span></span><br><span class="line"><span class="comment">		 * @Description  groupNotEmptyMultithreading 多线程方法,当前机器使用多线程速率反而更慢</span></span><br><span class="line"><span class="comment">		 *  不为空地址列表使用多线程查询API, 获取返回结果</span></span><br><span class="line"><span class="comment">		 * @Param</span></span><br><span class="line"><span class="comment">		 * @param modelGroup 10个地址为一组的List</span></span><br><span class="line"><span class="comment">		 * @param groupSize 分组大小</span></span><br><span class="line"><span class="comment">		 * @param timestamp 访问API接口的时间戳</span></span><br><span class="line"><span class="comment">		 * @return java.util.List&lt;java.util.List&lt;com.sanss.entity.AddressGridDO&gt;&gt;</span></span><br><span class="line"><span class="comment">		 **/</span></span><br><span class="line">		<span class="meta">@Deprecated</span></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressGridDO&gt;&gt; groupNotEmptyMultithreading(List&lt;List&lt;AddressUserDTO&gt;&gt; modelGroup, <span class="keyword">int</span> groupSize,</span><br><span class="line">				Long timestamp) &#123;</span><br><span class="line">			List&lt;AddressGridDO&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			List&lt;List&lt;AddressGridDO&gt;&gt; listGroup = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			ExecutorService executor = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// List 长度</span></span><br><span class="line">				<span class="keyword">int</span> listSize = modelGroup.size();</span><br><span class="line">				<span class="keyword">int</span> runSize = (listSize / groupSize) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">				List&lt;List&lt;AddressUserDTO&gt;&gt; value = <span class="keyword">null</span>;</span><br><span class="line">				List&lt;List&lt;List&lt;AddressUserDTO&gt;&gt;&gt; models = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; runSize; i++) &#123;</span><br><span class="line">					<span class="keyword">int</span> start = i * groupSize;</span><br><span class="line">					<span class="keyword">if</span> (i + <span class="number">1</span> == runSize) &#123;</span><br><span class="line">						<span class="keyword">int</span> end = listSize;</span><br><span class="line">						value = modelGroup.subList(start, end);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="keyword">int</span> end = (i + <span class="number">1</span>) * groupSize;</span><br><span class="line">						value = modelGroup.subList(start, end);</span><br><span class="line">					&#125;</span><br><span class="line">					models.add(value);</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 创建多线程查询API</span></span><br><span class="line">				<span class="keyword">int</span> threadPoolSize = models.size();</span><br><span class="line">				executor = Executors.newFixedThreadPool(threadPoolSize);</span><br><span class="line">				threadPoolSize = threadPoolSize &gt;= <span class="number">4</span> ? <span class="number">4</span> : threadPoolSize;</span><br><span class="line"></span><br><span class="line">				log.info(<span class="string">"查询API线程数:\t"</span> + threadPoolSize);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = models.size(); i &lt; length; i++) &#123;</span><br><span class="line">					BatchRestAPIThread apiThread = <span class="keyword">new</span> BatchRestAPIThread(timestamp, models.get(i));</span><br><span class="line">					Future&lt;List&lt;AddressGridDO&gt;&gt; values = executor.submit(apiThread);</span><br><span class="line">					list.addAll(values.get());</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 10w 数组查询 API后返回的是100w 数据,数据按1000一组拆分</span></span><br><span class="line">				listGroup = <span class="keyword">this</span>.spilitGroup(list, groupSize * <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">return</span> listGroup;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">				<span class="keyword">return</span> listGroup;</span><br><span class="line">			&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (executor != <span class="keyword">null</span>) &#123;</span><br><span class="line">					executor.shutdown();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: groupEmpty</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 地址为空的数据拆分</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressGridDO&gt;&gt; groupEmpty(List&lt;List&lt;AddressUserDTO&gt;&gt; modelList, <span class="keyword">int</span> groupSize) &#123;</span><br><span class="line">			List&lt;AddressGridDO&gt; adList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="comment">// 数组下标为0</span></span><br><span class="line">			List&lt;AddressUserDTO&gt; models = modelList.get(<span class="number">0</span>);</span><br><span class="line">			AddressGridDO adUserGridDO = <span class="keyword">null</span>;</span><br><span class="line">			String name;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; models.size(); i++) &#123;</span><br><span class="line">				AddressUserDTO model = models.get(i);</span><br><span class="line">				name = model.getName();</span><br><span class="line">				adUserGridDO = <span class="keyword">new</span> AddressGridDO(name, <span class="string">""</span>, <span class="string">""</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">				adList.add(adUserGridDO);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.spilitGroup(adList, groupSize * <span class="number">10</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> values List 数组</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> groupSize 数组分组大小</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: spilitGroup</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 数据分成 groupSize 大的数组,多线程执行入库</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;AddressGridDO&gt;&gt; spilitGroup(List&lt;AddressGridDO&gt; values, <span class="keyword">int</span> groupSize) &#123;</span><br><span class="line">			List&lt;List&lt;AddressGridDO&gt;&gt; listGroup = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="comment">// List 长度</span></span><br><span class="line">			<span class="keyword">int</span> listSize = values.size();</span><br><span class="line">			<span class="keyword">int</span> runSize = (listSize / groupSize) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">			List&lt;AddressGridDO&gt; value = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; runSize; i++) &#123;</span><br><span class="line">				<span class="keyword">int</span> start = i * groupSize;</span><br><span class="line">				<span class="keyword">if</span> (i + <span class="number">1</span> == runSize) &#123;</span><br><span class="line">					<span class="keyword">int</span> end = listSize;</span><br><span class="line">					value = values.subList(start, end);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">int</span> end = (i + <span class="number">1</span>) * groupSize;</span><br><span class="line">					value = values.subList(start, end);</span><br><span class="line">				&#125;</span><br><span class="line">				listGroup.add(value);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> listGroup;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@return</span> List&lt;AddressGridDO&gt;</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: geocodes</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 将地址转为 网格,只取address不为空的数据</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">private</span> List&lt;AddressGridDO&gt; <span class="title">geocodes</span><span class="params">(List&lt;AddressUserDTO&gt; adUserDto, Long timestamp)</span> </span>&#123;</span><br><span class="line">			List&lt;AddressGridDO&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// 高德地理编码,批量请求地址参数</span></span><br><span class="line">				List&lt;String&gt; address = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; adUserDto.size(); i++) &#123;</span><br><span class="line">					address.add(adUserDto.get(i).getAddress());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 查询地理编码 —— 上海</span></span><br><span class="line">				List&lt;String&gt; points = <span class="keyword">new</span> GeoCodingUtil().getShanghaiGeocoding(address);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 查询的地址个数返回结果不等于地址个数时,抛出异常</span></span><br><span class="line">				<span class="keyword">if</span> (points.size() != adUserDto.size()) &#123;</span><br><span class="line">					<span class="comment">/// log.error("查询地址个数不等于返回个数:\t" + JSON.toJSONString(adUserDto) + "\t返回结果:\t" + points);</span></span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> Exception();</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				AddressGridDO value = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 地理编码——经纬度</span></span><br><span class="line">				String[] array;</span><br><span class="line">				<span class="comment">// 经度,纬度</span></span><br><span class="line">				String longitude, latitude;</span><br><span class="line">				<span class="comment">// 用户编号</span></span><br><span class="line">				String name;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; points.size(); i++) &#123;</span><br><span class="line">					name = adUserDto.get(i).getName();</span><br><span class="line"></span><br><span class="line">					<span class="comment">/** 将地理编码转换为50m栅格编码*/</span></span><br><span class="line">					String point = points.get(i);</span><br><span class="line"></span><br><span class="line">					<span class="comment">// point:[[],[121.389822,31.258292]]</span></span><br><span class="line">					<span class="keyword">if</span> (<span class="string">"[]"</span>.equals(point)) &#123;</span><br><span class="line">						value = <span class="keyword">new</span> AddressGridDO(name, <span class="string">""</span>, <span class="string">""</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">						result.add(value);</span><br><span class="line">						<span class="keyword">continue</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// 获取经纬度</span></span><br><span class="line">					array = point.split(<span class="string">","</span>);</span><br><span class="line">					longitude = array[<span class="number">0</span>];</span><br><span class="line">					latitude = array[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">					GDPoint gdPoint = <span class="keyword">new</span> GDPoint(longitude, latitude);</span><br><span class="line"></span><br><span class="line">					value = <span class="keyword">new</span> AddressGridDO(name, longitude, latitude, gdPoint.getLongitude(), gdPoint.getLatitude());</span><br><span class="line">					result.add(value);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> result;</span><br><span class="line">			&#125; <span class="comment">/*</span></span><br><span class="line"><span class="comment">				catch (SocketTimeoutException e) &#123;</span></span><br><span class="line"><span class="comment">				this.appendDataFile(adUserDto, timestamp);</span></span><br><span class="line"><span class="comment">				&#125; catch (NullPointerException e) &#123;</span></span><br><span class="line"><span class="comment">				this.appendDataFile(adUserDto, timestamp);</span></span><br><span class="line"><span class="comment">				&#125; </span></span><br><span class="line"><span class="comment">				*/</span> <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				<span class="keyword">this</span>.appendDataFile(adUserDto, timestamp);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> models void</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Title</span>: createDataFile</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@Description</span>: 查询异常的用户地址保存为文件</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">appendDataFile</span><span class="params">(List&lt;AddressUserDTO&gt; models, Long timestamp)</span> </span>&#123;</span><br><span class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">			<span class="comment">// models.toString() 方法是返回JSON字符串,并不是普通的toString()方法</span></span><br><span class="line"></span><br><span class="line">			sb.append(JSON.toJSONString(models) + System.getProperty(<span class="string">"line.separator"</span>));</span><br><span class="line">			FileWriter fw = <span class="keyword">null</span>;</span><br><span class="line">			PrintWriter pw = <span class="keyword">null</span>;</span><br><span class="line">			String txtName = timestamp + <span class="string">"_"</span> + geocodeFileProperties.getName();</span><br><span class="line">			String txtPath = geocodeFileProperties.getPath();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				File file = <span class="keyword">new</span> File(txtPath);</span><br><span class="line">				<span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">					file.mkdirs();</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				fw = <span class="keyword">new</span> FileWriter(file + <span class="string">"/"</span> + txtName, <span class="keyword">true</span>);</span><br><span class="line">				pw = <span class="keyword">new</span> PrintWriter(fw);</span><br><span class="line"></span><br><span class="line">				pw.print(sb.toString());</span><br><span class="line">				pw.flush();</span><br><span class="line">				fw.flush();</span><br><span class="line"></span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					pw.close();</span><br><span class="line">					fw.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="高德地理编码API工具类"><a href="#高德地理编码API工具类" class="headerlink" title="高德地理编码API工具类"></a>高德地理编码API工具类</h2><blockquote>
+<p>二维数组拆分为指定大小</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> ArrayUtil</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 数组操作工具类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/4/1 13:53</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayUtil</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span> 拆分二维数组为指定大小</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Param</span> [values 待分组Array 分组, groupSize 分组大小]</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Date</span> 13:54 2019/4/1</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Return</span> java.util.List&lt;T&gt;</span></span><br><span class="line"><span class="comment">	 **/</span></span><br><span class="line">	<span class="keyword">public</span> List&lt;List&lt;T&gt;&gt; spilitGroup(List&lt;T&gt; values, <span class="keyword">int</span> groupSize) &#123;</span><br><span class="line">		List&lt;List&lt;T&gt;&gt; listGroup = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="comment">// List 长度</span></span><br><span class="line">		<span class="keyword">int</span> listSize = values.size();</span><br><span class="line">		<span class="keyword">int</span> runSize = (listSize / groupSize) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		List&lt;T&gt; value = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; runSize; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> start = i * groupSize;</span><br><span class="line">			<span class="keyword">if</span> (i + <span class="number">1</span> == runSize) &#123;</span><br><span class="line">				<span class="keyword">int</span> end = listSize;</span><br><span class="line">				value = values.subList(start, end);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">int</span> end = (i + <span class="number">1</span>) * groupSize;</span><br><span class="line">				value = values.subList(start, end);</span><br><span class="line">			&#125;</span><br><span class="line">			listGroup.add(value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> listGroup;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>高德地理编码<code>API</code>调用实例</p>
+</blockquote>
+<ul>
+<li>注: 在<code>非 controller</code> 中读取配置文件时获取不到配置类的属性值,欲了解详情可以看下我的另一篇博客<a href="/springboot/SpringBoot配置文件详解/#常见问题" target="_blank">SpringBoot配置文件详解</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.PostConstruct;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: GeoDto</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 调用高德地理编码API传递的参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/03/27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GeoDto</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Boolean batch;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String city;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String address;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String key;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GeoDto</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GeoDto</span><span class="params">(List&lt;String&gt; address, String city, Boolean batch, String url, String key)</span> </span>&#123;</span><br><span class="line">		StringBuilder addressSb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = address.size(); i &lt; length; i++) &#123;</span><br><span class="line">			addressSb.append(address.get(i));</span><br><span class="line">			addressSb.append(<span class="string">"|"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.address = addressSb.substring(<span class="number">0</span>, addressSb.lastIndexOf(<span class="string">"|"</span>)).toString();</span><br><span class="line">		<span class="keyword">this</span>.city = city;</span><br><span class="line">		<span class="keyword">this</span>.batch = batch;</span><br><span class="line">		<span class="keyword">this</span>.url = url;</span><br><span class="line">		<span class="keyword">this</span>.key = key;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> url + <span class="string">"?batch="</span> + batch + <span class="string">"&amp;key="</span> + key + <span class="string">"&amp;city="</span> + city + <span class="string">"&amp;address="</span> + address;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: Geocodes</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 返回结果实体类, 只获取了location:经纬度 API 地址：https://lbs.amap.com/api/webservice/guide/api/georegeo 返回结果示例:</span></span><br><span class="line"><span class="comment"> * &#123;"status":"1","info":"OK","infocode":"10000","count":"1","geocodes":[&#123;"formatted_address":"上海市浦东新区东方明珠","country":"中国","province":"上海市","citycode":"021","city":"上海市","district":"浦东新区","township":[],"neighborhood":&#123;"name":[],"type":[]&#125;,"building":&#123;"name":[],"type":[]&#125;,"adcode":"310115","street":[],"number":[],"location":"121.499740,31.239853","level":"兴趣点"&#125;]&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/03/27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Geocodes</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String location;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 高德地理编码API返回JSON实体类, 部分需要的属性, 完整的返回值在上方</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Geocode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> List&lt;Geocodes&gt; geocodes;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: GeoCodingUtil</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 高德地理编码/逆编码(将地址转换为经度,纬度) API: https://lbs.amap.com/api/webservice/guide/api/georegeo/#scene</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/03/14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeoCodingUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> GeocodingProperties properties;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> GeoCodingUtil geoCodingUtil;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Long index = <span class="number">0L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@PostConstruct</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		geoCodingUtil = <span class="keyword">this</span>;</span><br><span class="line">		geoCodingUtil.properties = <span class="keyword">this</span>.properties;</span><br><span class="line">		geoCodingUtil.restTemplate = <span class="keyword">this</span>.restTemplate;</span><br><span class="line"></span><br><span class="line">		log.info(<span class="string">"请求API地址:\t&#123;&#125;"</span>, properties.getUrl());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> address 地址List</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> city 城市名称,例如:上海,北京</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: getGeocoding</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 获取批量地址地理编码</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Return</span> List&lt;String&gt;</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getGeocoding</span><span class="params">(List&lt;String&gt; address, String city)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> getGeocoding(address, city, <span class="keyword">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> address 地址List</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: getShanghaiGeocoding</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 获取上海地区批量地址的地理编码</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ReturnType</span>: List&lt;String&gt;</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getShanghaiGeocoding</span><span class="params">(List&lt;String&gt; address)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> getGeocoding(address, <span class="string">"上海"</span>, <span class="keyword">true</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> address 地址</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: getShanghaiGeocoding</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 获取上海地区单个地址的地理编码</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ReturnType</span>: String</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getShanghaiGeocoding</span><span class="params">(String address)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		list.add(address);</span><br><span class="line">		list = getGeocoding(list, <span class="string">"上海"</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">		String empty = <span class="keyword">new</span> ArrayList&lt;&gt;().toString();</span><br><span class="line">		<span class="keyword">if</span> (empty.equals(list.toString())) &#123;</span><br><span class="line">			<span class="keyword">return</span> list.toString();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> list.get(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> address 最多支持十个地址拼接</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> city 城市</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> batch 是否批量</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: getGeocoding</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 上海地区的高德地理编码获取</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Return</span> List&lt;String&gt;</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">getGeocoding</span><span class="params">(List&lt;String&gt; address, String city, <span class="keyword">boolean</span> batch)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		List&lt;String&gt; point = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		GeoDto geoDto = <span class="keyword">new</span> GeoDto(address, city, batch, geoCodingUtil.properties.getUrl(),</span><br><span class="line">				geoCodingUtil.properties.getKey());</span><br><span class="line">		String realUrl = geoDto.toString();</span><br><span class="line"></span><br><span class="line">		Geocode geocode = geoCodingUtil.restTemplate.getForObject(realUrl, Geocode.class);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = geocode.getCount();</span><br><span class="line">		<span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			List&lt;Geocodes&gt; geocodes = geocode.getGeocodes();</span><br><span class="line">			Iterator&lt;Geocodes&gt; iterator = geocodes.iterator();</span><br><span class="line">			String location;</span><br><span class="line">			<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">				location = iterator.next().getLocation();</span><br><span class="line">				<span class="keyword">if</span> (location == <span class="keyword">null</span>) &#123;</span><br><span class="line">					point.add(<span class="string">""</span>);</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				point.add(location);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> point;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="RestTemplate-调用API超时"><a href="#RestTemplate-调用API超时" class="headerlink" title="RestTemplate 调用API超时"></a>RestTemplate 调用API超时</h3><blockquote>
+<p>解决方案</p>
+</blockquote>
+<ol>
+<li>配置类<code>RestTemplateConfig</code>中不设置<code>connectTimeout、readTimeout</code></li>
+<li>将超时时间变长,<code>timeout</code>时间单位为 毫秒</li>
+</ol>
+<h3 id="实现多线程有返回值的执行"><a href="#实现多线程有返回值的执行" class="headerlink" title="实现多线程有返回值的执行"></a>实现多线程有返回值的执行</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@ClassName</span>: BatchRestAPIThread</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 多线程查询API,地理编码操作</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@date</span> 2019/03/18</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">BatchRestAPIThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">List</span>&lt;<span class="title">InfoDo</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> List&lt;List&lt;InfoDto&gt;&gt; list;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">BatchRestAPIThread</span><span class="params">(List&lt;List&lt;InfoDto&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.list = list;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> List&lt;InfoDo&gt; <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">			List&lt;InfoDo&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			<span class="comment">// 执行代码块</span></span><br><span class="line">			<span class="keyword">return</span> result;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog/Java/Java使用正则表达式仅获取中文/" rel="next" title="Java使用正则表达式仅获取中文">
+                <i class="fa fa-chevron-left"></i> Java使用正则表达式仅获取中文
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog/Java导出Excel并下载/" rel="prev" title="Java导出Excel并下载">
+                Java导出Excel并下载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+            
+              <p class="site-author-name" itemprop="name">wloop</p>
+              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ColorCoinK" title="GitHub &rarr; https://github.com/ColorCoinK" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#批量地址数据获取地理编码信息-数据量可达百万"><span class="nav-number">1.</span> <span class="nav-text">批量地址数据获取地理编码信息(数据量可达百万)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件实体类"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置文件实体类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot使用RestTemplate调用RESRful"><span class="nav-number">1.2.2.</span> <span class="nav-text">SpringBoot使用RestTemplate调用RESRful</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体类"><span class="nav-number">1.3.</span> <span class="nav-text">实体类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repository"><span class="nav-number">1.4.</span> <span class="nav-text">Repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service逻辑实现"><span class="nav-number">1.5.</span> <span class="nav-text">Service逻辑实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高德地理编码API工具类"><span class="nav-number">1.6.</span> <span class="nav-text">高德地理编码API工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">1.7.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-调用API超时"><span class="nav-number">1.7.1.</span> <span class="nav-text">RestTemplate 调用API超时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现多线程有返回值的执行"><span class="nav-number">1.7.2.</span> <span class="nav-text">实现多线程有返回值的执行</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wloop</span>
+
+  
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

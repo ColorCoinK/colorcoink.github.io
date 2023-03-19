@@ -103,11 +103,11 @@
 <meta name="keywords" content="Java,Entity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遍历 Java 实体类属性及值">
-<meta property="og:url" content="http://blog.dew.com/Blog/Java/Java遍历实体类属性/index.html">
-<meta property="og:site_name" content="Dew">
+<meta property="og:url" content="http://blog.dew.com/blog/Java/Java遍历实体类属性/index.html">
+<meta property="og:site_name" content="Dew | Blog">
 <meta property="og:description" content="遍历 Java 实体类属性及值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T05:37:37.289Z">
+<meta property="og:updated_time" content="2019-12-03T02:55:51.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="遍历 Java 实体类属性及值">
 <meta name="twitter:description" content="遍历 Java 实体类属性及值">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.dew.com/Blog/Java/Java遍历实体类属性/">
+  <link rel="canonical" href="http://blog.dew.com/blog/Java/Java遍历实体类属性/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>遍历 Java 实体类属性及值 | Dew</title>
+  <title>遍历 Java 实体类属性及值 | Dew | Blog</title>
   
 
 
@@ -186,7 +186,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dew</span>
+        <span class="site-title">Dew | Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -234,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-blog">
+          <li class="menu-item menu-item-blog menu-item-active">
 
     
     
@@ -427,7 +427,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Java/Java遍历实体类属性/">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/blog/Java/Java遍历实体类属性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wloop">
@@ -436,7 +436,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dew">
+      <meta itemprop="name" content="Dew | Blog">
     </span>
 
     
@@ -470,12 +470,24 @@
                 
               
 
-              <time title="创建时间：2019/02/28 11:00:13 / 修改时间：13:37:37" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
+              <time title="创建时间：2019/02/28 11:00:13" itemprop="dateCreated datePublished" datetime="2019-02-28T11:00:13+08:00">2019/02/28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019/12/03 10:55:51" itemprop="dateModified" datetime="2019-12-03T10:55:51+08:00">2019/12/03</time>
               
             
           </span>
@@ -492,14 +504,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -546,12 +558,24 @@
 <h1 id="遍历Java实体类属性及值"><a href="#遍历Java实体类属性及值" class="headerlink" title="遍历Java实体类属性及值"></a>遍历<code>Java</code>实体类属性及值</h1><blockquote>
 <p>核心代码    </p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			System.out.println(property+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"用户播放轨迹查询Qos 日志失败,参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			System.out.println(property+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"用户播放轨迹查询Qos 日志失败,参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>示例    </p>
 </blockquote>
-<p>将查询参数封装为<code>url</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 遍历属性类、属性值</span></span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			String params = property + <span class="string">"="</span> + value;</span><br><span class="line">			<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">				requestURL.append(params);</span><br><span class="line">				flag = <span class="keyword">false</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				requestURL.append(<span class="string">"&amp;"</span> + params);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"URL参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<p>将查询参数封装为<code>url</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(HcodeRepository.class);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: getPostParams</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 将实体类clazz的属性转换为url参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clazz	参数实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * String</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getPostParams</span><span class="params">(Object clazz)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 遍历属性类、属性值</span></span><br><span class="line">	Field[] fields = clazz.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">			Field field = fields[i];</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(clazz).toString();</span><br><span class="line"></span><br><span class="line">			String params = property + <span class="string">"="</span> + value;</span><br><span class="line">			<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">				requestURL.append(params);</span><br><span class="line">				flag = <span class="keyword">false</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				requestURL.append(<span class="string">"&amp;"</span> + params);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">"URL参数为："</span> + clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="获取父类的属性及属性值"><a href="#获取父类的属性及属性值" class="headerlink" title="获取父类的属性及属性值"></a>获取父类的属性及属性值</h1><p><strong>注:</strong> 以下代码中使用<code>Intellij IDEA</code>并使用了<code>lombok</code>,可以使用<code>get/set</code>替代<code>@Data</code>注解;可以重写<code>toString()</code>方法替代<code>@ToString</code>注解;<br>可以使用构造方法,替代<code>@AllArgsConstructor</code>注解。</p>
+<blockquote>
+<p><code>TextMailDTO</code>父类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> TextMailDTO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 文本邮件实体类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/11/7 9:56</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 主题</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String subject;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 文本内容</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String text;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 接收者邮箱</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String receiver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>info</code>子类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> Info</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; 信息内容</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/12/3 10:03</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span> 1.0</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> <span class="keyword">extends</span> <span class="title">TextMailDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Info</span><span class="params">(String subject, String text, String receiver, String description)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(subject, text, receiver);</span><br><span class="line">		<span class="keyword">this</span>.description = description;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实现获取父类属性及属性值的方法代码块</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  获取父类的属性及属性值方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getAllFields</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	Class clazz = object.getClass();</span><br><span class="line"></span><br><span class="line">	List&lt;Field&gt; fieldList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="keyword">while</span> (clazz != <span class="keyword">null</span>) &#123;</span><br><span class="line">		Field[] fields = clazz.getDeclaredFields();</span><br><span class="line">		fieldList.addAll(<span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(fields)));</span><br><span class="line">		clazz = clazz.getSuperclass();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	StringBuilder requestURL = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		String property, value;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fieldList.size(); i++) &#123;</span><br><span class="line">			Field field = fieldList.get(i);</span><br><span class="line">			<span class="comment">// 允许访问私有变量</span></span><br><span class="line">			field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 属性名</span></span><br><span class="line">			property = field.getName();</span><br><span class="line">			<span class="comment">// 属性值</span></span><br><span class="line">			value = field.get(object).toString();</span><br><span class="line"></span><br><span class="line">			log.info(property + <span class="string">":\t &#123;&#125;"</span>, value);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		log.error(<span class="string">"参数为:\t&#123;&#125;"</span>, clazz.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> requestURL.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -589,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/Maven/Pom文件配置仓库地址/" rel="next" title="配置单个 maven 项目 pom 依赖仓库地址">
-                <i class="fa fa-chevron-left"></i> 配置单个 maven 项目 pom 依赖仓库地址
+              <a href="/SpringBoot/SpringBoot多环境配置/" rel="next" title="SpringBoot 多环境配置">
+                <i class="fa fa-chevron-left"></i> SpringBoot 多环境配置
               </a>
             
           </div>
@@ -599,7 +623,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Java/Java日期工具类/" rel="prev" title="Java 获取 自定义时间格式时间、上周(周一、周日)、上个月(第一天、最后一天)">
+              <a href="/blog/Java/Java日期工具类/" rel="prev" title="Java 获取 自定义时间格式时间、上周(周一、周日)、上个月(第一天、最后一天)">
                 Java 获取 自定义时间格式时间、上周(周一、周日)、上个月(第一天、最后一天) <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -672,7 +696,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -725,7 +749,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -832,7 +872,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -890,7 +964,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历Java实体类属性及值"><span class="nav-number">1.</span> <span class="nav-text">遍历Java实体类属性及值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历Java实体类属性及值"><span class="nav-number">1.</span> <span class="nav-text">遍历Java实体类属性及值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取父类的属性及属性值"><span class="nav-number">2.</span> <span class="nav-text">获取父类的属性及属性值</span></a></li></ol></div>
             
 
           </div>
@@ -911,7 +985,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

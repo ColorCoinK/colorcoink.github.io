@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Linux学习笔记(《Linux就该这么学》)">
+<meta name="keywords" content="Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记(《Linux就该这么学》)">
+<meta property="og:url" content="http://blog.dew.com/Blog/Linux学习笔记-《Linux就该这么学》/index.html">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="Linux学习笔记(《Linux就该这么学》)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-07T02:31:44.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记(《Linux就该这么学》)">
+<meta name="twitter:description" content="Linux学习笔记(《Linux就该这么学》)">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dew.com/Blog/Linux学习笔记-《Linux就该这么学》/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux学习笔记(《Linux就该这么学》) | Dew | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dew | Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">焦虑的肉松面包</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-file"></i> <br>Blog</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springboot/" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>SpringBoot</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>SpringCloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/Blog/Linux学习笔记-《Linux就该这么学》/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wloop">
+      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="image" content="/images/dew-logo.svg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dew | Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux学习笔记(《Linux就该这么学》)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019/08/20 15:22:24" itemprop="dateCreated datePublished" datetime="2019-08-20T15:22:24+08:00">2019/08/20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019/11/07 10:31:44" itemprop="dateModified" datetime="2019-11-07T10:31:44+08:00">2019/11/07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Blog/" itemprop="url" rel="index"><span itemprop="name">Blog</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        Linux学习笔记(《Linux就该这么学》)
+<a id="more"></a>
+<h1 id="Linux就该这么学"><a href="#Linux就该这么学" class="headerlink" title="Linux就该这么学"></a>Linux就该这么学</h1><ul>
+<li>网站首页:<a href="https://www.linuxprobe.com/" target="_blank">《Linux就该这么学》</a></li>
+</ul>
+<h2 id="第二章-·-新手必须掌握的Linux命令"><a href="#第二章-·-新手必须掌握的Linux命令" class="headerlink" title="第二章 · 新手必须掌握的Linux命令"></a>第二章 · 新手必须掌握的Linux命令</h2><h3 id="常用系统工作命令"><a href="#常用系统工作命令" class="headerlink" title="常用系统工作命令"></a>常用系统工作命令</h3><ol>
+<li><code>echo</code> 命令</li>
+</ol>
+<ul>
+<li><p><code>echo</code>命令用于在终端输出字符串或变量提取后的值,格式为<code>echo [字符串|变量]</code></p>
+<p>例如: <code>echo Hello World!</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]# echo Hello World!</span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>$</code>变量的方式提取变量<code>SHELL</code>的值,并输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]# echo $SHELL</span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li><code>date</code> 命令</li>
+</ol>
+<ul>
+<li><code>date</code> 命令用于显示及设置系统的时间或日期,格式为<code>date [选项][+指定的格式]</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%t</td>
+<td>跳格[Tab键]</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>小时(00~23)</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>小时(00~12)</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>分钟(00~59)</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>秒(00~59)</td>
+</tr>
+<tr>
+<td>%j</td>
+<td>今年中的第几天</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>默认格式输出系统当前时间</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># date</span></span><br><span class="line">Tue Aug 20 15:47:14 CST 2019</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定格式输出系统当前时间</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># date "+%Y-%m-%d %H:%M:%S"</span></span><br><span class="line">2019-08-20 15:47:49</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置系统当前时间</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># date -s"20190820 15:49:00"</span></span><br><span class="line">Tue Aug 20 15:49:00 CST 2019</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>date</code>命令中的参数<code>%j</code>可用来查看今天是当年中的第几天。这个桉树能够很好的区分备份时间的新旧,即数字越大,越靠近当前时间。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># date "+%j"</span></span><br><span class="line">232</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>reboot</code> 命令</li>
+</ol>
+<ul>
+<li><code>reboot</code> 命令用于重启系统,其格式为<code>reboot</code>。由于重启计算机会涉及硬件资源的管理权限,默认只能由<code>root</code>管理员重启。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># reboot</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">4. `poweroff` 命令</span><br><span class="line"></span><br><span class="line">- `poweroff` 命令用于关闭系统,其格式为`poweroff`。该命令与reboot命令相同，都会涉及硬件资源的管理权限，因此默认只有root管理员才可以关闭电脑。</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">[root@dew ~]<span class="comment"># poweroff</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">5. `wget` 命令</span><br><span class="line"></span><br><span class="line">- `wget` 命令用于在终端下载网络文件,格式为`wget [参数] 下载地址`</span><br><span class="line"></span><br><span class="line">| 参数 | 作用                                |</span><br><span class="line">| ---- | ----------------------------------- |</span><br><span class="line">| -b   | 后台下载模式                        |</span><br><span class="line">| -P   | 下载到指定目录                      |</span><br><span class="line">| -t   | 最大尝试次数                        |</span><br><span class="line">| -c   | 断点续传                            |</span><br><span class="line">| -p   | 下载页面内所有资源,包括图片、视频等 |</span><br><span class="line">| -r   | 递归下载                            |</span><br><span class="line"></span><br><span class="line">* 使用`wget`命令下载最新的`pdf`格式电子文档</span><br><span class="line"> </span><br><span class="line">```sh</span><br><span class="line">[root@dew ~]<span class="comment"># wget https://www.linuxprobe.com/docs/LinuxProbe.pdf</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><code>ps</code> 命令</li>
+</ol>
+<ul>
+<li><code>ps</code> 命令用于查看系统中的进程状态,格式为<code>ps [参数]</code>。通常搭配<code>管道技术使用</code>,用来抓取某个指定服务进程相对应的<code>PID</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>显示所有进程(包括其他用户的进程)</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>用户以及其他详细信息</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>显示没有控制终端的进程</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>Linux</code>系统中时刻运行着许多进程，如果能够合理地管理，可以优化系统的性能。五种常见的进程状态,运行、中断、不可中断、僵死、停止。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R(运行)</td>
+<td>进程正在运行或在运行队列中等待</td>
+</tr>
+<tr>
+<td>S(中断)</td>
+<td>进程处于休眠中,当某个条件形成后或者接收到信号时，则脱离该状态</td>
+</tr>
+<tr>
+<td>D(不可中断)</td>
+<td>进程不响应系统异步信号，即便用<code>kill</code>命令也不能将其中断</td>
+</tr>
+<tr>
+<td>Z(僵死)</td>
+<td>进程已经终止，但进程描述符依然存在，直到父进程调用<code>wait4()</code>系统函数后将进程释放</td>
+</tr>
+<tr>
+<td>T(停止)</td>
+<td>进程收到停止信号后停止运行</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>ps -aux</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>USER</th>
+<th>PID</th>
+<th>%CPU</th>
+<th>%MEM</th>
+<th>VSZ</th>
+<th>RSS</th>
+<th>TTY</th>
+<th>STAT</th>
+<th>START</th>
+<th>TIME</th>
+<th>COMMAND</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进程的所有者</td>
+<td>进程ID</td>
+<td>CPU占用率</td>
+<td>内存占用率</td>
+<td>虚拟内存使用率(/KB)</td>
+<td>占用的固定内存量(/KB)</td>
+<td>所在终端</td>
+<td>进程状态</td>
+<td>被启动的时间</td>
+<td>实际使用CPU的时间</td>
+<td>命令名称与参数</td>
+</tr>
+<tr>
+<td>root</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>19348</td>
+<td>1120</td>
+<td>?</td>
+<td>Ss</td>
+<td>2018</td>
+<td>93:29</td>
+<td>/sbin/init</td>
+</tr>
+<tr>
+<td>root</td>
+<td>2</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:00</td>
+<td>[kthreadd]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>3</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:08</td>
+<td>[migration/0]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>4</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>92:20</td>
+<td>[ksoftirqd/0]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>5</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:00</td>
+<td>[migration/0]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>6</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:42</td>
+<td>[watchdog/0]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>7</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:35</td>
+<td>[migration/1]</td>
+</tr>
+<tr>
+<td>root</td>
+<td>8</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>?</td>
+<td>S</td>
+<td>2018</td>
+<td>0:00</td>
+<td>[migration/1]</td>
+</tr>
+</tbody>
+</table>
+<ol start="7">
+<li><code>top</code> 命令</li>
+</ol>
+<ul>
+<li><code>top</code> 命令用于动态的监视进程活动与系统负载等信息,其格式为<code>top</code></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># top</span></span><br><span class="line">top - 16:29:09 up 1117 days,  5:23,  3 users,  load average: 0.00, 0.00, 0.00</span><br><span class="line">Tasks: 158 total,   1 running, 157 sleeping,   0 stopped,   0 zombie</span><br><span class="line">Cpu(s):  0.7%us,  0.8%sy,  0.0%ni, 98.5%id,  0.0%wa,  0.0%hi,  0.0%si,  0.0%st</span><br><span class="line">Mem:   4052796k total,  3223016k used,   829780k free,   139760k buffers</span><br><span class="line">Swap:  4063228k total,   219528k used,  3843700k free,  1060376k cached</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND                                                                                 </span><br><span class="line"> 5608 root      20   0 3517m 487m  12m S  2.3 12.3 472:35.14 java                                                                                  </span><br><span class="line"> 2624 root      20   0  326m 5948 3600 S  0.3  0.1   3158:05 vmtoolsd                                                                                  </span><br><span class="line">10147 root      20   0 1489m  65m 2280 S  0.3  1.7   9206:20 cmf-agent                                                                                 </span><br><span class="line">    1 root      20   0 19356 1240 1016 S  0.0  0.0   9:03.72 init                                                                                   </span><br><span class="line">    2 root      20   0     0    0    0 S  0.0  0.0   0:00.79 kthreadd                                                                                  </span><br><span class="line">    3 root      RT   0     0    0    0 S  0.0  0.0  12:07.86 migration/0 </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">| 行数    | 含义  |</span><br><span class="line">| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |</span><br><span class="line">| 第 1 行 | 系统时间、运行时间、登录终端数、系统负载(loadverage: 数值越小意味着负载越低) |</span><br><span class="line">| 第 2 行 | 进程总数、运行中的进程数、睡眠中的进程数、停止的进程数、僵死的进程数|</span><br><span class="line">| 第 3 行 | 用户占用资源百分比、系统内核占用资源百分比、改变过优先级的进程资源百分比、空闲的资源百分比等。&lt;br/&gt;其中数据均为CPU数据并以百分比格式显示，例如:“98.5%id” 意味着有 98.5% 的CPU处理器资源处于空闲 |</span><br><span class="line">| 第 4 行 |物理内存、内存使用量、内存空闲量、作为内核缓存的内存量|</span><br><span class="line">|第 5 行|虚拟内存总量、虚拟内存使用量、虚拟内存空闲量、已被提前加载的内存量|</span><br><span class="line"></span><br><span class="line">8. `pidof` 命令</span><br><span class="line"></span><br><span class="line">- `pidof` 命令用于查询某个指定服务进程的`PID`值，格式为`pidof [参数] [服务名称]`</span><br><span class="line"></span><br><span class="line">每个进程的进程号码值（PID）是唯一的，因此可以通过PID来区分不同的进程。例如，可以使用如下命令来查询本机上sshd服务程序的PID</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">[root@dew ~]<span class="comment"># pidof sshd</span></span><br><span class="line">29110 27979 2974</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li><code>kill</code> 命令</li>
+</ol>
+<ul>
+<li><code>kill</code> 命令用于终止某个指定<code>PID</code> 的服务进程,格式为<code>kill [参数] [进程PID]</code></li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@dew ~]<span class="comment"># kill 29110</span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">10.  `killall` 命令</span><br><span class="line"></span><br><span class="line">- `killall` 命令用于终止某个指定名称的服务所对应的全部进程，格式为：“killall [参数][服务名称]”</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">[root@linuxprobe ~]<span class="comment"># pidof httpd</span></span><br><span class="line">13581 13580 13579 13578 13577 13576</span><br><span class="line">[root@linuxprobe ~]<span class="comment"># killall httpd</span></span><br><span class="line">[root@linuxprobe ~]<span class="comment"># pidof httpd</span></span><br><span class="line">[root@linuxprobe ~]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h3 id="系统状态检测命令"><a href="#系统状态检测命令" class="headerlink" title="系统状态检测命令"></a>系统状态检测命令</h3><ol>
+<li><code>ifconfig</code> 命令</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog/maven安装jar到本地仓库/" rel="next" title="maven安装jar到本地仓库">
+                <i class="fa fa-chevron-left"></i> maven安装jar到本地仓库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog/Java设计模式/" rel="prev" title="Java设计模式">
+                Java设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+            
+              <p class="site-author-name" itemprop="name">wloop</p>
+              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ColorCoinK" title="GitHub &rarr; https://github.com/ColorCoinK" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux就该这么学"><span class="nav-number">1.</span> <span class="nav-text">Linux就该这么学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-·-新手必须掌握的Linux命令"><span class="nav-number">1.1.</span> <span class="nav-text">第二章 · 新手必须掌握的Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用系统工作命令"><span class="nav-number">1.1.1.</span> <span class="nav-text">常用系统工作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统状态检测命令"><span class="nav-number">1.1.2.</span> <span class="nav-text">系统状态检测命令</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wloop</span>
+
+  
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

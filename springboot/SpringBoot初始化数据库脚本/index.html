@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SpringBoot 1.x 与SpringBoot 2.x版本初始化脚本时的区别;使用Druid连接池时初始化数据库脚本。">
+<meta name="keywords" content="SpringBoot,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot初始化数据库脚本">
+<meta property="og:url" content="http://blog.dew.com/springboot/SpringBoot初始化数据库脚本/index.html">
+<meta property="og:site_name" content="Dew | Blog">
+<meta property="og:description" content="SpringBoot 1.x 与SpringBoot 2.x版本初始化脚本时的区别;使用Druid连接池时初始化数据库脚本。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-09T07:17:56.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot初始化数据库脚本">
+<meta name="twitter:description" content="SpringBoot 1.x 与SpringBoot 2.x版本初始化脚本时的区别;使用Druid连接池时初始化数据库脚本。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.dew.com/springboot/SpringBoot初始化数据库脚本/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SpringBoot初始化数据库脚本 | Dew | Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dew | Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">焦虑的肉松面包</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-blog">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-file"></i> <br>Blog</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springboot/" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>SpringBoot</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>SpringCloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/aboutme/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-springboot" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.dew.com/springboot/SpringBoot初始化数据库脚本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wloop">
+      <meta itemprop="description" content="以梦为马 不负朝华">
+      <meta itemprop="image" content="/images/dew-logo.svg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dew | Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot初始化数据库脚本
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020/01/09 14:21:55 / 修改时间：15:17:56" itemprop="dateCreated datePublished" datetime="2020-01-09T14:21:55+08:00">2020/01/09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SpringBoot 1.x 与SpringBoot 2.x版本初始化脚本时的区别;使用Druid连接池时初始化数据库脚本。<br><a id="more"></a></p>
+<h1 id="SpringBoot-1-x启动时初始化脚本"><a href="#SpringBoot-1-x启动时初始化脚本" class="headerlink" title="SpringBoot 1.x启动时初始化脚本"></a><code>SpringBoot 1.x</code>启动时初始化脚本</h1><ul>
+<li>注: 案列中使用的是<code>JPA</code>,在<code>application.yml</code>文件中增加了相关配置;使用的是<code>H2</code>数据库(可根据实际情况修改数据库连接配置)</li>
+</ul>
+<h2 id="Maven依赖及配置"><a href="#Maven依赖及配置" class="headerlink" title="Maven依赖及配置"></a><code>Maven</code>依赖及配置</h2><blockquote>
+<p>项目结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├─java</span><br><span class="line">│  │  └─com</span><br><span class="line">│  │      └─learning</span><br><span class="line">│  │          │  ProviderApplication.java</span><br><span class="line">│  │                  </span><br><span class="line">│  └─resources</span><br><span class="line">│          application.yml</span><br><span class="line">│          data.sql</span><br><span class="line">│          schema.sql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>版本信息</p>
+</blockquote>
+<ul>
+<li><code>SpringBoot</code>版本:<code>&lt;version&gt;1.5.12.RELEASE&lt;/version&gt;</code></li>
+</ul>
+<blockquote>
+<p>项目依赖</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.h2database<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>h2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="application-yml文件内容"><a href="#application-yml文件内容" class="headerlink" title="application.yml文件内容"></a><code>application.yml</code>文件内容</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">2001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">microsevice-provider-user</span></span><br><span class="line"><span class="attr">  datasource:</span>                           <span class="comment"># 指定数据源;默认H2建表脚本(根目录/schema.sql);默认H2的insert脚本(classpath:data.sql)</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">jdbc:h2:mem:~/example-app;</span>     <span class="comment"># 指定数据库,默认</span></span><br><span class="line"><span class="attr">    platform:</span> <span class="string">h2</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">sa</span></span><br><span class="line"><span class="attr">    password:</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">org.h2.Driver</span></span><br><span class="line"><span class="attr">  h2:</span></span><br><span class="line"><span class="attr">    console:</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">true</span> <span class="comment"># 是否启用H2数据库控制台</span></span><br><span class="line"><span class="attr">      settings:</span></span><br><span class="line"><span class="attr">        web-allow-others:</span> <span class="literal">true</span>         <span class="comment"># 允许远程浏览器访问H2 数据库控制台</span></span><br><span class="line"><span class="attr">        trace:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  jpa:</span></span><br><span class="line"><span class="attr">    show-sql:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    hibernate:</span></span><br><span class="line"><span class="attr">      ddl-auto:</span> <span class="string">none</span></span><br><span class="line"><span class="attr">    generate-ddl:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    database-platform:</span> <span class="string">org.hibernate.dialect.H2Dialect</span></span><br></pre></td></tr></table></figure>
+<h2 id="脚本内容"><a href="#脚本内容" class="headerlink" title="脚本内容"></a>脚本内容</h2><blockquote>
+<p>脚本名称说明(机翻自官网)</p>
+</blockquote>
+<p>Spring Boot可以自动创建数据源的架构（DDL脚本）并对其进行初始化（DML脚本）。它从标准根类路径位置（分别为schema.sql和data.sql）加载SQL。另外，Spring Boot处理schema-$ {platform} .sql和data-$ {platform} .sql文件（如果存在），其中platform是spring.datasource.platform的值。这使您可以在必要时切换到特定于数据库的脚本。例如，您可以选择将其设置为数据库的供应商名称（hsqldb，h2，oracle，mysql，postgresql等）。</p>
+<blockquote>
+<p><code>data.sql</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> tbl_account;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tbl_account(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">number</span>(<span class="number">12</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">varchar</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  age <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  sex <span class="built_in">char</span>(<span class="number">2</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">80</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">role</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>schema.sql</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1001</span>,<span class="string">'admin'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_ADMIN'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1002</span>,<span class="string">'zy'</span>,<span class="number">25</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1003</span>,<span class="string">'lb'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1004</span>,<span class="string">'lk'</span>,<span class="number">22</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1005</span>,<span class="string">'zj'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1006</span>,<span class="string">'lc'</span>,<span class="number">21</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1007</span>,<span class="string">'wdd'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1008</span>,<span class="string">'ln'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1009</span>,<span class="string">'gy'</span>,<span class="number">20</span>,<span class="string">'女'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1010</span>,<span class="string">'dew'</span>,<span class="number">35</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="SpringBoot-2-x启动时初始化脚本"><a href="#SpringBoot-2-x启动时初始化脚本" class="headerlink" title="SpringBoot 2.x启动时初始化脚本"></a><code>SpringBoot 2.x</code>启动时初始化脚本</h1><ul>
+<li>注: 需要在<code>SpringBoot 1.x</code>的<code>application.yaml</code>中增加属性,示例如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.initialization-mode=always</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>application.yml</code>完整内容</p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">2002</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">sofa-account</span></span><br><span class="line"><span class="attr">  datasource:</span>                           <span class="comment"># 指定数据源;默认H2建表脚本(根目录/schema-h2.sql);默认H2的insert脚本(classpath:data-h2.sql)</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">jdbc:h2:mem:~/example-app;</span>     <span class="comment"># 指定数据库,默认</span></span><br><span class="line"><span class="attr">    platform:</span> <span class="string">h2</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">sa</span></span><br><span class="line"><span class="attr">    password:</span></span><br><span class="line"><span class="attr">    driver-class-name:</span> <span class="string">org.h2.Driver</span></span><br><span class="line"><span class="attr">    initialization-mode:</span> <span class="string">always</span>         <span class="comment"># SpringBoot 2.0 中需要添加的属性配置</span></span><br><span class="line"><span class="attr">  h2:</span></span><br><span class="line"><span class="attr">    console:</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">true</span> <span class="comment"># 是否启用H2数据库控制台</span></span><br><span class="line"><span class="attr">      settings:</span></span><br><span class="line"><span class="attr">        web-allow-others:</span> <span class="literal">true</span>         <span class="comment"># 允许远程浏览器访问H2 数据库控制台</span></span><br><span class="line"><span class="attr">        trace:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  jpa:</span></span><br><span class="line"><span class="attr">    show-sql:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    hibernate:</span></span><br><span class="line"><span class="attr">      ddl-auto:</span> <span class="string">none</span></span><br><span class="line"><span class="attr">    generate-ddl:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    database-platform:</span> <span class="string">org.hibernate.dialect.H2Dialect</span></span><br></pre></td></tr></table></figure>
+<h1 id="SpringBoot-2-0使用Druid连接池初始化脚本"><a href="#SpringBoot-2-0使用Druid连接池初始化脚本" class="headerlink" title="SpringBoot 2.0使用Druid连接池初始化脚本"></a><code>SpringBoot 2.0</code>使用<code>Druid</code>连接池初始化脚本</h1><h2 id="Maven依赖及配置-1"><a href="#Maven依赖及配置-1" class="headerlink" title="Maven依赖及配置"></a><code>Maven</code>依赖及配置</h2><ul>
+<li><code>SpringBoot</code> 默认的数据库连接池为<code>Hikari</code>,本文中使用的是<code>Druid</code>而已;配置和<code>Hikari</code>应该是一样的,如果有不同烦请告知。</li>
+</ul>
+<blockquote>
+<p>项目结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">├─main</span><br><span class="line">│  ├─java</span><br><span class="line">│  │  └─com</span><br><span class="line">│  │      └─dew</span><br><span class="line">│  │          │  Application.java</span><br><span class="line">│  │          │      </span><br><span class="line">│  │          ├─config</span><br><span class="line">│  │          │      DruidDataSourceConfig.java</span><br><span class="line">│  │                  </span><br><span class="line">│  └─resources</span><br><span class="line">│          application.yaml</span><br><span class="line">│          bootstrap.yaml</span><br><span class="line">│          data.sql</span><br><span class="line">│          schema.sql</span><br><span class="line">│          </span><br><span class="line">└─test</span><br><span class="line">    └─java</span><br><span class="line">        └─com</span><br><span class="line">            └─dew</span><br><span class="line">                ├─config</span><br><span class="line">                │      DruidDataSourceConfigTest.java</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>版本信息</p>
+</blockquote>
+<ul>
+<li><code>SpringBoot</code>版本: <code>&lt;version&gt;2.2.1.RELEASE&lt;/version&gt;</code></li>
+</ul>
+<blockquote>
+<p>项目依赖</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.h2database<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>h2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="application-yml文件内容-1"><a href="#application-yml文件内容-1" class="headerlink" title="application.yml文件内容"></a><code>application.yml</code>文件内容</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">2001</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">sofa-authentication</span></span><br><span class="line"><span class="attr">  datasource:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="attr">    druid:</span></span><br><span class="line"><span class="attr">      initial-size:</span> <span class="number">5</span></span><br><span class="line"><span class="attr">      min-idle:</span> <span class="number">5</span></span><br><span class="line"><span class="attr">      max-active:</span> <span class="number">20</span></span><br><span class="line"><span class="attr">      stat-view-servlet:</span></span><br><span class="line"><span class="attr">        login-username:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">        login-password:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">      max-wait:</span> <span class="number">60000</span></span><br><span class="line"><span class="attr">      time-between-eviction-runs-millis:</span> <span class="number">60000</span> <span class="comment"># 配置间隔多久才进行一次检测,检测需要关闭的空闲连接.单位是毫秒</span></span><br><span class="line"><span class="attr">      min-evictable-idle-time-millis:</span> <span class="number">300000</span> <span class="comment"># 配置一个连接池中最小生存的时间,单位是毫秒</span></span><br><span class="line">      <span class="comment">## 配置监控统计拦截的filters,去掉后监控界面SQL无法进行统计,`wall`用于防火墙(https://blog.csdn.net/garyond/article/details/80189939)</span></span><br><span class="line"><span class="attr">      filters:</span> <span class="string">config,stat,wall,log4j</span></span><br><span class="line"><span class="attr">      web-stat-filter:</span></span><br><span class="line"><span class="attr">        exclusions:</span> <span class="string">'*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'</span></span><br><span class="line">      <span class="comment">## 多数据源的标识,若该属性存在则为多数据源环境,不存在则为但数据源环境</span></span><br><span class="line"><span class="attr">      data-sources:</span></span><br><span class="line"><span class="attr">        primary:</span></span><br><span class="line"><span class="attr">          url:</span> <span class="attr">jdbc:h2:mem:~/example-app</span>    <span class="comment"># 指定数据库,默认</span></span><br><span class="line"><span class="attr">          username:</span> <span class="string">sa</span></span><br><span class="line"><span class="attr">          password:</span></span><br><span class="line"><span class="attr">        secondary:</span></span><br><span class="line"><span class="attr">          url:</span> <span class="attr">jdbc:h2:mem:~/example-app</span>    <span class="comment"># 指定数据库,默认</span></span><br><span class="line"><span class="attr">          username:</span> <span class="string">sa</span></span><br><span class="line"><span class="attr">          password:</span></span><br><span class="line"><span class="attr">      async-init:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    initialization-mode:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">  h2:</span></span><br><span class="line"><span class="attr">    console:</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">true</span> <span class="comment"># 是否启用H2数据库控制台</span></span><br><span class="line"><span class="attr">      settings:</span></span><br><span class="line"><span class="attr">        web-allow-others:</span> <span class="literal">true</span>         <span class="comment"># 允许远程浏览器访问H2 数据库控制台</span></span><br><span class="line"><span class="attr">        trace:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="脚本内容-1"><a href="#脚本内容-1" class="headerlink" title="脚本内容"></a>脚本内容</h2><ul>
+<li>与上述一致,为方便查看copy了一下</li>
+</ul>
+<blockquote>
+<p>脚本名称说明(机翻自官网)</p>
+</blockquote>
+<p>Spring Boot可以自动创建数据源的架构（DDL脚本）并对其进行初始化（DML脚本）。它从标准根类路径位置（分别为schema.sql和data.sql）加载SQL。另外，Spring Boot处理schema-$ {platform} .sql和data-$ {platform} .sql文件（如果存在），其中platform是spring.datasource.platform的值。这使您可以在必要时切换到特定于数据库的脚本。例如，您可以选择将其设置为数据库的供应商名称（hsqldb，h2，oracle，mysql，postgresql等）。</p>
+<blockquote>
+<p><code>data.sql</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> tbl_account;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tbl_account(</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">number</span>(<span class="number">12</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">varchar</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  age <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  sex <span class="built_in">char</span>(<span class="number">2</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">80</span>) <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">  <span class="keyword">role</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>schema.sql</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1001</span>,<span class="string">'admin'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_ADMIN'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1002</span>,<span class="string">'zy'</span>,<span class="number">25</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1003</span>,<span class="string">'lb'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1004</span>,<span class="string">'lk'</span>,<span class="number">22</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1005</span>,<span class="string">'zj'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1006</span>,<span class="string">'lc'</span>,<span class="number">21</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1007</span>,<span class="string">'wdd'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1008</span>,<span class="string">'ln'</span>,<span class="number">18</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1009</span>,<span class="string">'gy'</span>,<span class="number">20</span>,<span class="string">'女'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_account (<span class="keyword">id</span>,<span class="keyword">name</span>,age,sex,<span class="keyword">password</span>,<span class="keyword">role</span>) <span class="keyword">values</span> (<span class="number">1010</span>,<span class="string">'dew'</span>,<span class="number">35</span>,<span class="string">'男'</span>,<span class="string">'1'</span>,<span class="string">'ROLE_USER'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="数据源配置"><a href="#数据源配置" class="headerlink" title="数据源配置"></a>数据源配置</h2><blockquote>
+<p><code>DruidDataSourceConfig</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dew.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Primary;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> DruidDataSourceConfig</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> &lt;br/&gt; Druid 连接池配置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/12/4</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidDataSourceConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Primary</span><span class="comment">//必需注解，缺少该注解将启动异常.可自定义某个数据源为主数据源</span></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"primaryDataSource"</span>)</span><br><span class="line">	<span class="meta">@Qualifier</span>(value = <span class="string">"primaryDataSource"</span>)</span><br><span class="line">	<span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.druid.data-sources.primary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSource <span class="title">primaryDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"primaryJdbcTemplate"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> JdbcTemplate <span class="title">primaryJdbcTemplate</span><span class="params">(@Qualifier(<span class="string">"primaryDataSource"</span>)</span> DataSource dataSource) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> JdbcTemplate(dataSource);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"secondaryDataSource"</span>)</span><br><span class="line">	<span class="meta">@Qualifier</span>(value = <span class="string">"secondaryDataSource"</span>)</span><br><span class="line">	<span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.druid.data-sources.secondary"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> DataSource <span class="title">secondaryDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span>(name = <span class="string">"secondaryJdbcTemplate"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> JdbcTemplate <span class="title">secondaryJdbcTemplate</span><span class="params">(@Qualifier(<span class="string">"secondaryDataSource"</span>)</span> DataSource dataSource) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> JdbcTemplate(dataSource);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>DruidDataSourcesConfigTest</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dew.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONArray;</span><br><span class="line"><span class="keyword">import</span> com.dew.entity.UserPO;</span><br><span class="line"><span class="keyword">import</span> com.dew.repository.UserRepository;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest.WebEnvironment;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> ：Dew</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> ：Created in 2019/12/4 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span>(webEnvironment = WebEnvironment.RANDOM_PORT)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidDataSourceConfigTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> JdbcTemplate primaryJdbcTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> JdbcTemplate secondaryJdbcTemplate;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">primaryDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sql = <span class="string">"select * from TBL_ACCOUNT where NAME='admin' and PASSWORD = '1'"</span>;</span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; result = primaryJdbcTemplate.queryForList(sql);</span><br><span class="line">		log.info(<span class="string">"primary datasource test:&#123;&#125;"</span>, JSONArray.toJSONString(result));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">secondaryDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sql = <span class="string">"SELECT * FROM TBL_ACCOUNT"</span>;</span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; result = primaryJdbcTemplate.queryForList(sql);</span><br><span class="line">		log.info(JSONArray.toJSONString(result));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>小提示: 若对数据库连接池配置有不明白的,可以查看另一篇博客<a href="../SpringBoot配置多数据源">SpringBoot配置多数据源</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/springboot/SpringBoot加密敏感信息/" rel="next" title="SpringBoot加密敏感信息">
+                <i class="fa fa-chevron-left"></i> SpringBoot加密敏感信息
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/Tomcat服务器端部署配置案例/" rel="prev" title="Tomcat服务器端部署配置案例">
+                Tomcat服务器端部署配置案例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/dew-logo.svg" alt="wloop">
+            
+              <p class="site-author-name" itemprop="name">wloop</p>
+              <div class="site-description motion-element" itemprop="description">以梦为马 不负朝华</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ColorCoinK" title="GitHub &rarr; https://github.com/ColorCoinK" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:h_70810@sina.com" title="E-Mail &rarr; mailto:h_70810@sina.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope-o"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot-1-x启动时初始化脚本"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot 1.x启动时初始化脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven依赖及配置"><span class="nav-number">1.1.</span> <span class="nav-text">Maven依赖及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-yml文件内容"><span class="nav-number">1.2.</span> <span class="nav-text">application.yml文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本内容"><span class="nav-number">1.3.</span> <span class="nav-text">脚本内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot-2-x启动时初始化脚本"><span class="nav-number">2.</span> <span class="nav-text">SpringBoot 2.x启动时初始化脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot-2-0使用Druid连接池初始化脚本"><span class="nav-number">3.</span> <span class="nav-text">SpringBoot 2.0使用Druid连接池初始化脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven依赖及配置-1"><span class="nav-number">3.1.</span> <span class="nav-text">Maven依赖及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-yml文件内容-1"><span class="nav-number">3.2.</span> <span class="nav-text">application.yml文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本内容-1"><span class="nav-number">3.3.</span> <span class="nav-text">脚本内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源配置"><span class="nav-number">3.4.</span> <span class="nav-text">数据源配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wloop</span>
+
+  
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
